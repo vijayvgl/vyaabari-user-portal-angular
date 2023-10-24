@@ -1,0 +1,47 @@
+<mat-form-field appearance="outline" class="w-4/6">
+    <!-- <mat-label *ngIf="options">{{label|titlecase}}</mat-label> -->
+    <!-- <mat-label>
+        <div class="select-placeholder-container">
+            <span>{{label|titlecase}}</span>
+            <div class="">
+                <img src="assets/images/loading.gif" style="width: 40px; height: 40px;" alt="">
+            </div>
+        </div>
+    </mat-label> -->
+    <mat-select #select [placeholder]="placeholder" [formControl]="form_control" [ngClass]="{'disbleColor':disabled}"
+        (selectionChange)="optionSelected($event)" (openedChange)="clearSearch()">
+
+        <div class="filter-input multiselect-filter">
+            <input id="single_select_id"   #searchInput class="mat-filter-input" [formControl]="searchControl"
+                [placeholder]="searchPlaceHolder" matInput  type="text">
+            <mat-icon class="clear_icon" *ngIf="searchInput.value!=''" (click)="searchInput.value='';clearSearch()">
+                highlight_off
+            </mat-icon>
+        </div>
+        <div class="" style="margin-top: 10px;" *ngFor="let data of filteredOptions">
+            <mat-option *ngIf="options_display!=''&&options_value!=''&&nonSelectedOptions(data[options_value])"
+                [value]="data[options_value]">
+
+                <span class="inline-block" *ngIf="showIcon">
+                    <img  height="10" width="10" class="select_box_img" src= {{data?.icon}} alt="icon">
+                 
+                </span>{{data[options_display]}}
+            </mat-option>
+        </div>
+        <div class="" style="margin-top: 10px;" *ngFor="let data of filteredOptions">
+            <mat-option *ngIf="options_display==''&&options_value==''&&nonSelectedOptions(data)" [value]="data">
+                {{data}}
+            </mat-option>
+        </div>
+
+
+        <mat-option *ngIf="filteredOptions?.length<=0||filteredOptions==undefined">No data found...</mat-option>
+    </mat-select>
+    <span matSuffix *ngIf="form_control.hasError('required') && form_control.touched" matTooltip="{{error_message }}"
+        [matTooltipDisabled]="!form_control.invalid">
+        <mat-icon class="mr-3" color="warn">info</mat-icon>
+    </span>
+    <mat-icon (click)="resetValue()" *ngIf="checkNull(form_control.value) && !disabled && !hideCross" matSuffix class="clear_icon">
+        highlight_off
+    </mat-icon>
+</mat-form-field>

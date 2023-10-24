@@ -1,0 +1,25 @@
+<!-- Button -->
+<button [matMenuTriggerFor]="topupActions"  matTooltip="Topup" (click)="changeIcon()"   (menuOpened)="menuOpen()"
+    (menuClosed)="menuClose()"
+    class="report_menu rounded-lg flex mr-2 my-3 profile_header justify-center items-center flex-row-reverse w-18 py-2"
+    style="border: 1px solid #F1F1F1;">
+    <span class="relative flex items-center justify-center h-6">
+        <app-svg-icons class="fill_path" menusvg="topup" ></app-svg-icons>
+        <mat-icon svgIcon="mat_outline:keyboard_arrow_down" class="ml-1"></mat-icon>
+    </span>
+</button>
+
+<mat-menu [xPosition]="'before'" #topupActions="matMenu">
+    <button mat-menu-item (click)="topupInfo()">
+        <app-svg-icons class="fill_path" topupsvg ="topup_info"></app-svg-icons>
+        <span>Top Up Info</span>
+    </button>
+    <button mat-menu-item (click)="topupClaim()">
+        <app-svg-icons class="fill_path"  topupsvg ="claim_info"></app-svg-icons>
+        <span>Claim Top Up</span>
+    </button>
+    <button mat-menu-item (click)="upiTopup()">
+        <app-svg-icons class="fill_path" topupsvg ="upi_info"></app-svg-icons>
+        <span>UPI Top Up</span>
+    </button>
+</mat-menu>

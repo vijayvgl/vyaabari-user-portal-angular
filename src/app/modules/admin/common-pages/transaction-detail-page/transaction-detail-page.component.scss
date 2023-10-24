@@ -1,0 +1,19 @@
+
+.bank_details {
+	border-bottom: 1px solid #cccccc4f;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    h1{
+        font-weight: 600;
+        font-size: 16px;
+        color: #363636dd;
+    }
+    h2{
+        font-weight: 400;
+        font-size: 14px;
+        color: #363636dd;
+    }
+}

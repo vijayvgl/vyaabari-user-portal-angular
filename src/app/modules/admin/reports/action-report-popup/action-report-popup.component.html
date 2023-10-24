@@ -1,0 +1,28 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6">
+    <h2 class="font-bold text-xl">Transaction Details</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+ </div>
+ <div class="p-8 mx-6 bg_clr rounded-xl">
+    <div class="table_details  flex items-center">
+       <table class="sm:w-3/5 m-auto">
+          <tr  class="action_report_media" *ngFor="let data of numbers">
+             <th  class="head_clr sm:text-left sm:pl-9 text-base py-2.5 font-normal" >{{data.trans_id}}
+             </th>
+             <th  class="content_clr sm:text-right sm:pr-9 text-base py-2.5 font-semibold" >{{data.number}}</th>
+          </tr>
+       </table>
+    </div>
+ </div>
+ <div class="last-section my-8 mx-6">
+    <div class="flex items-center justify-end">
+       <div class="rounded-xl p-3 mr-2 last_division"  matTooltip="Print"  >
+         <app-svg-icons menusvg="action_report_popup_1" ></app-svg-icons>
+        
+       </div>
+       <div class="rounded-xl p-3 mr-2 last_division"   matTooltip="Download">
+         <app-svg-icons menusvg="action_report_popup_2" ></app-svg-icons>
+        
+          
+       </div>
+    </div>
+ </div>

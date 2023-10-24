@@ -1,0 +1,249 @@
+<div
+   class="sign_in   session_head flex font_set flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+   <div
+      class="md:flex md:items-top   w-full sm:w-auto md:h-full md:w-7/12 py-8 px-4 sm:p-12 md:px-30 md:py-8 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none xs:bg-card">
+      <div class="w-full max-w-100 sm:w-120  mx-auto sm:mx-0">
+         <!-- Logo -->
+         <div class="">
+            <img class="h-auto pl-2   w-auto object-cover" src="assets/images/vyabari_logo.png" alt="image">
+         </div>
+         <div class="">
+            <h1 class="mt-8 pl-2  text-4xl font-medium tracking-tight leading-tight">Get Started Now</h1>
+            <p class="mt-2  pl-2   mb-8  text-xl font-normal session_sub_heading">Start Your Own Business With Us</p>
+         </div>
+         <!---------   Stepper design  -------->
+         <div class="sign_up_new mt-8 relative" >
+            <mat-stepper  (click)="toggle()"  class="relative" id="step_clr_change"  labelPosition="bottom" #stepper>
+            <!-- <button  [ngClass]="toggleStyle ? 'show':'hide'"   class="stepper_back_btn" mat-button matStepperPrevious>Back</button> -->
+            <mat-step [stepControl]="firstFormGroup">
+               <form class="pl-2">
+                  <ng-template matStepLabel>Step 1</ng-template>
+                  <div class="mb-1 mt-2">
+                     <mat-label class="font-medium text-lg">Mobile No <span class="text-red-500">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                     <input 
+                        formControlName="mobileNo"  
+                        id="mobileNo"   
+                        type="text"   
+                        maxlength="10"
+                        pattern="[0-9]*"
+                        class="form-control" matInput  placeholder="Mobile No" />         
+                  </mat-form-field>
+                  <div class="mb-1">
+                     <mat-label class="font-medium text-lg">Password <span class="text-red-500">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-full" subscriptSizing="fixed">
+                     <input id="password" matInput  type="password" [placeholder]="'Password'" [formControlName]="'password'"
+                     #passwordField>
+                     <button mat-icon-button type="button"
+                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                        matSuffix>
+                     <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                     [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                     <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                     [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                     </button>
+                  </mat-form-field>
+                  <div class="mb-1">
+                     <mat-label class="font-medium text-lg">Confirm Password <span class="text-red-500">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-full" subscriptSizing="fixed">
+                     <input id="password" matInput  type="password" [placeholder]="'Confirm Password'" [formControlName]="'password'"
+                     #password>
+                     <button mat-icon-button type="button"
+                        (click)="password.type === 'password' ? password.type = 'text' : password.type = 'password'"
+                        matSuffix>
+                     <mat-icon class="icon-size-5" *ngIf="password.type === 'password'"
+                     [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                     <mat-icon class="icon-size-5" *ngIf="password.type === 'text'"
+                     [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                     </button>
+                  </mat-form-field>
+                  <button mat-button matStepperNext   class="tgss-mat-button-large button min-h-10 h-12 delay-75 w-full text-xl font-medium hover:bg-themeclr_hover bg-themeclr
+                     rounded-md mt-6">
+                  <span class="text-white" >Continue</span> 
+                  </button>
+                  <div class="bottom_section mt-5 text-center">
+                     <span class="block text-lg mb-3">Already have an account?<a routerLink="/" class="font-medium"> Sign In </a> </span>
+                  </div>
+               </form>
+            </mat-step>
+            <div>
+               <mat-step  [stepControl]="secondFormGroup" >
+                  <form class="pl-2" >
+                     <ng-template matStepLabel>
+                        <span class="" > Step 2</span>
+                     </ng-template>
+                     <mat-radio-group class="-ml-2" aria-label="Select an option">
+                        <mat-radio-button value="1">Company</mat-radio-button>
+                        <mat-radio-button class="ml-4" value="2">Individual</mat-radio-button>
+                     </mat-radio-group>
+                     <div class="mb-1 mt-5">
+                        <mat-label class="font-medium text-lg"> Company Name <span class="text-red-500">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                        <input 
+                           formControlName="Company Name"  
+                           id="companyName"   
+                           type="text"   
+                           class="form-control" matInput  placeholder="Company Name" />         
+                     </mat-form-field>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg"> GST No <span class="text-red-500">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                        <input 
+                           formControlName="GST No"  
+                           id="gstNo"   
+                           type="text"   
+                           class="form-control" matInput  placeholder="GST No" />         
+                     </mat-form-field>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg"> PAN  <span class="text-red-500">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                        <input 
+                           formControlName="PAN"  
+                           id="pan"   
+                           type="text"   
+                           class="form-control" matInput  placeholder="PAN" />         
+                     </mat-form-field>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg mb-0 text-black opacity-90"> State <span class="text-red-600">*</span></mat-label>
+                     </div>
+                     <single-static-stable class="sign_up_w_full" [error_message]="'Please choose the state'" [required]="true"
+                     [placeholder]="'Select State'" [searchPlaceHolder]="'Search State'" [options]="state"
+                     [options_display]="'value'"   [options_value]="'viewValue'"></single-static-stable>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg mb-0 text-black opacity-90"> City <span class="text-red-600">*</span></mat-label>
+                     </div>
+                     <single-static-stable class="sign_up_w_full" [error_message]="'Please choose the city'" [required]="true"
+                     [placeholder]="'Select City'" [searchPlaceHolder]="'Search City'" [options]="city"
+                     [options_display]="'value'"   [options_value]="'viewValue'"></single-static-stable>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg"> Pincode <span class="text-red-500">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                        <input 
+                           formControlName="Pincode"  
+                           id="pinCode"   
+                           type="text"   
+                           class="form-control" matInput  placeholder="Pincode" />         
+                     </mat-form-field>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg"> Address <span class="text-red-500">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                        <textarea type="text" matInput  placeholder="Address"></textarea>
+                     </mat-form-field>
+                     <button  mat-button matStepperNext  class="tgss-mat-button-large button min-h-10 h-12 delay-75 w-full text-xl font-medium hover:bg-themeclr_hover bg-themeclr
+                        rounded-md mt-2">
+                     <span class="text-white">Continue</span> 
+                     </button>
+                     <div class="bottom_section mt-5 text-center">
+                        <span class="block text-lg mb-3">Already have an account?<a routerLink="/" class="font-medium"> Sign In </a> </span>
+                     </div>
+                     <div>
+                        <!-- <button >Next</button> -->
+                     </div>
+                  </form>
+               </mat-step>
+            </div>
+            <mat-step>
+               <ng-template matStepLabel>Step 3</ng-template>
+               <h1 class="text-black font-bold mb-5 text-2xl pl-2" >Complete KYC</h1>
+               <div class="pl-2">
+                  <div class="mb-1 ">
+                     <mat-label class="font-medium text-lg mb-0 text-black opacity-90"> Select Identity <span class="text-red-600">*</span></mat-label>
+                  </div>
+                  <single-static-stable class="sign_up_w_full" [error_message]="'Please choose the identity'" [required]="true"
+                  [placeholder]="'Select Identity'" [searchPlaceHolder]="'Search Identity'" [options]="identity"
+                  [options_display]="'value'"   [options_value]="'viewValue'"></single-static-stable>
+                  <div class="mb-6 mt-1">
+                     <div class="w-full p-4 rounded-xl border border-gray-300 cursor-pointer" (click)="file.click()">
+                        <div class="flex items-center">
+                           <img class="w-7" src="assets/images/sign_up.png" alt="image">
+                           <div class="ml-4">
+                              <p class="text-lg font-medium text-gray-900">Upload Aadhaar</p>
+                              <span class="text-sm font-normal text-gray-500">Use a pdf, jpeg, jpg, png (250 mb)</span>
+                           </div>
+                        </div>
+                     </div>
+                     <input class="hidden" id="fileUploader" type="file"
+                        accept="image/*" #file>
+                  </div>
+                  <div class="mb-6">
+                     <div class="w-full p-4 rounded-xl border border-gray-300 cursor-pointer" (click)="file.click()">
+                        <div class="flex items-center">
+                           <img class="w-7" src="assets/images/sign_up.png" alt="image">
+                           <div class="ml-4">
+                              <p class="text-lg font-medium text-gray-900">Upload PAN</p>
+                              <span class="text-sm font-normal text-gray-500">Use a pdf, jpeg, jpg, png (250 mb)</span>
+                           </div>
+                        </div>
+                     </div>
+                     <input class="hidden" id="fileUploader" type="file"
+                        accept="image/*" #file>
+                  </div>
+                  <div class="mb-6">
+                     <div class="w-full p-4 rounded-xl border border-gray-300 cursor-pointer" (click)="file.click()">
+                        <div class="flex items-center">
+                           <img class="w-7" src="assets/images/sign_up.png" alt="image">
+                           <div class="ml-4">
+                              <p class="text-lg font-medium text-gray-900">Upload Photo Passport Size</p>
+                              <span class="text-sm font-normal text-gray-500">Use a pdf, jpeg, jpg, png (250 mb)</span>
+                           </div>
+                        </div>
+                     </div>
+                     <input class="hidden" id="fileUploader" type="file"
+                        accept="image/*" #file>
+                  </div>
+                  <h1 class="text-black font-bold my-5 text-lg" >Bank Details</h1>
+                  <div class="mb-1">
+                     <mat-label class="font-medium text-lg"> Account No <span class="text-red-500">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                     <input 
+                        formControlName="Account No"  
+                        id="accNo"   
+                        type="text"   
+                        class="form-control" matInput  placeholder="Account No" />         
+                  </mat-form-field>
+                  <div class="mb-1">
+                     <mat-label class="font-medium text-lg"> IFSC Code <span class="text-red-500">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-full mb-2" subscriptSizing="fixed">
+                     <input 
+                        formControlName="IFSC Code"  
+                        id="ifscCode"   
+                        type="text"   
+                        class="form-control" matInput  placeholder="IFSC Code" />         
+                  </mat-form-field>
+                  <button  mat-button routerLink="/otp-verify"  class="tgss-mat-button-large button min-h-10 h-12 delay-75 w-full text-xl font-medium hover:bg-themeclr_hover bg-themeclr
+                     rounded-md mt-2">
+                  <span class="text-white">Continue</span> 
+                  </button>
+                  <div class="bottom_section mt-5 text-center">
+                     <span class="block text-lg mb-3">Already have an account?<a routerLink="/" class="font-medium"> Sign In </a> </span>
+                  </div>
+               </div>
+            </mat-step>
+            </mat-stepper>
+         </div>
+         <!------------ End ------->
+      </div>
+   </div>
+   <div
+      class="relative md:flex flex-auto  flex-col   items-left  w-1/2 hidden h-full px-20 py-8 lg:px-16 overflow-hidden bg-slate-50 dark:border-l">
+      <div class="fixed">
+         <h2 class="lg:text-4xl font-medium leading-8 sm:text-2xl session_label"><b class="session_color_add">Grow your business</b> and</h2>
+         <h2 class="lg:text-4xl sm:text-2xl font-medium session_label">increase your average ticket size</h2>
+      </div>
+      <!-- <div class="w_450 block m-auto absolute right-0 bottom-0"> -->
+      <div class="w_450 block m-auto fixed right-0 top-36">
+         <!-- <img class="object-cover" src="assets/images/session_img.png" alt="image"> -->
+         <img class="object-cover" src="assets/images/sign_up_banner.png" alt="image">
+      </div>
+   </div>
+</div>

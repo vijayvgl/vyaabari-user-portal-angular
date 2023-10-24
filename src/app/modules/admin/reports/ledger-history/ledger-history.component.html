@@ -1,0 +1,58 @@
+<div class=" leder_select bil-payments-tab sm:inset-0 h-full min-w-0 mb-12">
+
+   <div class="  flex items-baseline justify-between">
+      <div class="page_header">Credit Ledger History</div>
+      <button  type="button" class="text-themeclr report_export_btn sm:px-5 sm:py-2 rounded-lg sm:text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover" >Export</button>
+   </div>
+   <form class="bg-white mt-5  px-5 py-6">
+      <div class="xs:w-full pt-1 flex flex-wrap items-center sm_justify_center  lg:w-full">
+         <div class="mb-1 mx-3">
+            <h1 class="font-medium text-lg mb-1.5 first-letter" style="color: #171717">
+               Date <span class="text-red-600">*</span>
+            </h1>
+            <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+               <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+               </mat-date-range-input>
+               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+         </div>
+         <div class="mb-1 mx-3">
+            <div>
+               <mat-label class="font-medium mb-1.5 text-lg  first-letter" style="color: #171717">Transaction Id <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-4/6 mt-1.5 report_input_field" subscriptSizing="fixed">
+               <input type="text" matInput  placeholder="Transaction Id" />
+            </mat-form-field>
+         </div>
+         <div class="mb-1 mx-3">
+            <h1 class="font-medium text-lg mb-1.5 first-letter" style="color: #171717">
+               Transaction Type <span class="text-red-600">*</span>
+            </h1>
+            <single-static-stable class="w-2/3 report_single_select" [error_message]="'Please choose the role'" [required]="true"
+            [placeholder]="'Select Type'" [searchPlaceHolder]="'Search Type'" [options]="type"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+         </div>
+         <div class="mb-1 mx-3">
+            <h1 class="font-medium text-lg mb-1.5 first-letter" style="color: #171717">
+            Transaction Mode <span class="text-red-600">*</span>
+            </h1>
+            <single-static-stable class="w-2/3 report_single_select" [error_message]="'Please choose the role'" [required]="true"
+            [placeholder]="'Select Mode'" [searchPlaceHolder]="'Search Mode'" [options]="mode"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+         </div>
+         <div class="mb-0 mx-3">
+            <button
+               class="history_btn h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Filter
+            </button>
+         </div>
+      </div>
+      <div style="background-color: #FBFCFE; border: 1px solid #EEEFFC;" class="p-14 mt-4 w-full h-110  text-center">
+         <img class="w-56 block m-auto mb-8" src="assets/images/history.png" alt="image" />
+         <span style="color: #000A7D;" class="text-base  font-normal">No Record Found</span>
+      </div>
+   </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden">
+   <!-- Title -->
+   <div class="page_header">QR Activation</div>
+   <form class="bg-white p-9 mt-5 flex items-start rounded-lg h-120">
+      <div class="xs:w-full lg:w-2/4">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-label-clr">UPI Id <span
+                  class="text-red-600">*</span></mat-label>
+         </div>
+         <mat-form-field class="w-4/6" subscriptSizing="fixed">
+            <input type="text" matInput  placeholder="UPI Id" />
+         </mat-form-field>
+
+         <div class="mt-2">
+            <button
+               class="sm:w-4/6 xs:w-full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+               Submit
+            </button>
+         </div>
+         <div class="mt-4">
+            <button (click)="requestUPI()"
+               class="sm:w-4/6 xs:w-full h-10 rounded-md border-2
+                border-slate-300 text-text-themeclr font-bold text-xl
+                 hover:bg-themeclr hover:text-white hover:border-themeclr">
+            Request for new UPI Id
+            </button>
+         </div>
+      </div>
+      <div class="w-2/4 cms_image">
+         <img class="xl:w-1/2 sm:w-full xxl:w-2/4 m-auto" src="assets/images/qr-active.png" alt="image" />
+      </div>
+   </form>
+</div>

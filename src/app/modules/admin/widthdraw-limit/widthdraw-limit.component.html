@@ -1,0 +1,137 @@
+<div class=" sm:inset-0 h-full mb-12  flex flex-col flex-auto min-w-0 ">
+
+    <div class="mt-5 sm:flex items-center justify-between">
+       <h2 class="page_header mt-0 " >Withdrawal</h2>
+       <div class="flex items-center">
+        <p class="whitespace-nowrap text-base lg:text-lg font-bold pr-1" style="color: #363636; opacity: 75%;">Withdrawable  Balance: 
+            
+        </p>
+        <p class="whitespace-nowrap text-base lg:text-lg font-extrabold mr-3" style="color: #000A12; opacity: 95%;">₹1,000 
+            
+        </p>
+        <button routerLink="history"
+        class="text-themeclr px-5 py-2 rounded-lg text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover">Withdrawal History</button>
+       </div>
+      </div>
+
+       <div class="bg-white mt-5 h-full p-4 lg:p-9 pb-0">
+        <div class="lg:flex w-full items-center lg:flex-row ">
+            <div class="lg:w-2/5 w-full">
+                <div>
+                    <mat-label class="font-medium text-lg mb-0 first-letter" style="color:#363636;"> 
+                      Withdrawal Type 
+                        <span class="text-red-500">*</span>
+                  </mat-label>
+                </div>
+               
+                <single-static-stable  class="w-full  block widthdraw_select" [error_message]="'Please choose the type'" [required]="true"
+                [placeholder]="'Select Type'" [searchPlaceHolder]="'Search Type'" [options]="widthdraw"
+                [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+            </div>
+            <div class="lg:w-2/5 w-full lg:ml-7 ">
+               <div class="" >
+                  <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">Amount (₹) <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="w-full " subscriptSizing="fixed">
+                  <input type="number " class="text-end amount" matInput  placeholder="0.00" />
+               </mat-form-field>
+            </div>
+         </div>
+         <div class="px-4 py-6 search_input  mt-4 border border-gray-100 rounded-md overflow-x-scroll" style="background-color: 
+         #FBFCFE; ">
+
+            <div class="lg:flex items-center justify-between lg:px-6 lg:pl-8" >
+              <p class="text-lg font-bold" style="color: #2E3690;">Account Holders <span>(05)</span> </p>
+                <mat-form-field class="lg:w-1/3 w-full h-16 rounded-2xl " subscriptSizing="fixed">
+                    <mat-icon matPrefix class="my-icon">search</mat-icon>
+                    <input type="text" class="text-lg" matInput  placeholder="Search By Keyword" />
+                 </mat-form-field>
+
+             </div>
+             
+      
+         <div class="widthdarw-table">
+            <table mat-table [dataSource]="dataSource" class="mt-4 overflow-x-scroll">
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                  [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [checked]="selection.isSelected(row)"
+                                  [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef>Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="account">
+                  <th mat-header-cell *matHeaderCellDef> Account Holder Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.account}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="accountnumber">
+                  <th mat-header-cell *matHeaderCellDef> Account No </th>
+                  <td mat-cell *matCellDef="let element"> {{element.accountnumber}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="banktype">
+                  <th mat-header-cell *matHeaderCellDef> Bank Account Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.banktype}} </td>
+                </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="upiid">
+                    <th mat-header-cell *matHeaderCellDef> UPI ID</th>
+                    <td mat-cell *matCellDef="let element"> {{element.upiid}} </td>
+                  </ng-container>
+                  <!-- Symbol Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element"> 
+
+                      <mat-icon class="hover:text-red-500 cursor-pointer" svgIcon="mat_solid:delete"></mat-icon>
+
+
+
+                    </td>
+                  </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                    (click)="selection.toggle(row)">
+                </tr>
+              </table>
+              <mat-paginator style-paginator showFirstLastButtons 
+              [showTotalPages]="2"
+              [length]="4"
+              [pageSize]="1"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+       </mat-paginator>
+         </div>
+        </div>
+        <div class="mt-7">
+            <button
+               class="w-2/5 h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Submit
+            </button>
+       </div>
+
+       </div>
+       
+  
+ </div>

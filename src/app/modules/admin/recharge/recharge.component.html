@@ -1,0 +1,707 @@
+<div class=" sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+   <!-- Title -->
+   <div class=" lg:flex items-center justify-between">
+      <div class="flex items-center">
+         <h2 class="page_header" >Recharge</h2>
+      </div>
+   </div>
+   <mat-tab-group class="mt-5" (selectedTabChange)="onTabChanged($event)">
+      <!------------------- Mobile Tab  ---------------->
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <app-svg-icons rechargeSvg="svg_1"  current = '0'></app-svg-icons>
+            Mobile
+         </ng-template>
+         <div class="flex common_recharge_flex_col p-2">
+            <div class="sm:w-2/4 content_left max-sm:w-full">
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Mobile No <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="lg:w-4/5 w-full" subscriptSizing="fixed">
+                  <input type="number"  matInput placeholder="Mobile No" />
+               </mat-form-field>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Select Operator <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the Operator'" [required]="true"
+               [placeholder]="'Select Operator'"  [searchPlaceHolder]="'Search Operator'" [options]="operators"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Select Circle <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the role'" [required]="true"
+               [placeholder]="'Tamilnadu'" [searchPlaceHolder]="'Search Circle'" [options]="circles"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0" style="color: #171717">Amount (₹) <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="lg:w-4/5 w-full" subscriptSizing="fixed">
+                  <input type="number" class="text-right amount"  matInput placeholder="0.00" />
+               </mat-form-field>
+               <div class="mt-2">
+                  <button (click)="toggle1()"
+                     class="lg:w-4/5 w-full  h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                  Submit
+                  </button>
+               </div>
+            </div>
+            <div class="w-2/4 hidden_recharge_img"   [ngClass]="toggleStyle1 ? 'hide':''" >
+               <img class="xl:w-7/12 sm:w-full xxl:w-2/4 m-auto" src="assets/images/recharge_section.png" alt="image">
+            </div>
+            <div class="sm:w-3/5 content_right recharge_w_full" style="display: none;" [ngClass]="toggleStyle1 ? 'show':''" >
+               <div class="flex justify-between flex_col media_mt_add">
+                  <div class="flex">
+                     <div class="mr-3">
+                        <img class="w-10 h-10 object-cover" src="assets/images/jio.png" alt="image">
+                     </div>
+                     <div class="">
+                        <h2 class="text-lg font-normal" style="color: rgba(19, 19, 19, 0.85);" >Mobile Recharge</h2>
+                        <h3 class="text-lg font-bold" style="color: rgba(19, 19, 19, 0.95);" >Reliance Jio Tamilnadu</h3>
+                     </div>
+                  </div>
+               </div>
+               <mat-tab-group class="mt-5 recharge_tab_width_set sub_mat_tab" (selectedChangeTab)="onCheckEvent($event)">
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        Full TT
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of recharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           <div class="discription_box border-t-2 border-gray-200 mt-3">
+                              <p class="mt-3  text-md"><b class="text-black opacity-90">Description:</b> 1. UNLIMITED DATA - 6GB 2. UNLIMITED CALLS 3. 1000 SMS 4. Complimentary Jio Apps Validity - 84 days, Post which unlimited @ 64 Kbps, Unlimited 5G data for eligible subscribers, JioCinema premium is not included in complementary JioCinema subscription</p>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        Top Up
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of recharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        3G/4G
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of recharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        2G
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of recharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        Roaming
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of recharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+               </mat-tab-group>
+            </div>
+         </div>
+      </mat-tab>
+      <!-------------------  DTH Tab -------------------->
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <app-svg-icons rechargeSvg="svg_2"  current = '0'></app-svg-icons>
+            DTH
+         </ng-template>
+         <div class="flex common_recharge_flex_col p-2">
+            <div class="sm:w-2/4 content_left max-sm:w-full">
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Select Operator <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the operator'" [required]="true"
+               [placeholder]="'Select Operator'"  [searchPlaceHolder]="'Search Operator'" [options]="dthprovider"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">DTH No <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="lg:w-4/5 w-full" subscriptSizing="fixed">
+                  <input type="text"  matInput placeholder="DTH No" />
+               </mat-form-field>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Amount (₹) <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="lg:w-4/5 w-full" subscriptSizing="fixed">
+                  <input class="text-end amount" type="numer"  matInput placeholder="0.00" />
+               </mat-form-field>
+               <div class="mt-2">
+                  <button (click)="toggle()"
+                     class="lg:w-4/5 w-full  h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                  Submit
+                  </button>
+               </div>
+            </div>
+            <div class="w-2/4 hidden_recharge_img"   [ngClass]="toggleStyle ? 'hide':''" >
+               <img class="xl:w-7/12 sm:w-full xxl:w-2/4 m-auto" src="assets/images/recharge_dth.png" alt="image">
+            </div>
+            <div class="sm:w-3/5 content_right recharge_w_full" style="display: none;" [ngClass]="toggleStyle ? 'show':''" >
+               <div class="flex justify-between flex_col media_mt_add">
+                  <div class="flex">
+                     <div class="mr-3">
+                        <img class="w-26 object-cover" src="https://upload.wikimedia.org/wikipedia/commons/f/f2/SD-HD-Logo.svg" alt="image">
+                     </div>
+                     <div class="">
+                        <h2 class="text-lg font-normal" style="color: rgba(19, 19, 19, 0.85);" >DTH Recharge</h2>
+                        <h3 class="text-lg font-bold" style="color: rgba(19, 19, 19, 0.95);" >Sun Direct</h3>
+                     </div>
+                  </div>
+               </div>
+               <mat-tab-group class="mt-5 recharge_tab_width_set sub_mat_tab dth_mat" (selectedChangeTab)="onCheckEvent($event)">
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        Plans
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of dthrecharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           <div class="discription_box border-t-2 border-gray-200 mt-3">
+                              <p class="mt-3  text-md"><b class="text-black opacity-90">Description:</b> 
+                                 Tamil Thalaiva Sports Kids English HD Pack provides a list of 111 channels covering South Regional, Kids, English News, Lifestyle & Education, English Movies etc., genres.
+                                 This pack has 43 HD channels and 28 popular channels including Movies Now HD, Romedy Now, Star Movies HD, Star Movies Select HD, &Pictures HD and more.
+                                 This package comes with a minimum price of Rs. 586 with 28 days of validity.
+                                 Tamil Thalaiva Sports Kids English HD Pack details with price have been updated on Wednesday, 20 September 2023
+                              </p>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        English + Movies
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of dthrecharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        English + News
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of dthrecharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        South + Regional
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of dthrecharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                        HD
+                     </ng-template>
+                     <!------------   Content   --------------->
+                     <div style="border: 1px solid #F1F1F1;" class="rounded-xl p-3.5 bg-white mb-4" *ngFor="let data of dthrecharge" >
+                        <div class="flex items-start recharge_text_wrap justify-between">
+                           <div class="recharge_amt recharge_w_50">
+                              <h1 style="color: #000A7D;" class="xl:text-xl sm:text-base font-extrabold" > {{data.amount}} </h1>
+                           </div>
+                           <div class="recharge_days recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold"> {{data.days}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.validity}}  </span>
+                           </div>
+                           <div class="recharge_net recharge_w_50">
+                              <h1 style="color: rgba(19, 19, 19, 0.85);" class="xl:text-xl sm:text-base  font-extrabold" > {{data.network}} </h1>
+                              <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.balance}} </span>
+                           </div>
+                           <div class="recharge_button recharge_w_50">
+                              <button type="button" style="background-color: #2E3690; padding: 5px 22px;"  class="recharge_btn rounded-md text-white md:text-base  text-lg font-bold">{{data.button}} </button>
+                           </div>
+                        </div>
+                        <!--------------  Accordian style  --------------------->
+                        <mat-accordion class="recharge_accordian_style" >
+                           <mat-expansion-panel class="mt-2.5" style="background: #FBFBFB; box-shadow:none !important;" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                           <mat-expansion-panel-header class="h-9" >
+                              <mat-panel-description>
+                                 <span style="color: #000A7D;" class="text-md font-semibold"> {{data.details}} </span>  
+                              </mat-panel-description>
+                           </mat-expansion-panel-header>
+                           <div class="flex sm:items-center recharge_text_wrap   justify-between">
+                              <div class="recharge_days recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1">  {{data.network_check}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-1" > {{data.speed}} </span>
+                              </div>
+                              <div class="recharge_net recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.unlimited}} </h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.voice}} </span>
+                              </div>
+                              <div class="recharge_sms recharge_w_50">
+                                 <h1 style="color: rgba(19, 19, 19, 0.85);" class="text-md font-bold -mb-1" >{{data.sms_pack}}</h1>
+                                 <span style="color: rgba(54, 54, 54, 0.75);" class="text-sm font-normal mt-0" > {{data.sms}} </span>
+                              </div>
+                           </div>
+                           </mat-expansion-panel>
+                        </mat-accordion>
+                     </div>
+                  </mat-tab>
+               </mat-tab-group>
+            </div>
+         </div>
+      </mat-tab>
+      <!-------------------  LIC Collection Tab  ------------------->
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <app-svg-icons rechargeSvg="svg_3"  current = '0'></app-svg-icons>
+            LIC Collection - Offline
+         </ng-template>
+         <div class="flex  p-2 offline_flex_col">
+            <div class="sm:w-2/4 offline_w_full">
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Select Provider <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the provider'" [required]="true"
+               [placeholder]="'Select Provider'" [searchPlaceHolder]="'Search Provider'" [options]="provider"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mt-2">
+                  <button
+                     class="lg:w-4/5 w-full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                  Submit
+                  </button>
+               </div>
+            </div>
+            <div class="sm:w-2/4 offline_w_full" >
+               <div class="c_office_box">
+                  <ul class="list-outside" *ngFor="let office of lists">
+                     <li style="color: rgba(54, 54, 54, 0.75);" class="text-base font-normal" >{{office.list}}</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </mat-tab>
+      <!---------------  Electricity Tab  ------------------------>
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <app-svg-icons rechargeSvg="svg_3"  current = '0'></app-svg-icons>
+            Electricity - Offline
+         </ng-template>
+         <div class="flex offline_flex_col p-2">
+            <div class="sm:w-2/4 offline_w_full">
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">State <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable  class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the state'" [required]="true"
+               [placeholder]="'Select State'" [searchPlaceHolder]="'Search State'" [options]="state"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Provider <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the provider'" [required]="true"
+               [placeholder]="'Select Provider'" [searchPlaceHolder]="'Search Provider'" [options]="provider"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Customer Id <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="lg:w-4/5 block widthdraw_select" [error_message]="'Please choose the customer id'" [required]="true"
+               [placeholder]="'Customer Id'" [searchPlaceHolder]="'Search Customer Id'" [options]="cus_id"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Mobile No <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="lg:w-4/5 w-full" subscriptSizing="fixed">
+                  <input type="number"  matInput placeholder="Mobile No" />
+               </mat-form-field>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Email Id <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <mat-form-field class="lg:w-4/5 w-full" subscriptSizing="fixed">
+                  <input type="text"  matInput placeholder="Email Id" />
+               </mat-form-field>
+               <div class="mt-2">
+                  <button
+                     class="lg:w-4/5 w-full  h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                  Proceed
+                  </button>
+               </div>
+            </div>
+            <div class="sm:w-2/4 offline_w_full" >
+               <div class="c_office_box">
+                  <ul class="list-outside" *ngFor="let electricity of office">
+                     <li style="color: rgba(54, 54, 54, 0.75);" class="text-base font-normal" >{{electricity.e_list}}</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </mat-tab>
+   </mat-tab-group>
+</div>

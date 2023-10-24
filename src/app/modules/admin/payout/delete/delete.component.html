@@ -1,0 +1,18 @@
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+  <h2 class="font-bold text-xl">Enter OTP</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 remitter_payout_style">
+  <p class="mb-4 font-medium">One Time Password (OTP) has been sent to customer Mobile Number <span class="text-themeclr">(9047910296)</span></p>
+  <form>
+     <ng-otp-input class="input_otp" [config]="{length:6}"></ng-otp-input>
+     <div class="text-center mb-4 w-full">
+        <a class="text-lg font-normal text-themeclr hover:text-themeclr_hover cursor-pointer">Resend OTP
+        </a>
+     </div>
+  </form>
+  <div class="mt-2">
+     <button  (click)="closeDialog()" class="w-full h-10 rounded-md text-white font-bold text-xl
+        bg-themeclr hover:bg-themeclr_hover">Submit</button>
+  </div>
+</div>

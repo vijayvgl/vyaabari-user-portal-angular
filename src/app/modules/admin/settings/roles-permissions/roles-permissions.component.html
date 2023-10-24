@@ -1,0 +1,67 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-1 sm:pt-6 sm:pb-22 sm:px-10 bg-card">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Roles & Permissions ({{paginationDTO.totalSize ? paginationDTO.totalSize : '0'}})
+                </h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto -mt-16 shadow overflow-y-auto   bg-default" cdkScrollable>
+
+        <!-- CONTENT GOES HERE -->
+        <div class="rounded-2xl">
+
+
+            <div class="">
+                <mat-card class="w-11/12 mx-auto my-6 ">
+
+                    <div class="border border-b-gray-300 border-solid p-4 flex items-center justify-between
+                         hover:bg-slate-100 transition-colors cursor-pointer" *ngFor="let data of rolesList;let i = index;" (click)="redirectPermissionView(data?.id)">
+                        <div class="flex items-center" >
+                            <div class="w-20 h-20 rounded-full
+                             flex items-center justify-center text-white text-3xl font-medium" [style.background-color]="data?.color" >
+                                <p class="m-0">{{getLogo(data?.name ? data?.name :'')}}</p>
+                            </div>
+                            <div class="pl-4">
+                                <h1 class="font-bold text-2xl">{{data?.name? (data?.name | titlecase) :'-'}} 
+                                    <span style="top:-4px;" class="ml-2 mb-2 relative   font-normal text-white px-4 py-1 text-sm rounded-2xl" [ngClass]="{'bg-green-600': data?.status == 1, 'bg-red-600': data?.status != 1 }">{{data?.status ? 'Active' : 'In Active' }} </span>
+                                </h1>
+                                <p>Admin created this role on <span>{{data?.createdAt? (data?.createdAt | date :'dd-MM-yyyy'):'-'}}</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex">
+                                <mat-icon (click)="redirectPermissionView(data?.id)" matTooltip="Edit" svgIcon="heroicons_outline:pencil"
+                                    class="mr-2 hover:text-blue-500"></mat-icon>
+                                <mat-icon (click)="setStaus(data?.status == 1 ? 0 : 1 , data?.id,$event)" matTooltip="Change Status" svgIcon="heroicons_outline:switch-horizontal"
+                                    class="mr-2 hover:text-blue-500"></mat-icon>
+                                <mat-icon (click)="setStaus(2, data?.id,$event)" matTooltip="Delete" svgIcon="mat_outline:delete_outline"
+                                    class="mr-2 hover:text-red-500"></mat-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                </mat-card>
+                <mat-paginator class="bg-gray-50 border-t-2" #paginator
+                *ngIf="rolesList?.length > 0" [length]="paginationDTO.totalSize"
+                [pageSize]="paginationDTO.limit" (page)="onPaginateChange($event)" [pageSizeOptions]="pageSizeOptions"
+                aria-label="Select page">
+              </mat-paginator>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

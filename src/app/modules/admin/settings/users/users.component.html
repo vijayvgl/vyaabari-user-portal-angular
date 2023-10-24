@@ -1,0 +1,126 @@
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent">
+   <div
+      class="relative flex flex-col sm:flex-row responsive_wrap flex-0 sm:items-center sm:justify-between py-4 px-6 md:px-8 border-b bg-default">
+
+      <!-- Title -->
+      <div class="flex">
+         <div class="text-3xl font-extrabold tracking-tight">Manage User ({{paginationDTO.totalSize ? paginationDTO.totalSize : '0'}})</div>
+         <!-- Search -->
+         <mat-form-field class="tgss-mat-dense tgss-mat-rounded min-w-64 ml-3" [subscriptSizing]="'dynamic'">
+            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
+            <input matInput  [autocomplete]="'off'" #filterInput id="filterInput" (keyup)="refreshDataSource($event.target.value)"
+                     placeholder=" Search" [(ngModel)]="value" />
+                  <mat-icon style="cursor: pointer;" *ngIf="value" matSuffix aria-label="Clear"
+                  (click)="value = ''; applyFilter('')" preventDefault>close</mat-icon>
+         </mat-form-field>
+      </div>
+      <!-- Actions -->
+      <div class="flex shrink-0 items-center sm:ml-0">
+
+         <!-- Add product button -->
+         <button routerLink="/settings/users/create" class="xl:ml-4 sm:ml-0  hover:bg-indigo-700 hover:text-white hover:border-indigo-700 transition-all border-2 border-solid
+                 border-w border-primary-500 text-primary-500" mat-flat-button>
+            <mat-icon [svgIcon]="'mat_outline:add'"></mat-icon>
+            <span class="ml-2 mr-1">Create</span>
+         </button>
+      </div>
+   </div>
+
+   <div class="bg-white  overflow-y-scroll">
+      <!-- CONTENT GOES HERE -->
+      <div class="">
+
+         <div class="list-table">
+
+            <!--Content Section-->
+            <div class="overflow-x-auto">
+
+           
+            <div class="inner-table table_container overflow-x-auto">
+               <table mat-table [dataSource]="dataSource" class="full-width table_data_nowrap" matSort (matSortChange)="sortData($event)">
+                  <!-- Name -->
+                  <ng-container matColumnDef="name">
+                     <th mat-header-cell *matHeaderCellDef style="width: 10%" class="bg-gray-50 pl-8" mat-sort-header="name">Name</th>
+                     <td class="pl-8" mat-cell *matCellDef="let element">
+                        {{ element.name ? element.name : '--'}}
+                     </td>
+                  </ng-container>
+                  <!-- Role Name -->
+                  <ng-container matColumnDef="roleName">
+                     <th mat-header-cell *matHeaderCellDef style="width: 10%" class="bg-gray-50" mat-sort-header="role_name">Role Name</th>
+                     <td mat-cell *matCellDef="let element">
+                        {{ element.roleName ? element.roleName : '--' }}
+                     </td>
+                  </ng-container>
+                  <!-- Mobile No -->
+                  <ng-container matColumnDef="mobileNumber">
+                     <th mat-header-cell *matHeaderCellDef mat-sort-header="mobile_no" style="width: 10%" class="bg-gray-50">Mobile Number
+                     </th>
+                     <td mat-cell *matCellDef="let element">
+                        {{ element.mobileNumber ? element.mobileNumber : '--' }}
+                     </td>
+                  </ng-container>
+                  <!-- Email ID -->
+                  <ng-container matColumnDef="email">
+                     <th mat-header-cell *matHeaderCellDef mat-sort-header="email" style="width: 10%" class="bg-gray-50">Email Id</th>
+                     <td mat-cell *matCellDef="let element" >
+                        {{ element.email ? element.email : '--'}}
+                     </td>
+                  </ng-container>
+                  <!-- Status -->
+                  <ng-container matColumnDef="status">
+                     <th mat-header-cell *matHeaderCellDef style="width: 10%" class="bg-gray-50">Status</th>
+                     <td mat-cell *matCellDef="let element">
+                        <label *ngIf="element.status == 1"
+                           class="active px-3  text-white rounded-xl inline-block">
+                           <span class="h-2 w-2 rounded-full bg-white inline-block"></span> Active</label>
+                        <label *ngIf="element.status == 0" class="inactive px-3  text-white rounded-xl inline-block">
+                           <span class="h-2 w-2 rounded-full bg-white inline-block"></span> Inactive</label>
+                     </td>
+                  </ng-container>
+                  <!-- Action -->
+                  <ng-container matColumnDef="action">
+                     <th mat-header-cell *matHeaderCellDef style="width: 5%" class="bg-gray-50">Action</th>
+                     <td mat-cell *matCellDef="let element">
+                        <mat-icon [matMenuTriggerFor]="menu" class="action_btn  mt-4" *ngIf="permission.hasPermission(['User'],['user_update']) || permission.hasPermission(['User'],['user_status']) || permission.hasPermission(['User'],['user_delete'])">more_vert</mat-icon>
+                        <mat-menu class="action-button" #menu="matMenu" >
+                           <button mat-menu-item *ngIf="permission.hasPermission(['User'],['user_update'])"
+                           (click)="action(element)">
+                              <span>Update</span>
+                           </button>
+                           <button mat-menu-item *ngIf="permission.hasPermission(['User'],['user_status'])"  (click)="element.status == 0 ? setStaus(1, element) : element.status == 1 ? setStaus(0, element) : ''">
+                              <span *ngIf="element.status == 0">Mark as
+                                 Active</span>
+                              <span *ngIf="element.status == 1">Mark as
+                                 Inactive</span>
+                           </button>
+                           <button mat-menu-item (click)="setStaus(2, element)"
+                           *ngIf="permission.hasPermission(['User'],['user_delete'])">
+                              <span class="text-red-600">Delete</span>
+                           </button>
+                        </mat-menu>
+                     </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+               </table>
+               </div>
+               <ng-container *ngIf="dataSource.filteredData.length === 0 || dataSource.data.length === 0 ">
+                        <p class="text-center bg-white mb-0 pb-24"> <b>No Data Found...</b> </p>
+                     </ng-container>
+                  <mat-paginator  class="sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent" #paginator
+    *ngIf="dataSource.filteredData.length != 0 || dataSource.data.length != 0 " [length]="paginationDTO.totalSize"
+    [pageSize]="paginationDTO.limit" (page)="onPaginateChange($event)" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page">
+  </mat-paginator>
+            </div>
+         </div>
+
+
+
+
+
+      </div>
+
+   </div>
+</div>

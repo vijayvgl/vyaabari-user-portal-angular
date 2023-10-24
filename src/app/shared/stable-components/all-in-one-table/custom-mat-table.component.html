@@ -1,0 +1,118 @@
+<div class="table_container list-table">
+    <table mat-table [ngClass]="checkNull(tableClass) ? tableClass : ''" [dataSource]="tableSource" matSort
+        (matSortChange)="sortData($event)">
+
+        <ng-container *ngFor="let data of columns" [matColumnDef]="data?.key">
+
+            <ng-container *ngIf="checkNull(data?.sortKey)">
+                <th mat-header-cell *matHeaderCellDef [style]="'width:'+data?.width+'%'"
+                    [mat-sort-header]="data?.sortKey">
+                    {{data?.label}}</th>
+
+                <ng-container *ngIf="!checkNull(data.isLabel)&&!data?.isVert">
+                    <!-- Is link -->
+                    <ng-container *ngIf="data?.isLink">
+                        <td (click)="navigate(element,data?.routerLink,data?.paramKey,data?.query)" mat-cell
+                            *matCellDef="let element"> <a
+                                style="color: blue;text-decoration: underline 1px blue;">{{element[data?.key]}}</a>
+                        </td>
+                    </ng-container>
+                    <!-- Is not a Link -->
+                    <ng-container *ngIf="!data?.isLink">
+                        <td mat-cell *matCellDef="let element"> {{element[data?.key]}} </td>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="checkNull(data.isLabel)&&!data?.isVert">
+
+                    <ng-container *ngIf="!data?.isLink">
+                        <td mat-cell *matCellDef="let element"> <label class=" px-3  text-white rounded-xl inline-block"
+                                [ngClass]="returnStatus(element[data?.key])?.class">
+                                <span class="h-2 w-2 rounded-full bg-white inline-block"></span>
+                                {{returnStatus(element[data?.key])?.label}}</label>
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="data?.isVert">
+                    <td mat-cell *matCellDef="let element">
+                        <button [matMenuTriggerFor]="menu" mat-icon-button
+                            aria-label="Example icon button with a vertical three dot icon">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>Item 1</button>
+                            <button mat-menu-item>Item 2</button>
+                        </mat-menu>
+                    </td>
+                </ng-container>
+
+
+            </ng-container>
+
+
+            <!-- For Non Mat Sort -->
+            <ng-container *ngIf="!checkNull(data?.sortKey)">
+                <th mat-header-cell *matHeaderCellDef [style]="'width:'+data?.width+'%'">{{data?.label}}</th>
+
+                <!-- Non Label -->
+                <ng-container *ngIf="!checkNull(data.isLabel)&&!data?.isVert">
+                    <!-- Is link -->
+                    <ng-container *ngIf="data?.isLink">
+                        <td (click)="navigate(element,data?.routerLink,data?.paramKey,data?.query)" mat-cell
+                            *matCellDef="let element"> <a
+                                style="color: blue;text-decoration: underline 1px blue;">{{element[data?.key]}}</a>
+                        </td>
+                    </ng-container>
+                    <!-- Is not a Link -->
+                    <ng-container *ngIf="!data?.isLink">
+                        <td mat-cell *matCellDef="let element"> {{element[data?.key]}} </td>
+                    </ng-container>
+                </ng-container>
+
+
+                <!-- Label -->
+                <ng-container *ngIf="checkNull(data.isLabel)&&!data?.isVert">
+
+
+                    <ng-container *ngIf="!data?.isLink">
+                        <td mat-cell *matCellDef="let element"> <label class=" px-3  text-white rounded-xl inline-block"
+                                [ngClass]="returnStatus(element[data?.key])?.class">
+                                <span class="h-2 w-2 rounded-full bg-white inline-block"></span>
+                                {{returnStatus(element[data?.key])?.label}}</label>
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="data?.isVert">
+                    <td mat-cell *matCellDef="let element">
+                        <button [matMenuTriggerFor]="menu" mat-icon-button
+                            aria-label="Example icon button with a vertical three dot icon">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <ng-container *ngFor="let btn of buttonList">
+                                <button mat-menu-item *ngIf="btn?.condition?.includes(element[data?.conditionKey])"
+                                    (click)="emitButton(btn?.name,element[data?.idKey])">{{btn?.name}}</button>
+                            </ng-container>
+                        </mat-menu>
+                    </td>
+                </ng-container>
+
+
+            </ng-container>
+
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <ng-container *ngIf="tableSource.filteredData.length === 0 || tableSource.data.length === 0  ">
+        <p class="text-center bg-white mb-0 pb-24"> <b>No Data Found...</b> </p>
+    </ng-container>
+    <div class="" *ngIf="(tableSource.filteredData.length != 0 || tableSource.data.length != 0 )&&needPagination">
+        <mat-paginator #paginator [pageSizeOptions]="pageOptions" [length]="200"
+            [pageSize]="pageSize" (page)="paginateData($event)"></mat-paginator>
+    </div>
+</div>

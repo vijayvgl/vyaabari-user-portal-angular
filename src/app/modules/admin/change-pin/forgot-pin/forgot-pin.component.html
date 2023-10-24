@@ -1,0 +1,27 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6" style="background-color: #F8F9FD;">
+    <h2 class="font-bold text-2xl" style="color: #363636;">Forgot PIN</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon> 
+  </div>
+  <div class="p-7 pt-0" style="border-top: 2px solid #C8C8C840;">
+    <div class="mt-6 mb-2">
+        <span class="manage_pin_label_blue text-xl pin_font_resize font-medium"  >Answer the security questions to reset your PIN</span>
+        <div class="mb-2 mt-4">
+           <mat-label class="font-medium text-lg mb-0 manage_pin_label ">Select Security Question <span class="text-red-600">*</span> </mat-label>
+        </div>
+        <single-static-stable class="single_select change_pin" [error_message]="'Please choose the security question'" [required]="true"
+        [placeholder]="'Select Your Question'" [searchPlaceHolder]="'Search Question'" [options]="security"
+        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+        <div class="mb-2">
+           <mat-label class="font-medium text-lg mb-0 manage_pin_label">Enter Security Answer <span class="text-red-600">*</span> </mat-label>
+        </div>
+        <mat-form-field class="sm:w-4/6 pin_textarea manage_pin_form" subscriptSizing="fixed">
+           <textarea class="set_min_height" matInput  placeholder="Type Your Answer"></textarea>
+        </mat-form-field>
+     </div>
+     <div class="mt-2">
+        <button (click)="resetPin()"
+           class="sm:w-4/6  btn_full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+        Submit
+        </button>
+     </div>
+  </div>

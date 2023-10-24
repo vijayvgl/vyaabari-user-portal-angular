@@ -1,0 +1,71 @@
+<div class="sm:inset-0 h-full w-full mb-12  bil-payments-tab">
+    <!-- Title -->
+    <div class=" lg:flex  ">
+       <div class="flex items-baseline justify-between w-full">
+          <h2 class="page_header" >Bill Payments</h2>
+          <button  type="button" routerLink="/bill-payments"  class="text-themeclr report_export_btn sm:px-5 sm:py-1
+           rounded-lg sm:text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr
+            hover:text-white hover:bg-themeclr_hover" >Back</button>
+
+       </div>
+       <!-- <div class="lg:flex items-baseline mt-4 w-72">
+          <div class="widthdraw_select bill_select_box w-full ml-3">
+             <single-static-stable  [form_control]="billPayControl" [hideCross]="true"  class="w-full block" [error_message]="'Please choose the bill type'" [required]="false"
+             [placeholder]="'Select Bill Type'" [searchPlaceHolder]="'Search'" [options]="billapay"
+             [options_display]="'value'" [options_value]="'viewValue'" [showIcon]="true"></single-static-stable>
+          </div>
+          </div> -->
+    </div>
+    <!-- new design  -->
+    <div  Class="bg-white w-full mt-5 pt-6 pl-9" >
+       <div  class="flex w-fit items-center mb-4 hover_bill_payments  cursor-pointer">
+          <!-- <mat-icon class="mr-1 hover_class text-blue-600" svgIcon="mat_outline:arrow_back"></mat-icon> -->
+          <span class="text-black  font-semibold text-3xl" >{{service}}</span>
+       </div>
+       <div class="flex pl-0 pt-0 pb-9">
+          <div class="w-2/4 max-sm:w-full">
+             <div class="mb-1" >
+                <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Mobile No / Account No<span class="text-red-600">*</span> </mat-label>
+             </div>
+             <mat-form-field class="lg:w-4/6 w-full" subscriptSizing="fixed">
+                <input type="number" matInput placeholder="Mobile No / Account No" />
+             </mat-form-field>
+             <div>
+                <mat-label class="font-medium text-lg mb-0 " style="color:#363636;"> Location 
+                   <span class="text-red-500">*</span>
+                </mat-label>
+             </div>
+             <div class="widthdraw_select">
+                <single-static-stable   class="lg:w-2/3 w-full block" [error_message]="'Please choose the Location'" [required]="true"
+                [placeholder]="'Select Location'" [searchPlaceHolder]="'Search'" [options]="states"
+                [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+             </div>
+             <div >
+                <div class="mb-2">
+                   <mat-label class="font-medium text-lg mb-0 " style="color:#363636;"> Operator
+                      <span class="text-red-500">*</span>
+                   </mat-label>
+                </div>
+                <div class="widthdraw_select">
+                   <single-static-stable class="lg:w-2/3 w-full block" [error_message]="'Please choose the Operator'" [required]="true"
+                   [placeholder]="'Select Operator'" [searchPlaceHolder]="'Search'" [options]="operators"
+                   [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                </div>
+                <div class="mb-1" >
+                   <mat-label class="font-medium text-lg mb-0 " style="color: #171717">Customer ID<span class="text-red-600">*</span> </mat-label>
+                </div>
+                <mat-form-field class="lg:w-4/6 w-full" subscriptSizing="fixed">
+                   <input type="text" matInput placeholder="Customer ID" />
+                </mat-form-field>
+             </div>
+             <div class="mt-2">
+                <button class="w-4/6 max-md:w-5/6 max-sm:w-full h-10 rounded-md text-white font-bold text-xl bg-themeclr hover:bg-themeclr_hover"
+                   >Fetch Bill</button>
+             </div>
+          </div>
+          <div class="w-2/4 max-sm:hidden self-center">
+             <img class="w-1/2 m-auto" src="assets/images/bill-payments.png" alt="">
+          </div>
+       </div>
+    </div>
+ </div>

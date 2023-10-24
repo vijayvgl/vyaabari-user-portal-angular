@@ -1,0 +1,15 @@
+.status_title{
+    color: var(--t3, rgba(0, 0, 0, 0.85));
+font-size: 16px;
+font-weight: 500;
+}
+.bg_clr {
+border: 1px solid #EAEAEA;
+background: #F8F9FD;
+}
+
+@media screen and (max-width:370px) {
+    .p_20 {
+        padding: 0 20px !important;
+    }
+}

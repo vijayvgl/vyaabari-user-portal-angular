@@ -1,0 +1,63 @@
+<div class=" flex flex-col flex-auto min-w-0 mb-12">
+   <!-- Title -->
+   <div class=" lg:flex items-center justify-between">
+      <div class="flex items-center">
+         <h2 class="page_header" >CMS</h2>
+      </div>
+   </div>
+   <form   [formGroup]="cmsForm"  class="bg-white  p-9 mt-5 flex items-start">
+      <div class="xs:w-full form-group lg:w-2/4">
+         <h1 class="font-medium text-lg mb-1 text-black opacity-90">
+            CMS Type <span class="text-red-600">*</span>
+         </h1>
+         <single-static-stable class="w_cms sm:w-2/3" [error_message]="'Please choose the type'" [required]="true"
+         [placeholder]="'Select Type'" [searchPlaceHolder]="'Search Type'" [options]="type"
+         [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-black opacity-90"> Biller Name <span class="text-red-600">*</span></mat-label>
+         </div>
+         <single-static-stable class="w_cms sm:w-2/3" [error_message]="'Please choose the biller name'" [required]="true"
+         [placeholder]="'Select Biller Name'" [searchPlaceHolder]="'Search Biller Name'" [options]="name"
+         [options_display]="'value'"  [showIcon]="true" [options_value]="'viewValue'"></single-static-stable>
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-black opacity-90">Service Type <span class="text-red-600">*</span></mat-label>
+         </div>
+         <mat-form-field class="sm:w-4/6" subscriptSizing="fixed">
+            <input type="text" matInput  placeholder="Service Type" />
+         </mat-form-field>
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-black opacity-90">Mobile No <span class="text-red-600">*</span></mat-label>
+         </div>
+         <mat-form-field class="sm:w-4/6" subscriptSizing="fixed">
+            <input 
+               formControlName="mobileNumber"  
+               id="mobileNumber"   
+               type="text"   
+               maxlength="10"
+               pattern="[0-9]*"
+               class="form-control" matInput  placeholder="Mobile No" />         
+         </mat-form-field>
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-black opacity-90">Depositor Id <span class="text-red-600">*</span></mat-label>
+         </div>
+         <mat-form-field class="sm:w-4/6" subscriptSizing="fixed">
+            <input type="password" matInput  placeholder="Depositor Id" />
+         </mat-form-field>
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-black opacity-90">Re-enter Depositor Id <span class="text-red-600">*</span></mat-label>
+         </div>
+         <mat-form-field class="sm:w-4/6" subscriptSizing="fixed">
+            <input type="password" matInput  placeholder="Depositor Id" />
+         </mat-form-field>
+         <div class="mt-2">
+            <button   type="submit"
+               class="sm:w-4/6 xs:w-full h-10 rounded-lg text-white font-bold text-xl bg-themeclr hover:bg-themeclr_hover">
+            Submit
+            </button>
+         </div>
+      </div>
+      <div class="w-2/4 cms_image">
+         <img class="xl:w-9/12 sm:w-full xxl:w-2/4 m-auto" src="assets/images/cms.png" alt="image" />
+      </div>
+   </form>
+</div>

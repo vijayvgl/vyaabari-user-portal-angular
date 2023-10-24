@@ -1,0 +1,22 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6">
+    <h2 class="font-bold text-xl">KYC</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+ </div>
+ <div class="px-7 py-6  bg_clr flex items-center justify-center">
+    <div class="table_details">
+       <h1 class="status_title pr-2.5 p_20">Do you want KYC documents for 
+          this payment?
+       </h1>
+       <div class="relative p_20  report_w_add report_select report_select_popup mt-4  mb-6 my-1">
+          <mat-select placeholder="Required" class="relative report_w_add w-full">
+             <mat-option *ngFor="let id of id" [value]="id.value">
+             {{id.viewValue}}
+             </mat-option>
+          </mat-select>
+       </div>
+       <div class="mt-2 p_20 text-center">
+          <button class="w-full h-10 rounded-md text-white font-bold text-xl
+             bg-themeclr hover:bg-themeclr_hover">Submit</button>
+       </div>
+    </div>
+ </div>

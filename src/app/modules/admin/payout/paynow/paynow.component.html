@@ -1,0 +1,60 @@
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+    <h2 class="font-bold text-xl">Confirm Transaction</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+ </div>
+ <div class="p-7 max-height-auto remitter_payout_style">
+    <div class="paynow_popup_details w-full  p-3">
+      <table class="">
+         <tr>
+            <th class="paynow_field text-left">Account Holder Name</th>
+            <th class="px-3" >:</th>
+            <th class="text-left" >John Doe</th>
+         </tr>
+          <tr>
+             <th class="paynow_field text-left">Account No</th>
+             <th class="px-3" >:</th>
+             <th class="text-left" >956005468455</th>
+          </tr>
+          <tr>
+             <th class="paynow_field text-left">Bank Name</th>
+             <th class="px-3">:</th>
+             <th class="text-left">Indian Bank</th>
+          </tr>
+          <tr>
+             <th class="pb-0 paynow_field text-left">IFSC Code</th>
+             <th class="px-3 pb-0">:</th>
+             <th class="text-left pb-0">IBM001254</th>
+          </tr>
+       </table>
+    </div>
+    <div>
+       <div class="mb-1 mt-6">
+          <mat-label class="font-medium text-lg mb-0">Amount (₹) <span class="text-red-600">*</span> </mat-label>
+       </div>
+       <mat-form-field class="w-full" subscriptSizing="fixed">
+          <input type="number" class="text-right amount"  matInput placeholder="0.00" />
+       </mat-form-field>
+    </div>
+    <div class="flex items-center mt-3 gap-4">
+       <p class="text-lg cursor-pointer font-semibold text-themeclr border rounded-md border-themeclr bg-primary-50 py-1 px-4">₹ 100</p>
+       <p class="text-lg cursor-pointer font-semibold text-themeclr border rounded-md border-themeclr bg-primary-50 py-1 px-4">₹ 500</p>
+       <p class="text-lg cursor-pointer font-semibold text-themeclr border rounded-md border-themeclr bg-primary-50 py-1 px-4">₹ 1000</p>
+       <p class="text-lg cursor-pointer font-semibold text-themeclr border rounded-md border-themeclr bg-primary-50 py-1 px-4">₹ 2000</p>
+    </div>
+    <div class="mt-5 ">
+       <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">IMPS</mat-radio-button>
+          <mat-radio-button class="ml-2" value="2">NEFT</mat-radio-button>
+       </mat-radio-group>
+    </div>
+    <div class="mt-5 flex">
+       <button class="w-1/4 h-10 mr-6 rounded-md text-white font-bold text-xl
+          bg-themeclr hover:bg-themeclr_hover">Submit</button>
+       <button
+          class="w-1/4 h-10 rounded-md border-2
+          border-slate-300 text-themeclr font-bold text-xl
+          hover:bg-themeclr hover:text-white hover:border-themeclr">
+       Cancel
+       </button>
+    </div>
+ </div>

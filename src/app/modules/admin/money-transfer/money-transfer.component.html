@@ -1,0 +1,75 @@
+<div class=" sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+  <!-- Title -->
+  <div class=" lg:flex items-center justify-between">
+    <div class="flex items-center">
+      <h2 class="page_header">Money Transfer</h2>
+    </div>
+  </div>
+  <mat-tab-group class="mt-5 moneytransfertab" (selectedTabChange)="onTabChanged($event)">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-svg-icons moneytransfer="svg_1" current='0'></app-svg-icons>
+
+        Domestic Money Transfer
+      </ng-template>
+      <div class="mt-2 flex">
+
+        <div class="w-2/4 max-sm:w-full">
+          <form [formGroup]="createForm">
+            <div class="mb-2">
+              <mat-label class="font-medium text-lg mb-1 first-letter text-label-clr">Sender Mobile No
+                <span class="text-red-500">*</span>
+              </mat-label>
+            </div>
+            <mat-form-field class="w-4/6 max-lg:w-full" subscriptSizing="fixed">
+              <input numbersonly formControlName="mobileNumber" id="matClrChange" matInput
+                placeholder="Sender Mobile No">
+
+              <div class="" *ngIf="form?.mobileNumber?.invalid&&(form?.mobileNumber?.touched)">
+                <tooltip-stable *ngIf="form?.mobileNumber?.errors['required']&&!form?.mobileNumber?.errors['pattern']"
+                  [message]="'Please provide the mobile number!'"></tooltip-stable>
+                <tooltip-stable *ngIf="!form?.mobileNumber?.errors['required']&&form?.mobileNumber?.errors['pattern']"
+                  [message]="'Please provide a valid mobile number!'"></tooltip-stable>
+              </div>
+
+            </mat-form-field>
+            <h1 class="font-medium text-lg mb-1 first-letter text-label-clr">
+              Select Payment Method <span class="text-red-600">*</span>
+            </h1>
+            <single-static-stable class="w-2/3" [form_control]="createForm?.get('channel')"
+              [error_message]="'Please select the Payment Method!'" [required]="true" [placeholder]="'Payment Method'"
+              [searchPlaceHolder]="'Search Payment Method'" [options]="channels" [options_display]="'viewValue'"
+              [options_value]="'value'"></single-static-stable>
+
+            <div class="mt-2">
+              <button (click)="submitDetails()" type="button"
+                class="w-4/6 max-lg:w-full h-10 rounded-md text-white font-bold text-xl bg-themeclr hover:bg-themeclr_hover">Submit</button>
+            </div>
+            <div class="mt-5 flex w-2/4 max-lg:w-full">
+              <mat-icon class="text-sm" style="color:#E7C200;" svgIcon="mat_outline:info"></mat-icon>
+              <p class="font-normal text-sm pl-2" style="color:#363636;">Please turn on notifications from settings for
+                your transaction updates</p>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="w-2/4 max-sm:hidden">
+          <img class="w-2/5 m-auto" src="assets/images/money-trans.png" alt="">
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-svg-icons moneytransfer="svg_2" current='1'></app-svg-icons>
+        Foreign Money Transfer
+      </ng-template>
+      <div>
+        <img class="w-2/6 max-md:w-2/3 m-auto" src="assets/images/comming-soon.png" alt="">
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+</div>

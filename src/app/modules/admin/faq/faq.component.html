@@ -1,0 +1,111 @@
+<div class=" sm:inset-0 w-full h-full min-w-0 mb-12">
+   
+    <!-- Title -->
+    <div class=" lg:flex items-center justify-between">
+      <div class="flex items-center">
+         <h2 class="page_header" >FAQ</h2>
+      </div>
+      </div>
+
+
+  <mat-tab-group class="mt-5" (selectedTabChange)="onTabChanged($event)">
+     <mat-tab>
+        <ng-template mat-tab-label>
+         <app-svg-icons menusvg="faq_1" ></app-svg-icons>
+          
+           FAQ’s
+        </ng-template>
+        <!---------------  Accordian pending  ---------------------->
+        <div class="wrapper">
+           <div class="content">
+              <!-- Heading One -->
+              <div class="child-tab parent-tab mt-6">
+                 <input type="checkbox" name="sub-tab" id="tab-1">
+                 <label for="tab-1"   >
+                    <span>What is Spice Money wallet?</span>
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                 </label>
+                 <div class="sub-content">
+                    <p>Yes, you can. However, the response ultimately depends on the availability of our resources</p>
+                 </div>
+              </div>
+              <!-- Heading Two -->
+              <div class="child-tab parent-tab">
+                 <input type="checkbox" name="sub-tab" id="tab-2">
+                 <label for="tab-2">
+                    <span>What can I do with Spice Money wallet?</span>
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                 </label>
+                 <div class="sub-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing thelit dolor. Utfacilis labore, exercitationem fuga minima a illo modi vitaerse dignissimos? Vero?</p>
+                 </div>
+              </div>
+              <!-- Heading Three -->
+              <div class="child-tab parent-tab">
+                 <input type="checkbox" name="sub-tab" id="tab-3">
+                 <label for="tab-3">
+                    <span>How do I Signup for Spice Money wallet?</span>
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                 </label>
+                 <div class="sub-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing thelit dolor. Utfacilis labore, exercitationem fuga minima a illo modi vitaerse dignissimos? Vero?</p>
+                 </div>
+              </div>
+              <!-- Heading Four -->
+              <div class="child-tab parent-tab">
+                 <input type="checkbox" name="sub-tab" id="tab-4">
+                 <label for="tab-4">
+                    <span>How do I load my Adhikari wallet to do transactions?</span>
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                 </label>
+                 <div class="sub-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing thelit dolor. Utfacilis labore, exercitationem fuga minima a illo modi vitaerse dignissimos? Vero?</p>
+                 </div>
+              </div>
+              <!-- Heading Five -->
+              <div class="child-tab parent-tab">
+                 <input type="checkbox" name="sub-tab" id="tab-5">
+                 <label for="tab-5">
+                    <span>How safe and secure is Spice Money?</span>
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                 </label>
+                 <div class="sub-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing thelit dolor. Utfacilis labore, exercitationem fuga minima a illo modi vitaerse dignissimos? Vero?</p>
+                 </div>
+              </div>
+              <!-- Heading Six -->
+              <div class="child-tab parent-tab">
+                 <input type="checkbox" name="sub-tab" id="tab-6">
+                 <label for="tab-6">
+                    <span>How many years you will be in this field?</span>
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                 </label>
+                 <div class="sub-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing thelit dolor. Utfacilis labore, exercitationem fuga minima a illo modi vitaerse dignissimos? Vero?</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </mat-tab>
+     <mat-tab>
+        <ng-template mat-tab-label>
+         <app-svg-icons menusvg="faq_2" ></app-svg-icons>
+         
+           Videos
+        </ng-template>
+        <div>
+         <img class="w-2/6 max-md:w-2/3 m-auto" src="assets/images/comming-soon.png" alt="">
+       </div>
+     </mat-tab>
+     <mat-tab>
+        <ng-template mat-tab-label>
+         <app-svg-icons menusvg="faq_3" ></app-svg-icons>
+          
+           Device Details
+        </ng-template>
+        <div>
+         <img class="w-2/6 max-md:w-2/3 m-auto" src="assets/images/comming-soon.png" alt="">
+       </div>
+     </mat-tab>
+  </mat-tab-group>
+</div>

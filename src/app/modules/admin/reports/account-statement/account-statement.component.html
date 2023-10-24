@@ -1,0 +1,99 @@
+<div class="sm:inset-0  w-full  min-w-0 mb-12">
+   <div class="flex items-center justify-between">
+      <h1 class="page_header">Account Statement Report<b class="ml-0.5 report_count_clr">(23)</b></h1>
+   <button  type="button" class="text-themeclr report_export_btn sm:px-5 sm:py-2 rounded-lg sm:text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover" >Export</button>
+          </div>
+   <form [formGroup]="accountStatementForm" class="bg-white   px-5 py-6 mt-5">
+      <div class="xs:w-full leder_select pt-1 flex flex-wrap items-center sm_justify_center  lg:w-full">
+         <div class="mb-1 mx-3">
+            <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+               Date <span class="text-red-600">*</span>
+            </h1>
+
+            <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+               <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+               </mat-date-range-input>
+               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+         </div>
+         <div class="mx-3 mb-0">
+            <button (click)="toggle()"
+               class="history_btn h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Filter
+            </button>
+         </div>
+      </div>
+      <div [ngClass]="toggleStyle ? 'hide':''" class="inner-table mt-4 report_table table_container px-2 py-0 w-full overflow-x-scroll" >
+         <table mat-table [dataSource]="dataSource" matSort class="">
+            <!--  T.ID Column -->
+            <ng-container matColumnDef="transaction_id">
+               <th mat-header-cell *matHeaderCellDef  class=> Txn ID</th>
+               <td mat-cell *matCellDef="let element"> {{element.transaction_id}} </td>
+            </ng-container>
+            <!--  Customer Name Column -->
+            <ng-container matColumnDef="customer_name">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Customer Name </th>
+               <td mat-cell *matCellDef="let element" class="whitespace-nowrap"> {{element.customer_name}} </td>
+            </ng-container>
+            <!--  Mobile Number Column -->
+            <ng-container matColumnDef="mobile_number">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Mobile No </th>
+               <td mat-cell *matCellDef="let element" class="whitespace-nowrap"> {{element.mobile_number}} </td>
+            </ng-container>
+            <!--   Transaction Inistiated Column -->
+            <ng-container matColumnDef="trans_inistiated">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Txn Initiated </th>
+               <td mat-cell *matCellDef="let element" class="whitespace-nowrap"> {{element.trans_inistiated}} </td>
+            </ng-container>
+            <!--  Transaction Proceed Column -->
+            <ng-container matColumnDef="trans_proceed">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Txn Proceed </th>
+               <td mat-cell *matCellDef="let element" class="whitespace-nowrap"> {{element.trans_proceed}} </td>
+            </ng-container>
+            <!--  Credit Column -->
+            <ng-container matColumnDef="credit">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Credit<span class="ml-0.5">(₹)</span> </th>
+               <td mat-cell class="text-right pr-9" *matCellDef="let element"> {{element.credit}} </td>
+            </ng-container>
+            <!--  debit Column -->
+            <ng-container matColumnDef="debit">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Debit<span class="ml-0.5">(₹)</span></th>
+               <td mat-cell class="text-right pr-9" *matCellDef="let element"> {{element.debit}} </td>
+            </ng-container>
+            <!--  open balance Column -->
+            <ng-container matColumnDef="open_balance">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-right"> Opening Balance<span class="ml-0.5">(₹)</span></th>
+               <td mat-cell class="text-right pr-9" *matCellDef="let element"> {{element.open_balance}} </td>
+            </ng-container>
+            <!--  Closing balance Column -->
+            <ng-container matColumnDef="close_balance">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-right"> Closing Balance<span class="ml-0.5">(₹)</span> </th>
+               <td mat-cell class="text-right pr-9" *matCellDef="let element"> {{element.close_balance}} </td>
+            </ng-container>
+            <!-- Comments Column -->
+            <ng-container matColumnDef="comments">
+               <th mat-header-cell *matHeaderCellDef class=""> Comments </th>
+               <td mat-cell *matCellDef="let element">
+               <p class="trim-text" [text]=" element.comments != null ? (element.comments.length > 10 ? element.comments : '') : disableText" >{{ element.comments | slice:0:20 }} {{(element.comments != null && element.comments != "") ? (element.comments.length > 20 ? '...': '') : '-'}} <a class="cursor-pointer text-blue-700 hover:text-blue-800" (click)=" openDialog()" >View More</a></p>
+               </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         </table>
+      </div>
+      <span [ngClass]="toggleStyle ? 'hide':''" class="scoll_add block_history">Drag to explore more column.</span>
+      <mat-paginator [ngClass]="toggleStyle ? 'hide':''" style-paginator showFirstLastButtons
+      [showTotalPages]="2"
+      [length]="4"
+      [pageSize]="1"
+      [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      <div [ngClass]="toggleStyle ? 'show':''"  class="p-14 report_no_data_found mt-4  w-full h-110  text-center">
+         <img class="w-56 block m-auto mb-8" src="assets/images/history.png" alt="image" />
+         <span   class="text-base no_records_found  font-normal">No Record Found</span>
+      </div>
+   </form>
+</div>

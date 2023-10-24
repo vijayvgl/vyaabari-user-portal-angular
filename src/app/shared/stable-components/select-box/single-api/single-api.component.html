@@ -1,0 +1,43 @@
+<mat-form-field appearance="outline" class=" w-full ">
+    <mat-label *ngIf="!load&&checkNull(label)">{{label}}</mat-label>
+    <mat-label *ngIf="load&&checkNull(label)">
+        <div class="select-placeholder-container">
+            <span>{{label}}</span>
+            <!-- <span *ngIf="required" class="required">*</span> -->
+            <!-- <mat-spinner class="spinner" diameter="20"></mat-spinner> -->
+            <!-- <img src="assets/images/loading.gif" style="width: 40px; height: 40px;" alt=""> -->
+        </div>
+    </mat-label>
+    <mat-select #select [placeholder]="placeholder" [formControl]="form_control"
+        (selectionChange)="optionSelected($event)" (openedChange)="clearSearch()">
+        <div class="filter-input multiselect-filter">
+
+            <input   #searchInput class="mat-filter-input" [formControl]="searchControl"
+                [placeholder]="searchPlaceHolder" matInput >
+            <mat-icon class="clear_icon" *ngIf="searchInput.value!=''" (click)="searchInput.value='';clearSearch()">
+                highlight_off
+            </mat-icon>
+        </div>
+        <div class="" style="margin-top: 10px;" *ngIf="options_display!=''&&options_value!=''">
+            <mat-option *ngFor="let data of filteredOptions" [value]="data[options_value]">
+                {{data[options_display]}}
+            </mat-option>
+        </div>
+        <div class="" style="margin-top: 10px;" *ngIf="options_display==''&&options_value==''">
+            <mat-option *ngFor="let data of filteredOptions" [value]="data">
+                {{data}}
+            </mat-option>
+        </div>
+
+
+        <mat-option *ngIf="filteredOptions?.length<=0||filteredOptions==undefined">No data found...</mat-option>
+    </mat-select>
+    <span matSuffix *ngIf="form_control.hasError('required') && form_control.touched" matTooltip="{{error_message }}"
+        [matTooltipDisabled]="!form_control.invalid">
+        <mat-icon class="mr-3" color="warn">info</mat-icon>
+    </span>
+
+    <mat-icon (click)="resetValue()" *ngIf="checkNull(form_control.value)" matSuffix class="clear_icon">
+        highlight_off
+    </mat-icon>
+</mat-form-field>

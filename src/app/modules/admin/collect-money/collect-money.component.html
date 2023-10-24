@@ -1,0 +1,289 @@
+<div class=" sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+      <!-- Title -->
+  <div class="mt-5 ml-1 lg:flex items-center justify-between">
+   <div class="flex items-center">
+      <h2 class="heading_common_style py-0 " >Collect Money</h2>
+   </div>
+   </div>
+   <div class="">
+       <form class="bg-white p-5 lg:p-9  mt-5 flex items-start">
+
+         <div class="xs:w-full lg:w-2/4">
+           
+
+            <h1 class="font-medium text-lg mb-1 first-letter">
+               Select Payment Type <span class="text-red-600">*</span>
+            </h1>
+            <single-static-stable class="" (on_select)="setPaymet($event)" [error_message]="'Please choose the type'" [required]="true"
+               [placeholder]="'Select Payment Type'" [searchPlaceHolder]="'Search'" [options]="payments"
+               [options_display]="'viewValue'" [options_value]="'value'"></single-static-stable>
+
+               <div *ngIf="type=='2'">
+                  <div class="mb-1" >
+                     <mat-label class="font-medium text-lg mb-0 first-letter">Aadhaar No <span
+                           class="text-red-600">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+                     <input type="number" matInput  placeholder="Aadhaar No" />
+                  </mat-form-field>
+               </div>
+
+
+               <div *ngIf="type=='1'">
+                  <h1 class="font-medium text-lg mb-1 first-letter text-label-clr max-sm:w-full">
+                     Select Bank <span class="text-red-600">*</span>
+                  </h1>
+                  <single-static-stable class="w-2/3" [error_message]="'Please choose the role'" [required]="true"
+                     [placeholder]="'Select Bank'" [searchPlaceHolder]="'Search'" [options]="Banks"
+                     [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Card No <span
+                              class="text-red-600">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+                        <input type="number" matInput  placeholder="Card No" />
+                     </mat-form-field>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">CVV <span
+                              class="text-red-600">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+                        <input type="number" matInput  placeholder="CVV" />
+                     </mat-form-field>
+                     <div class="mb-1">
+                        <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Expiry Date <span
+                              class="text-red-600">*</span></mat-label>
+                     </div>
+                     <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+                        <input type="number" matInput  placeholder="Expiry Date" />
+                     </mat-form-field>
+
+
+               </div>
+               <div *ngIf="type=='3'">
+                  <div class="mb-1">
+                     <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">UPI Id <span
+                           class="text-red-600">*</span></mat-label>
+                  </div>
+                  <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+                     
+                     <input type="number" matInput  placeholder="UPI Id" />
+                  </mat-form-field>
+               </div>
+           
+         
+
+         
+
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Email Id <span
+                     class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+               <input type="email" matInput  placeholder="Email Id" />
+            </mat-form-field>
+
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Mobile No <span
+                     class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+               
+               <input type="number" matInput  placeholder="Mobile No" />
+            </mat-form-field>
+
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Amount (₹) <span
+                     class="text-red-600">*</span> </mat-label>
+            </div>
+            <mat-form-field class="w-4/6 max-sm:w-full" subscriptSizing="fixed">
+               <input type="number" class="amount text-right" matInput  placeholder="0.00" />
+            </mat-form-field>
+            <div class="min-amt mb-5">
+               <span><b>Note:</b> Minimum transaction amount: Rs.100/-</span>
+            </div>
+          
+
+            <!-- <div class="disclaimer mb-3">
+               <span><b>Disclaimer:</b> WebCustomer ease, easiest way of cashless payment.
+                  Pay from any Aadhaar enabled bank account. No security issue as payments
+                  are done through biometric authentication. No need to carry cash. Transactions on Aadhaar</span>
+            </div> -->
+            <div>
+               <mat-checkbox class="example-margin "><span class="text-text-themeclr font-medium font-style">I agree to the terms
+                     and conditions </span></mat-checkbox>
+            </div>
+            <div class="mt-2">
+               <button (click)="openDialog()"
+                  class="sm:w-4/6 xs:w-full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                  Submit
+               </button>
+            </div>
+         </div>
+            <div class="w-2/4 mt-8 cms_image">
+               <img class="w-2/6 max-xl:w-1/2 m-auto" src="assets/images/collect-money.png" alt="image" />
+            </div>
+         
+      </form> 
+
+      <!-- <form class="bg-white  lg:p-9 p-5  rounded-lg mt-7 flex">
+
+         <div class="w-2/3">
+            <div class="flex gap-5">
+               <div class="flex-1">
+                  <div class="flex gap-5 ">
+                     <div class="flex-1">
+                        <h1 class="font-medium text-lg mb-1 first-letter">
+                           Select Payment Type <span class="text-red-600">*</span>
+                        </h1>
+                        <single-static-stable class="widthdraw_select" [error_message]="'Please choose the role'" [required]="true"
+                           [placeholder]="'Select Payment Type'" [searchPlaceHolder]="'Search'" [options]="payments"
+                           [options_display]="'viewValue'" [options_value]="'value'"></single-static-stable>
+                     </div>
+                     <div class="flex-1">
+                        <div class="mb-1">
+                           <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Mobile Number <span
+                                 class="text-red-600">*</span></mat-label>
+                        </div>
+                        <mat-form-field class="w-full" subscriptSizing="fixed">
+                           
+                           <input type="number" matInput  placeholder="Mobile Number" />
+                        </mat-form-field>
+   
+                     </div>
+                     
+   
+   
+                  </div>
+   
+               </div>
+             
+   
+            </div>
+            <div class="flex gap-5">
+               <div class="flex-1">
+                  <div class="flex gap-5 ">
+                     <div class="flex-1">
+                       
+               <div class="mb-1">
+                  <mat-label class="font-medium text-lg mb-0 first-letter">Aadhaar Number <span
+                        class="text-red-600">*</span></mat-label>
+               </div>
+               <mat-form-field class="w-full" subscriptSizing="fixed">
+                  <input type="number" matInput  placeholder="Aadhaar Number" />
+               </mat-form-field>
+                     </div>
+                     <div class="flex-1">
+                        <div class="mb-1">
+                           <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Amount (₹) <span
+                                 class="text-red-600">*</span> </mat-label>
+                        </div>
+                        <mat-form-field class="w-full" subscriptSizing="fixed">
+                           <input type="number" class="text-right" matInput  placeholder="Amount (₹)" />
+                        </mat-form-field>
+                        <div class="min-amt mb-5">
+                           <span><b>Note:</b> Minimum transaction amount: Rs.100/-</span>
+                        </div>
+   
+                     </div>
+                     
+   
+   
+                  </div>
+   
+               </div>
+             
+   
+            </div>
+            <div class="flex gap-5">
+               <div class="flex-1">
+                  <div class="flex gap-5 ">
+                     <div class="flex-1">
+                        <h1 class="font-medium text-lg mb-1 first-letter text-label-clr max-sm:w-full">
+                           Select Bank <span class="text-red-600">*</span>
+                        </h1>
+                        <single-static-stable class="widthdraw_select" [error_message]="'Please choose the role'" [required]="true"
+                           [placeholder]="'Select Bank'" [searchPlaceHolder]="'Search'" [options]="Banks"
+                           [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                     </div>
+                     <div class="flex-1">
+                        <div class="mb-1">
+                           <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">UPI Id <span
+                                 class="text-red-600">*</span></mat-label>
+                        </div>
+                        <mat-form-field class="w-full" subscriptSizing="fixed">
+                           
+                           <input type="number" matInput  placeholder="UPI Id" />
+                        </mat-form-field>
+   
+                     </div>
+                     
+   
+   
+                  </div>
+   
+               </div>
+             
+   
+            </div>
+            <div class="flex gap-5">
+               <div class="flex-1">
+                  <div class="flex gap-5 ">
+                     <div class="flex-1">
+                       <div class="mb-1">
+                  <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">Email Id <span
+                        class="text-red-600">*</span></mat-label>
+               </div>
+               <mat-form-field class="w-full" subscriptSizing="fixed">
+                  <input type="email" matInput  placeholder="Email Id" />
+               </mat-form-field>
+                     </div>
+                     <div class="flex-1">
+                       
+   
+                     </div>
+                     
+   
+   
+                  </div>
+   
+               </div>
+             
+   
+            </div>
+            <div>
+               <div class="disclaimer mb-3">
+                  <span><b>Disclaimer:</b> WebCustomer ease, easiest way of cashless payment.
+                     Pay from any Aadhaar enabled bank account. No security issue as payments
+                     are done through biometric authentication. No need to carry cash. Transactions on Aadhaar</span>
+               </div>
+               <div>
+                  <mat-checkbox class="example-margin "><span class="text-text-themeclr font-medium font-style">I agree to the terms
+                        and conditions </span></mat-checkbox>
+               </div>
+               <div class="mt-2">
+                  <button (click)="openDialog()"
+                     class="sm:w-4/6 xs:w-full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                     Submit
+                  </button>
+               </div>
+            </div>
+
+         </div>
+         <div class="">
+            <div class="w-2/4 mt-8 cms_image">
+               <img class="w-2/6 max-xl:w-1/2 m-auto" src="assets/images/collect-money.png" alt="image" />
+            </div>
+         </div>
+        
+
+
+
+          
+         
+      </form> -->
+
+   </div>
+
+</div>

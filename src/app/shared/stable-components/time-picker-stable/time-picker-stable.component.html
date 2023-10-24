@@ -1,0 +1,48 @@
+<div>
+    <mat-label style="    font-size: 1rem;
+    font-weight: 500;" *ngIf="labelPosition=='fixed'">{{checkNull(label) ? label :type}} <span style="color: red;"
+            *ngIf="required">*</span></mat-label>
+</div>
+
+<ng-container *ngIf="!typeable">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'Time Picker'}}</mat-label>
+        <input [formControl]="form_control" [disableClick]="disableInput" [format]="format" matInput 
+            [placeholder]="placeholder" [ngxTimepicker]="default" readonly [min]="minimum" [max]="maximum">
+        <ngx-material-timepicker [minutesGap]="gap" [theme]="timePickerTheme" (closed)="timeChangedEvent($event)"
+            #default></ngx-material-timepicker>
+
+        <div class="d-flex" matSuffix>
+            <ngx-material-timepicker-toggle [for]="default" [disabled]="disableIcon"></ngx-material-timepicker-toggle>
+            <div class="" *ngIf="(form_control?.touched)&&form_control?.invalid">
+                <span [matTooltip]="'Please select the '+label.toLowerCase()+'!'"
+                    *ngIf="!checkNull(inputValue?.value)&&(form_control?.errors['required'])">
+                    <mat-icon matSuffix class="mr-3" [color]="'warn'">info</mat-icon>
+                </span>
+            </div>
+        </div>
+
+    </mat-form-field>
+</ng-container>
+
+
+<ng-container *ngIf="typeable">
+    <!-- <mat-form-field [appearance]="appearance"> -->
+    <div class="ngx-timepicker-field-example">
+        <ngx-timepicker-field [minutesGap]="gap" #default [formControl]="form_control" [theme]="timePickerTheme"
+            [format]="format" (closed)="timeChangedEvent($event)" [min]="minimum"
+            [max]="maximum"></ngx-timepicker-field>
+    </div>
+
+    <div class="d-flex" matSuffix>
+        <!-- <ngx-material-timepicker-toggle [for]="default" [disabled]="disableIcon"></ngx-material-timepicker-toggle>  -->
+        <div class="" *ngIf="(form_control?.touched)&&form_control?.invalid">
+            <span [matTooltip]="'Please select the '+label.toLowerCase()+'!'"
+                *ngIf="!checkNull(inputValue?.value)&&(form_control?.errors['required'])">
+                <mat-icon matSuffix class="mr-3" [color]="'warn'">info</mat-icon>
+            </span>
+        </div>
+    </div>
+
+    <!-- </mat-form-field> -->
+</ng-container>

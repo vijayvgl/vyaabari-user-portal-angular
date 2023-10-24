@@ -1,0 +1,31 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6" style="background-color: #F8F9FD;">
+  <h2 class="font-bold text-xl">UPI Top Up</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 pt-0" style="border-top: 2px solid #C8C8C840;">
+
+  <div class="mt-5">
+    <div class="mb-1">
+       <mat-label class="font-medium text-lg mb-0 text-label-clr">
+          Amount(₹) <span class="text-red-600">*</span></mat-label>
+    </div>
+    <mat-form-field class="w-full" subscriptSizing="fixed">
+       <input type="number" class="text-right amount" matInput  placeholder="0.00" /> 
+    </mat-form-field>
+  </div>
+
+  <div class="mt-2">
+    <div class="mb-1">
+       <mat-label class="font-medium text-lg mb-0 text-label-clr" >
+          UPI Id / Mobile No <span class="text-red-600">*</span></mat-label>
+    </div>
+    <mat-form-field class="w-full" subscriptSizing="fixed">
+       <input type="number" matInput  placeholder="UPI Id / Mobile No" />
+    </mat-form-field>
+  </div>
+
+  <div class="mt-2 text-center">
+    <button class="w-full h-10 rounded-md text-white font-bold text-xl
+         bg-themeclr hover:bg-themeclr_hover">Confirm Pay</button>
+  </div>
+</div>

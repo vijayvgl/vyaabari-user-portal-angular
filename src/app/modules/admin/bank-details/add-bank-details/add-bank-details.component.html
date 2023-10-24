@@ -1,0 +1,95 @@
+<div class="flex items-start justify-between lg:p-7 p-6 lg:pb-0 bg-popup-bg" >
+    <h2 class="font-bold lg:text-2xl  text-base lg:mb-5 mb-2">Add Account Details</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+ </div>
+ <div class="lg:p-7 p-4  lg:pt-0 bg-popup-bg" >
+ <form [formGroup]="addBankDetailsForm">
+    <div class="bg-white p-6 rounded-xl">
+       <div class="lg:flex gap-6 ">
+          <div class="flex-1" >
+             <div class="mb-1">
+                <mat-label class="font-medium lg:lg:text-lg text-base  mb-0 text-black opacity-90">
+                   IFSC Code <span class="text-red-600">*</span>
+                </mat-label>
+             </div>
+             <mat-form-field class="w-full" subscriptSizing="fixed">
+                <input type="number" matInput  placeholder="IFSC Code" />
+             </mat-form-field>
+             <p class="pb-2 text-blue-500 font-bold cursor-pointer" (click)="findIfsc()">Not Sure IFSC?</p>
+          </div>
+          <div class="flex-1 w-full" >
+             <div class="mb-1">
+                <mat-label class="font-medium lg:lg:text-lg text-base  mb-0  text-black opacity-90 ">
+                   Bank <span class="text-red-600">*</span>
+                </mat-label>
+             </div>
+             <single-static-stable class="w-full full_sect_box" [error_message]="'Please choose the bank'" [required]="true"
+             [placeholder]="'Select Bank '" [searchPlaceHolder]="'Search Bank'" [options]="Banks"
+             [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+          </div>
+       </div>
+       <div class="lg:flex gap-6 ">
+          <div class="flex-1" >
+             <div class="mb-1">
+                <mat-label class="font-medium lg:lg:text-lg text-base  mb-0  text-black opacity-90 ">
+                   Account Name <span class="text-red-600">*</span>
+                </mat-label>
+             </div>
+             <mat-form-field class="w-full" subscriptSizing="fixed">
+                <input type="number" matInput  placeholder=" Account Name" />
+             </mat-form-field>
+          </div>
+          <div class="flex-1 w-full" >
+             <div class="mb-1">
+                <mat-label class="font-medium lg:lg:text-lg text-base  mb-0  text-black opacity-90 ">
+                   Account No <span class="text-red-600">*</span>
+                </mat-label>
+             </div>
+             <mat-form-field class="w-full" subscriptSizing="fixed">
+                <input type="number" matInput  placeholder="  Account No" />
+             </mat-form-field>
+          </div>
+       </div>
+       <div class="lg:flex gap-6 ">
+          <div class="flex-1 w-full" >
+             <div class="mb-1">
+                <mat-label class="font-medium lg:text-lg text-base mb-0  text-black opacity-90 ">
+                   Confirm Account No <span class="text-red-600">*</span>
+                </mat-label>
+             </div>
+             <mat-form-field class="w-full" subscriptSizing="fixed">
+                <input type="number" matInput  placeholder="  Account No" />
+             </mat-form-field>
+          </div>
+          <div class="flex-1" >
+             <div class="mb-1">
+                <p class="lg:text-lg text-base font-semibold ">KYC Upload</p>
+                <div class="flex gap-4">
+                   <div class="h-24 w-24 mt-2 flex items-center justify-center cursor-pointer border-dashed border-2 border-gray-500">
+                      <mat-icon svgIcon="mat_solid:add"></mat-icon>
+                   </div>
+                   <div class="h-24 image_upload w-24 mt-2 flex items-center justify-center relative" >
+                      <a href="https://qph.cf2.quoracdn.net/main-qimg-150d6cbbaa3b11d9055afa4d68fd315f.webp" data-fancybox="gallery" data-caption="Image 1">
+                      <img class="w-full h-full " src="https://qph.cf2.quoracdn.net/main-qimg-150d6cbbaa3b11d9055afa4d68fd315f.webp" alt="">
+                      </a>
+                      <span class="flex items-center cursor-pointer close_icon justify-center rounded-full h-5 w-5 bg-red-600 z-10 p">
+                         <mat-icon class="text-white text-md close" svgIcon="mat_solid:close"></mat-icon>
+                      </span>
+                   </div>
+                </div>
+                <p class="text-md mt-2">Note: Please attach bank Pass Book or cheque file</p>
+             </div>
+          </div>
+       </div>
+       <div class="mt-10 lg:flex">
+          <button class="lg:w-1/4 w-full h-10 mr-6 rounded-md text-white font-bold text-xl
+             bg-themeclr hover:bg-themeclr_hover">Submit</button>
+          <button
+             class="lg:w-1/4 w-full h-10 lg:mt-0 mt-3 rounded-md border-2
+             border-slate-300 text-themeclr font-bold text-xl
+             hover:bg-themeclr hover:text-white hover:border-themeclr">
+          Cancel
+          </button>
+       </div>
+    </div>
+ </form>

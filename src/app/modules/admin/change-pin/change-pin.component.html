@@ -1,0 +1,83 @@
+<div class="sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+   <!-- Title -->
+   <div class="page_header">Manage PIN</div>
+   <div class="manage-pin-wrap mt-5 bg-white">
+      <mat-tab-group>
+<mat-tab label="Set New PIN">
+   <form class="bg-white manage_pin_wrap xs:px-8 xs:py-2  xl:px-6 xl:pb-6 flex items-start rounded-lg">
+      <div class=" lg:w-3/5 manage_pin_width_set">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 manage_pin_label">Enter PIN <span class="text-red-600">*</span></mat-label>
+         </div>
+         <ng-otp-input class="input_otp"   [config]="{length:4}"></ng-otp-input>
+         <div class="mb-1 mt-2">
+            <mat-label class="font-medium text-lg mb-0 manage_pin_label ">Confirm PIN <span class="text-red-600">*</span></mat-label>
+         </div>
+         <ng-otp-input class="input_otp"   [config]="{length:4}"></ng-otp-input>
+         <div class="mt-6 mb-2">
+            <span class="manage_pin_label_blue text-xl pin_font_resize font-medium"  >Answer the security questions to reset your PIN</span>
+            <div class="mb-2 mt-4">
+               <mat-label class="font-medium text-lg mb-0 manage_pin_label ">Select Security Question <span class="text-red-600">*</span> </mat-label>
+            </div>
+            <single-static-stable class="single_select change_pin" [error_message]="'Please choose the security question'" [required]="true"
+            [placeholder]="'Select Your Question'" [searchPlaceHolder]="'Search Question'" [options]="security"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+            <div class="mb-2">
+               <mat-label class="font-medium text-lg mb-0 manage_pin_label">Enter Security Answer <span class="text-red-600">*</span> </mat-label>
+            </div>
+            <mat-form-field class="sm:w-4/6 pin_textarea manage_pin_form" subscriptSizing="fixed">
+               <textarea class="set_min_height" matInput  placeholder="Type Your Answer"></textarea>
+            </mat-form-field>
+         </div>
+         <!-- <div class="text-right mt-[-10px]">
+            <a class="text-lg font-normal forgot_passowrd " (click)="forgot_pin()">Forgot pin?
+            </a>
+         </div> -->
+         <div class="mt-2">
+            <button
+               class="sm:w-4/6  btn_full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Submit
+            </button>
+         </div>
+      </div>
+      <div class="paswd-content w-2/5 max-sm:mt-8 max-sm:w-full">
+         <div class="p-7 pin_bg_clr rounded-lg">
+            <p class="text-base manage_pin_right_content font-normal" >Vyabari is happy to introduce MPin’s for <b>Payout, Bill Payment, and Recharge transactions.</b> You can now complete these transactions through your MPin and no longer have to worry about OTP’s Please set your Mpin here </p>
+         </div>
+      </div>
+   </form>
+</mat-tab>
+<mat-tab label="Change PIN">
+   <form class="bg-white manage_pin_wrap xs:px-8 xs:py-7  xl:px-6 xl:pb-6 flex items-start rounded-lg">
+      <div class=" lg:w-3/5 manage_pin_width_set">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 manage_pin_label">Old PIN <span class="text-red-600">*</span></mat-label>
+         </div>
+         <ng-otp-input class="input_otp"   [config]="{length:4}"></ng-otp-input>
+         <div class="mb-1 mt-2">
+            <mat-label class="font-medium text-lg mb-0 manage_pin_label">Enter PIN <span class="text-red-600">*</span></mat-label>
+         </div>
+         <ng-otp-input class="input_otp"   [config]="{length:4}"></ng-otp-input>
+         <div class="mb-1 mt-2">
+            <mat-label class="font-medium text-lg mb-0 manage_pin_label ">Confirm PIN <span class="text-red-600">*</span></mat-label>
+         </div>
+         <ng-otp-input class="input_otp"   [config]="{length:4}"></ng-otp-input>
+        
+         <div class="mt-2">
+            <button
+               class="sm:w-4/6  btn_full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Submit
+            </button>
+         </div>
+      </div>
+      <div class="paswd-content w-2/5 max-sm:mt-8 max-sm:w-full">
+         <div class="p-7 pin_bg_clr rounded-lg">
+            <p class="text-base manage_pin_right_content font-normal" >Vyabari is happy to introduce MPin’s for <b>Payout, Bill Payment, and Recharge transactions.</b> You can now complete these transactions through your MPin and no longer have to worry about OTP’s Please set your Mpin here </p>
+         </div>
+      </div>
+   </form>
+</mat-tab>
+      </mat-tab-group>
+   </div>
+ 
+</div>

@@ -1,0 +1,409 @@
+<div class="sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden">
+   <div class="overflow-auto">
+      <!-- Title -->
+      <div class="flex items-center justify-between">
+         <h2 class="heading_common_style">Beneficiary Management</h2>
+         <div class="flex items-center">
+            <div class="search_box  my-5 right-5 top-5 flex items-center">
+               <div class="search-box">
+                  <mat-icon class="w-7 h-7 absolute top-2 left-2 object-cover search_icon">search</mat-icon>
+                  <!-- <img  src="assets/images/search.png"
+                     alt=""> -->
+                  <input placeholder="Search by Keyword">
+               </div>
+            </div>
+            <button  type="button" class="ml-2 text-themeclr sm:px-5 sm:py-2 rounded-lg sm:text-lg font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover" >Export</button>
+            <button (click)="addBeneficiary()" class="ml-2 w-full px-4 h-10 rounded-md text-white font-bold text-xl
+               bg-themeclr hover:bg-themeclr_hover max-sm:text-base">Add Beneficiary</button>
+         </div>
+      </div>
+      <!-- <div class="w-full p-6 bg-white rounded-lg">
+         <div class="flex items-center">
+           <div>
+             <img class="w-30" src="assets/images/avatar.png" alt="avtar">
+           </div>
+           <div class="ml-4">
+             <h2 class="text-themeclr text-2xl font-semibold mb-3">Mr. Siva kumar</h2>
+             <p class="font-normal text-xl mb-3">Monthly Balance: <b>₹ 25,000.00</b></p>
+             <p class="font-normal text-xl flex items-center"><mat-icon class="mr-2"
+                 svgIcon="mat_outline:local_phone"></mat-icon> 75421548756</p>
+           </div>
+         </div>
+         </div> -->
+      <div class="bg-white p-7 pt-4 rounded-lg relative">
+         <div class="bg-gray-50 pt-0 beneficiary-detail">
+            <div class="flex flex-wrap items-center justify-between">
+               <div class="flex items-center mt-3">
+                  <img class="w-13 h-13 rounded-full object-cover mr-4" src="assets/images/avatar.png" alt="">
+                  <div>
+                     <h3 class="head-name">Ram Kumar</h3>
+                     <p class="font-normal text-lg flex items-center">
+                        <mat-icon class="mr-1"
+                           svgIcon="mat_outline:local_phone"></mat-icon>
+                        75421548756
+                     </p>
+                  </div>
+               </div>
+               <div class="bg-white px-3 py-2 pr-6 rounded-lg ml-5 mt-3 max-sm:w-full max-sm:ml-0">
+                  <p class="font-medium text-themeclr text-lg">Monthly Balance</p>
+                  <h2 class="text-2xl font-extrabold">₹ 20,000</h2>
+               </div>
+            </div>
+         </div>
+         <mat-tab-group class="" (selectedTabChange)="onTabChanged($event)">
+            <mat-tab>
+               <div class="p-3 bg-gray-50 rounded-lg mt-6 relative">
+                  <div class="xs:w-full leder_select pt-1 flex flex-wrap items-center sm_justify_center  lg:w-full">
+                     <div class="mb-1 mx-3">
+                        <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+                           Date <span class="text-red-600">*</span>
+                        </h1>
+                        <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+                           <mat-date-range-input [rangePicker]="picker">
+                              <input matStartDate placeholder="Start date">
+                              <input matEndDate placeholder="End date">
+                           </mat-date-range-input>
+                           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                           <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                     </div>
+                     <div class="mx-3 mb-0">
+                        <button 
+                           class="history_btn h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                        Filter
+                        </button>
+                     </div>
+                  </div>
+                  <div class="overflow-auto">
+                     <div class="inner-table table_container">
+                        <table mat-table [dataSource]="dataSource" class="">
+                           <!--  Date Column -->
+                           <ng-container matColumnDef="date">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Date </th>
+                              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                           </ng-container>
+                           <!--  Beneficiary Name Column -->
+                           <ng-container matColumnDef="beneficiary_name">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Beneficiary </th>
+                              <td mat-cell *matCellDef="let element"> {{element.beneficiary_name}} </td>
+                           </ng-container>
+                           <!--  Beneficiary Mobile No Column -->
+                           <ng-container matColumnDef="beneficiary_mobile_no">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Mobile No </th>
+                              <td mat-cell *matCellDef="let element"> {{element.beneficiary_mobile_no}} </td>
+                           </ng-container>
+                           <!-- Account Number Column -->
+                           <ng-container matColumnDef="account_number">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Account No </th>
+                              <td mat-cell *matCellDef="let element"> {{element.account_number}} </td>
+                           </ng-container>
+                           <!-- IFSC Code Column -->
+                           <ng-container matColumnDef="ifsc_code">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> IFSC Code </th>
+                              <td mat-cell *matCellDef="let element">{{element.ifsc_code}}
+                              </td>
+                           </ng-container>
+                           <!-- Bank Column -->
+                           <ng-container matColumnDef="bank">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Bank </th>
+                              <td mat-cell *matCellDef="let element"> {{element.bank}} </td>
+                           </ng-container>
+                           <!-- Action Column -->
+                           <ng-container matColumnDef="action">
+                              <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Action </th>
+                              <td mat-cell *matCellDef="let element">
+                                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                 </button>
+                                 <mat-menu backdropClass="sg-vertical-sub-menu" #menu="matMenu">
+                                    <button mat-menu-item (click)="paynow()">
+                                    <span>Pay</span>
+                                    </button>
+                                    <button mat-menu-item (click)="deleteModel()">
+                                    <span>Delete</span>
+                                    </button>
+                                 </mat-menu>
+                              </td>
+                           </ng-container>
+                           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <mat-paginator [ngClass]="toggleStyle ? 'hide':''" style-paginator showFirstLastButtons
+                        [showTotalPages]="2"
+                        [length]="4"
+                        [pageSize]="1"
+                        [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator>
+                     </div>
+                  </div>
+                  <ng-template mat-tab-label>
+                     <app-svg-icons moneytransfer="beneficiary_manage_1" ></app-svg-icons>
+                     Beneficiary List
+                  </ng-template>
+               </div>
+            </mat-tab>
+            <mat-tab>
+               <div class="p-3 bg-gray-50 rounded-lg mt-6 relative">
+                  <div class="xs:w-full leder_select pt-1 flex flex-wrap items-center sm_justify_center  lg:w-full">
+                     <div class="mb-1 mx-3">
+                        <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+                           Date <span class="text-red-600">*</span>
+                        </h1>
+                        <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+                           <mat-date-range-input [rangePicker]="picker">
+                              <input matStartDate placeholder="Start date">
+                              <input matEndDate placeholder="End date">
+                           </mat-date-range-input>
+                           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                           <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                     </div>
+                     <div class="mb-1 mx-3">
+                        <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+                           Beneficiary Name <span class="text-red-600">*</span>
+                        </h1>
+                        <single-static-stable class="w-2/3 report_single_select" [error_message]="'Please choose the beneficiary name'" [required]="true"
+                        [placeholder]="'Select Beneficiary Name'" [searchPlaceHolder]="'Search Beneficiary Name'" [options]="beneficiary"
+                        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                     </div>
+                     <div class="mb-1 mx-3">
+                        <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+                           Status <span class="text-red-600">*</span>
+                        </h1>
+                        <single-static-stable class="w-2/3 report_single_select" [error_message]="'Please choose the status'" [required]="true"
+                        [placeholder]="'Select Status'" [searchPlaceHolder]="'Search Status'" [options]="status"
+                        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                     </div>
+                     <div class="mx-3 mb-0">
+                        <button 
+                           class="history_btn h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+                        Filter
+                        </button>
+                     </div>
+                  </div>
+                  <div class="overflow-auto">
+                     <div class="inner-table table_container">
+                        <table mat-table [dataSource]="dataSource2" class="">
+                          <!--  Date Column -->
+                          <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                          </ng-container>
+                          <!--  Transacton Id Column -->
+                          <ng-container matColumnDef="transaction_id">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Transaction Id </th>
+                            <td mat-cell *matCellDef="let element"> {{element.transaction_id}} </td>
+                          </ng-container>
+                          <!--  Beneficiary Name Column -->
+                          <ng-container matColumnDef="beneficiary_name">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Beneficiary Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.beneficiary_name}} </td>
+                          </ng-container>
+          
+                          <!-- Bank Column -->
+                          <ng-container matColumnDef="bank">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Bank </th>
+                            <td mat-cell *matCellDef="let element"> {{element.bank}} </td>
+                          </ng-container>
+          
+                          <!-- Account Number Column -->
+                          <ng-container matColumnDef="account_no">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Beneficiary Acc.No </th>
+                            <td mat-cell *matCellDef="let element"> {{element.account_no}} </td>
+                          </ng-container>
+          
+                          <!-- Pay Mode Column -->
+                          <ng-container matColumnDef="transfer_type">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50"> Transfer Type </th>
+                            <td mat-cell *matCellDef="let element">{{element.transfer_type}}
+                            </td>
+                          </ng-container>
+          
+                          <!-- Amount Column -->
+                          <ng-container matColumnDef="amount">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50 text-right"> Amount(₹) </th>
+                            <td mat-cell *matCellDef="let element" class="text-right"> {{element.amount}} </td>
+                          </ng-container>
+          
+                          <!-- status Column -->
+                          <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef class="bg-gray-50">Transaction Status </th>
+                            <td mat-cell *matCellDef="let element">
+                              <label [ngClass]="element?.status==0 ? 'pending' :element?.status==1 ? 'success' : 'failed'"
+                                class="px-3 inline-block rounded-xl">
+                                {{element?.status==0 ?
+                                'Pending' :element?.status==1? 'Success' : 'Failed'}}</label>
+                            </td>
+                          </ng-container>
+                          <!-- Receipt Column -->
+                          <ng-container matColumnDef="receipt">
+                           <th mat-header-cell *matHeaderCellDef class="text-right"> Receipt </th>
+                           <td mat-cell *matCellDef="let element" 
+                              class="text-right cursor-pointer">
+                              <div (click)="TransactionDetail()"  class="rounded-md flex items-center cursor-pointer justify-center action_refund" >
+                                 <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                        
+                     </div> </td>
+                        </ng-container>
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                        </table>
+                        <mat-paginator [ngClass]="toggleStyle ? 'hide':''" style-paginator showFirstLastButtons
+                        [showTotalPages]="2"
+                        [length]="4"
+                        [pageSize]="1"
+                        [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator>
+                      </div>
+          
+                     <!-- <div class="table_container">
+                        <table mat-table
+                           [dataSource]="dataSource3" multiTemplateDataRows
+                           class="">
+                           <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+                              <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                              <td mat-cell *matCellDef="let element">
+                                 <span *ngIf="column !='Status'">{{element[column]}}</span> 
+                                 <label *ngIf="column =='Status'"
+                                 [ngClass]="element?.Status==0 ? 'pending' :element?.Status==1 ? 'success' : 'failed'"
+                                 class="px-3 inline-block rounded-xl">
+                                 {{element?.Status==0 ?
+                                 'Pending' :element?.Status==1? 'Success' : 'Failed'}}</label>
+                                 <div *ngIf="column=='Receipt'" (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center action_refund" >
+                                 <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                                 {{element.action}}
+                     </div>
+                     </td>
+                     </ng-container>
+                     <ng-container matColumnDef="expand">
+                     <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+                     <td mat-cell *matCellDef="let element">
+                     <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+                     <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+                     <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+                     </button>
+                     </td>
+                     </ng-container>
+                     <ng-container matColumnDef="expandedDetail">
+                     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+                     <div class="example-element-detail"
+                     [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                     <div class="example-element-diagram transaction-details">
+                     <table class="table_container inner-table">
+                     <tr>
+                     <th>Transaction Id</th>
+                     <th>Bank RRN</th>
+                     <th>Transaction Initiated Date</th>
+                     <th>Transaction Proceeded Date</th>
+                     <th>Transaction Amount(₹)</th>
+                     <th>Transaction Status</th>
+                     <th>Receipt</th>
+                     </tr>
+                     <tbody>
+                      <tr>
+                         <td>000124587542</td>
+                         <td>24646786376</td>
+                         <td>20-09-2023</td>
+                         <td>30-09-2023</td>
+                         <td class="text-right pr-35">5,000.00</td>
+                         <td><label class="px-3 inline-block rounded-xl success">Success</label></td>
+                         <td><div (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center " >
+                               <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                             </div>
+                          </td>
+                         </tr>
+                         <tr>
+                         <td>000124587542</td>
+                         <td>24646786376</td>
+                         <td>10-09-2023</td>
+                         <td>20-09-2023</td>
+                         <td class="text-right pr-35">5,000.00</td>
+                         <td><label class="px-3 inline-block rounded-xl success">Success</label></td>
+                         <td><div (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center" >
+                          <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                        </div>
+                     </td>  
+                       </tr>
+                         <tr>
+                         <td>000124587542</td>
+                         <td>24646786376</td>
+                         <td>01-09-2023</td>
+                         <td>10-09-2023</td>
+                         <td class="text-right pr-35">5,000.00</td>
+                         <td><label class="px-3 inline-block rounded-xl pending">Pending</label></td>
+                         <td><div (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center" >
+                             <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                             </div>
+                         </td>  
+                       </tr>
+                       <tr>
+                          <td>000124587542</td>
+                          <td>24646786376</td>
+                          <td>01-09-2023</td>
+                          <td>10-09-2023</td>
+                          <td class="text-right pr-35">5,000.00</td>
+                          <td><label class="px-3 inline-block rounded-xl pending">Pending</label></td>
+                          <td><div (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center" >
+                              <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                              </div>
+                          </td>  
+                        </tr>
+                        <tr>
+                          <td>000124587542</td>
+                          <td>24646786376</td>
+                          <td>01-09-2023</td>
+                          <td>10-09-2023</td>
+                          <td class="text-right pr-35">5,000.00</td>
+                          <td><label class="px-3 inline-block rounded-xl pending">Pending</label></td>
+                          <td><div (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center" >
+                              <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                              </div>
+                          </td>  
+                        </tr>
+                        <tr>
+                          <td>000124587542</td>
+                          <td>24646786376</td>
+                          <td>01-09-2023</td>
+                          <td>10-09-2023</td>
+                          <td class="text-right pr-35">5,000.00</td>
+                          <td><label class="px-3 inline-block rounded-xl pending">Pending</label></td>
+                          <td><div (click)="TransactionDetail()" class="rounded-md flex items-center cursor-pointer justify-center" >
+                              <app-svg-icons menusvg="dmt_report" ></app-svg-icons>
+                              </div>
+                          </td>  
+                        </tr>
+                     </tbody>
+                     </table>
+                     </div>
+                     <div class="text-right pr-6">
+                     <a routerLink="/transaction-detail" class="text-blue-600 cursor-pointer float-right">View More</a>
+                     </div>
+                  </div>
+                  </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+                  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+                  class="example-element-row"
+                  [class.example-expanded-row]="expandedElement === element"
+                  (click)="expandedElement = expandedElement === element ? null : element">
+                  </tr>
+                  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+                  </table>
+                  <mat-paginator [ngClass]="toggleStyle ? 'hide':''" style-paginator showFirstLastButtons
+       [showTotalPages]="2"
+       [length]="4"
+       [pageSize]="1"
+       [pageSizeOptions]="[5, 10, 25, 100]">
+       </mat-paginator>
+               </div> -->
+      </div>
+      <ng-template mat-tab-label>
+      <app-svg-icons moneytransfer="beneficiary_manage_2"  ></app-svg-icons>
+      Sender Transaction Report
+      </ng-template>
+   </div>
+   </mat-tab>
+   </mat-tab-group>
+</div>
+</div>
+</div>

@@ -1,0 +1,81 @@
+<div class="flex items-start justify-between px-7 pt-7 bg-popup-bg">
+   <h2 class="font-bold text-2xl mb-5">New Beneficiary Registration</h2>
+   <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 pt-0 bg-popup-bg">
+   <div class="bg-white p-6 rounded-xl max-h-128 max-sm:max-h-100 overflow-auto">
+      <div class="flex flex-wrap">
+         <div class=" mr-7 max-md:mr-0 field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 text-label-clr">
+                  Beneficiary Name <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="text" matInput placeholder="Beneficiary Name" />
+            </mat-form-field>
+         </div>
+         <div class=" field-size">
+            <h1 class="font-medium text-lg mb-1 text-label-clr">
+               Mobile No <span class="text-red-600">*</span>
+            </h1>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="number" matInput placeholder="Mobile No" />
+            </mat-form-field>
+         </div>
+
+         <div class="mr-7 max-md:mr-0 field-size">
+            <h1 class="font-medium text-lg mb-1 text-label-clr">
+               Bank Name <span class="text-red-600">*</span>
+            </h1>
+            <single-static-stable class="w-full" [error_message]="'Please choose the bank name'" [required]="true"
+               [placeholder]="'Select Bank Name'" [searchPlaceHolder]="'Search'" [options]="Banks"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+         </div>
+         <div class=" field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 text-label-clr">
+                  IFSC Code <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="number" matInput placeholder="IFSC Code" />
+            </mat-form-field>
+            <p class="pb-4 text-blue-500 font-bold cursor-pointer" (click)="findIfsc()">Not Sure IFSC?</p>
+         </div>
+
+         <div class="mr-7 max-md:mr-0 field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 text-label-clr">
+                  Account No <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="number" matInput placeholder="Account No" />
+            </mat-form-field>
+         </div>
+         <div class=" field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0 text-label-clr">
+                  Re-Enter Account No <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="number" matInput placeholder="Re-Enter Account No" />
+            </mat-form-field>
+         </div>
+
+      </div>
+
+      <div class="mt-3">
+         <button (click)="enableDisableRule()" [ngClass]="{'bg-themeclr' : toggle, 'bg-green-500': !toggle}" class="w-24 h-10 mr-6 rounded-md text-white font-bold text-xl max-sm:text-base flex justify-evenly items-center
+           ">Verify
+            <mat-icon class="text-white max-sm:text-base" svgIcon="mat_outline:check_circle"></mat-icon></button>
+      </div>
+      <div class="mt-10 flex">
+         <button (click)="openaddBeneficiary()" class="w-1/4 max-sm:w-1/2 h-10 mr-6 rounded-md text-white font-bold text-xl
+          bg-themeclr hover:bg-themeclr_hover">Add Beneficiary</button>
+         <button (click)="paynow()" class="w-1/4 max-sm:w-1/2  h-10 rounded-md border-2
+           border-slate-300 text-themeclr font-bold text-xl
+            hover:bg-themeclr hover:text-white hover:border-themeclr">
+            Quick Transfer
+         </button>
+      </div>
+   </div>
+</div>

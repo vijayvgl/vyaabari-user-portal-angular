@@ -1,0 +1,128 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6" style="background-color: #F8F9FD;">
+  <h2 class="font-bold text-2xl" style="color: #363636;">Profile Details</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon> 
+</div>
+<div class="p-7 pt-0" style="border-top: 2px solid #C8C8C840;">
+  <div class="flex item-start profile-sec" *ngIf="!profileEdit">
+    <div>
+      <div class="profile-img">
+    <img src="assets/images/avatar.png" alt="Profile" />
+  </div>
+    <button class="w-32 h-10 rounded-md mt-5 text-white font-bold text-xl
+    bg-themeclr hover:bg-themeclr_hover" (click)="editProfile()">Edit Profile</button>
+  
+  </div>
+    <!-- <div>
+      <mat-icon class="edit-icon" svgIcon="mat_outline:edit" (click)="editProfile()"></mat-icon>
+    </div> -->
+    <div class="profile-details">
+    <table>
+      <tr>
+        <td>Name</td>
+        <td class="text-right">Rohit
+          </td>
+      </tr>
+      <tr>
+        <td>Mobile No</td>
+        <td class="text-right">9874563210</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td class="text-right">rohit@gmail.com</td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td class="text-right">w/16,D/5A,Gokuylam street, Madurai, 625002</td>
+      </tr>
+      <tr>
+        <td>PAN</td>
+        <td class="text-right"> AEFSP5678D</td>
+      </tr>
+    </table>
+  </div>
+  
+  </div>
+  <div class="edit-profile" *ngIf="profileEdit">
+    <form>
+      <div class="flex flex-wrap mt-5 ">
+        <div class="field-size m-right-7">
+          <div class="mb-1">
+             <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">
+                Name <span class="text-red-600">*</span></mat-label>
+          </div>
+          <mat-form-field class="w-full" subscriptSizing="fixed">
+             <input type="text" id="matClrChange" matInput  placeholder="Name" />
+          </mat-form-field> 
+        </div>
+        <div class="field-size">
+          <div class="mb-1">
+             <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">
+                Mobile No <span class="text-red-600">*</span></mat-label>
+          </div>
+          <mat-form-field class="w-full" subscriptSizing="fixed">
+             <input type="number" matInput  placeholder="Mobile No" />
+          </mat-form-field>
+        </div>
+        <div class="field-size m-right-7">
+          <div class="mb-1">
+             <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">
+                Email Id <span class="text-red-600">*</span></mat-label>
+          </div>
+          <mat-form-field class="w-full" subscriptSizing="fixed">
+             <input type="email" matInput  placeholder="Email Id" />
+          </mat-form-field>
+        </div>
+        <div class="field-size">
+          <div class="mb-1">
+             <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">
+                PAN <span class="text-red-600">*</span></mat-label>
+          </div>
+          <mat-form-field class="w-full" subscriptSizing="fixed">
+             <input type="text" matInput  placeholder="PAN" />
+          </mat-form-field>
+        </div>
+
+       
+
+ 
+        <div class="field-size m-right-7">
+          <div class="mb-1">
+             <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">
+                Address <span class="text-red-600">*</span></mat-label>
+          </div>
+          <mat-form-field class="w-full" subscriptSizing="fixed">
+             <textarea type="number" matInput  placeholder="Address"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="field-size">
+          <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 first-letter text-label-clr">
+               Profile Image <span class="text-red-600">*</span></mat-label>
+         </div>
+         <div>
+          <div class="w-full p-4 rounded-md border border-gray-300 cursor-pointer" (click)="file.click()">
+            <div class="flex items-center">
+            <img class="w-7" src="assets/images/File-upload.png" alt="">
+            <div class="ml-4">
+              <p class="text-lg font-medium text-gray-500">Profile Image Upload</p>
+              <span class="text-sm font-normal text-gray-500">Use a jpg, jpeg & png</span>
+            </div>
+          </div>
+          </div>
+          <input class="hidden" id="fileUploader" type="file"
+          accept="image/*" #file>
+         </div>
+        </div>
+        
+        
+      </div>
+         <div class="flex">
+       <button class="w-1/4 h-10 mr-6 rounded-md text-white font-bold text-xl
+          bg-themeclr hover:bg-themeclr_hover" (click)="update()">Update</button>
+         
+     </div>
+    </form>
+  </div>
+
+</div>

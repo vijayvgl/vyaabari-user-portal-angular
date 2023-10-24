@@ -1,0 +1,220 @@
+<div>
+    <mat-label style="    font-size: 1rem;
+    font-weight: 500;" *ngIf="labelPosition=='fixed'">{{checkNull(label) ? label :type}} <span style="color: red;"
+            *ngIf="required">*</span></mat-label>
+</div>
+<!-- Text -->
+<ng-container *ngIf="type=='text'">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'text'}}</mat-label>
+        <input matInput  [minlength]="minlength" [maxlength]="maxlength" [formControl]="form_control"
+            [placeholder]="placeholder">
+
+        <div matSuffix *ngIf="form_control?.invalid&&form_control?.touched" style="display: flex;">
+            <!-- required -->
+            <span
+                *ngIf="form_control?.errors['required']&&!form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide the '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+            <!-- minlength -->
+            <span
+                *ngIf="!form_control?.errors['required']&&form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="label+' should have atleast ' +minlength +' characters'!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+            <!-- maxlength -->
+            <span
+                *ngIf="!form_control?.errors['required']&&form_control?.errors['maxlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="label+' should not exceed ' +maxlength +' characters'!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+            <!-- pattern -->
+            <span
+                *ngIf="!form_control?.errors['required']&&!form_control?.errors['maxlength']&&form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide a valid '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+        </div>
+    </mat-form-field>
+</ng-container>
+
+<!-- Email -->
+<ng-container *ngIf="type=='email'">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'email'}}</mat-label>
+        <input matInput  [formControl]="form_control" [placeholder]="placeholder">
+        <div matSuffix *ngIf="form_control?.invalid&&form_control?.touched" style="display: flex;">
+            <!-- required -->
+            <span
+                *ngIf="form_control?.errors['required']&&!form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide the '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+            <!-- pattern -->
+            <span
+                *ngIf="!form_control?.errors['required']&&!form_control?.errors['maxlength']&&form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide a valid '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+        </div>
+    </mat-form-field>
+</ng-container>
+
+<!-- Mobile Number -->
+
+<ng-container *ngIf="type=='mobile'">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'Mobile Number'}}</mat-label>
+        <input matInput  numbersonly [minlength]="minlength" [maxlength]="maxlength" [formControl]="form_control"
+            [placeholder]="placeholder">
+
+        <div matSuffix *ngIf="form_control?.invalid&&form_control?.touched" style="display: flex;">
+            <!-- required -->
+            <span
+                *ngIf="form_control?.errors['required']&&!form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide the '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+
+            <!-- pattern -->
+            <span
+                *ngIf="!form_control?.errors['required']&&!form_control?.errors['maxlength']&&form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide a valid '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+        </div>
+    </mat-form-field>
+</ng-container>
+
+<!-- Text Area -->
+
+<ng-container *ngIf="type=='textarea'">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'Textarea'}}</mat-label>
+        <textarea [minlength]="minlength" [maxlength]="maxlength" matInput  [formControl]="form_control"
+            [placeholder]="placeholder" [rows]="rows" [cols]="cols"></textarea>
+
+        <div matSuffix *ngIf="form_control?.invalid&&form_control?.touched" style="display: flex;">
+            <!-- required -->
+            <span
+                *ngIf="form_control?.errors['required']&&!form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide the '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+            <!-- minlength -->
+            <span
+                *ngIf="!form_control?.errors['required']&&form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="label+' should have atleast ' +minlength +' characters'!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+            <!-- maxlength -->
+            <span
+                *ngIf="!form_control?.errors['required']&&form_control?.errors['maxlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="label+' should not exceed ' +maxlength +' characters'!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+            <!-- pattern -->
+            <span
+                *ngIf="!form_control?.errors['required']&&!form_control?.errors['maxlength']&&form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide a valid '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+        </div>
+    </mat-form-field>
+</ng-container>
+
+<!-- Password -->
+<ng-container *ngIf="type=='password'">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'Password'}}</mat-label>
+        <input [minlength]="minlength" [maxlength]="maxlength" matInput  [formControl]="form_control"
+            [placeholder]="placeholder" [type]="password">
+
+        <div class="d-flex" matSuffix>
+            <img matSuffix width="24" *ngIf="password=='password'" (click)="changeype()" height="24"
+                src="https://img.icons8.com/sf-regular-filled/48/visible.png" alt="visible" />
+            <img matSuffix width="20" *ngIf="password=='text'" (click)="changeype()" height="20"
+                src="https://img.icons8.com/material-rounded/24/invisible.png" alt="invisible" />
+            <div matSuffix *ngIf="form_control?.invalid&&form_control?.touched" style="display: flex;">
+                <!-- required -->
+                <span
+                    *ngIf="form_control?.errors['required']&&!form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                    matSuffix [matTooltip]="'Please provide the '+label.toLowerCase()!">
+                    <mat-icon [color]="'warn'">info</mat-icon>
+                </span>
+                <!-- minlength -->
+                <span
+                    *ngIf="!form_control?.errors['required']&&form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                    matSuffix [matTooltip]="label+' should have atleast ' +minlength +' characters'!">
+                    <mat-icon [color]="'warn'">info</mat-icon>
+                </span>
+
+                <!-- maxlength -->
+                <span
+                    *ngIf="!form_control?.errors['required']&&form_control?.errors['maxlength']&&!form_control?.errors['pattern']"
+                    matSuffix [matTooltip]="label+' should not exceed ' +maxlength +' characters'!">
+                    <mat-icon [color]="'warn'">info</mat-icon>
+                </span>
+
+                <!-- pattern -->
+                <span
+                    *ngIf="!form_control?.errors['required']&&!form_control?.errors['maxlength']&&form_control?.errors['pattern']"
+                    matSuffix [matTooltip]="'Please provide a valid '+label.toLowerCase()!">
+                    <mat-icon [color]="'warn'">info</mat-icon>
+                </span>
+
+            </div>
+        </div>
+
+    </mat-form-field>
+</ng-container>
+
+
+<!-- Numbers -->
+<ng-container *ngIf="type=='number'">
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'numbers'}}</mat-label>
+        <input numbersonly matInput  [minlength]="minlength" [maxlength]="maxlength" [formControl]="form_control"
+            [placeholder]="placeholder">
+
+        <div matSuffix *ngIf="form_control?.invalid&&form_control?.touched" style="display: flex;">
+            <!-- required -->
+            <span
+                *ngIf="form_control?.errors['required']&&!form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide the '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+            <!-- minlength -->
+            <span
+                *ngIf="!form_control?.errors['required']&&form_control?.errors['minlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="label+' should have atleast ' +minlength +' characters'!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+            <!-- maxlength -->
+            <span
+                *ngIf="!form_control?.errors['required']&&form_control?.errors['maxlength']&&!form_control?.errors['pattern']"
+                matSuffix [matTooltip]="label+' should not exceed ' +maxlength +' characters'!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+            <!-- pattern -->
+            <span
+                *ngIf="!form_control?.errors['required']&&!form_control?.errors['maxlength']&&form_control?.errors['pattern']"
+                matSuffix [matTooltip]="'Please provide a valid '+label.toLowerCase()!">
+                <mat-icon [color]="'warn'">info</mat-icon>
+            </span>
+
+        </div>
+    </mat-form-field>
+</ng-container>

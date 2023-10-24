@@ -1,0 +1,102 @@
+<div class="tgss-vertical-navigation-wrapper">
+
+    <!-- Header -->
+    <div class="tgss-vertical-navigation-header">
+        <ng-content select="[tgssVerticalNavigationHeader]"></ng-content>
+    </div>
+
+    <!-- Content -->
+    <div class="tgss-vertical-navigation-content" tgssScrollbar
+        [tgssScrollbarOptions]="{wheelPropagation: inner, suppressScrollX: true}" #navigationContent>
+
+        <!-- Content header -->
+        <div class="tgss-vertical-navigation-content-header">
+            <ng-content select="[tgssVerticalNavigationContentHeader]"></ng-content>
+        </div>
+
+        <!-- Items -->
+        <ng-container *ngFor="let item of navigation; trackBy: trackByFn">
+
+            <!-- Skip the hidden items -->
+            <ng-container *ngIf="(!item.hidden||item?.hidden!=true)">
+
+                <!-- Aside -->
+                <ng-container *ngIf="item.type === 'aside'">
+                    <tgss-vertical-navigation-aside-item [item]="item" [name]="name" [activeItemId]="activeAsideItemId"
+                        [autoCollapse]="autoCollapse" [skipChildren]="true"
+                        (click)="toggleAside(item)"></tgss-vertical-navigation-aside-item>
+                </ng-container>
+
+                <!-- Basic -->
+                <ng-container *ngIf="item.type === 'basic'">
+                    <tgss-vertical-navigation-basic-item [item]="item"
+                        [name]="name"></tgss-vertical-navigation-basic-item>
+                </ng-container>
+
+                <!-- Collapsable -->
+                <ng-container *ngIf="item.type === 'collapsable'">
+                    <tgss-vertical-navigation-collapsable-item [item]="item" [name]="name"
+                        [autoCollapse]="autoCollapse"></tgss-vertical-navigation-collapsable-item>
+                </ng-container>
+
+                <!-- Divider -->
+                <ng-container *ngIf="item.type === 'divider'">
+                    <tgss-vertical-navigation-divider-item [item]="item"
+                        [name]="name"></tgss-vertical-navigation-divider-item>
+                </ng-container>
+
+                <!-- Group -->
+                <ng-container *ngIf="item.type === 'group'">
+                    <tgss-vertical-navigation-group-item [item]="item" [name]="name"
+                        [autoCollapse]="autoCollapse"></tgss-vertical-navigation-group-item>
+                </ng-container>
+
+                <!-- Spacer -->
+                <ng-container *ngIf="item.type === 'spacer'">
+                    <tgss-vertical-navigation-spacer-item [item]="item"
+                        [name]="name"></tgss-vertical-navigation-spacer-item>
+                </ng-container>
+
+            </ng-container>
+
+        </ng-container>
+
+        <!-- Content footer -->
+        <div class="tgss-vertical-navigation-content-footer">
+            <!-- <ng-content select="[tgssVerticalNavigationContentFooter]"></ng-content> -->
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="tgss-vertical-navigation-footer">
+        <ng-content select="[tgssVerticalNavigationFooter]"></ng-content>
+    </div>
+
+</div>
+
+<!-- Aside -->
+<ng-container *ngIf="activeAsideItemId">
+    <div class="tgss-vertical-navigation-aside-wrapper" tgssScrollbar
+        [tgssScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}" [@fadeInLeft]="position === 'left'"
+        [@fadeInRight]="position === 'right'" [@fadeOutLeft]="position === 'left'"
+        [@fadeOutRight]="position === 'right'">
+
+        <!-- Items -->
+        <ng-container *ngFor="let item of navigation; trackBy: trackByFn">
+
+            <!-- Skip the hidden items -->
+            <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
+
+                <!-- Aside -->
+                <ng-container *ngIf="item.type === 'aside' && item.id === activeAsideItemId">
+                    <tgss-vertical-navigation-aside-item [item]="item" [name]="name"
+                        [autoCollapse]="autoCollapse"></tgss-vertical-navigation-aside-item>
+                </ng-container>
+
+            </ng-container>
+
+        </ng-container>
+
+    </div>
+</ng-container>

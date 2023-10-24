@@ -1,0 +1,136 @@
+
+
+<div class="flex items-start justify-between px-7 pt-7" style="background-color: #F8F9FD;">
+  <h2 class="font-bold text-2xl mb-5">Top Up Claim</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 pt-0 max-h-192 max-sm:max-h-120 overflow-auto" style="background-color: #F8F9FD;">
+  <div class="bg-white p-6 rounded-xl">
+    <div class="flex flex-wrap">
+      <div class="mr-7 field-size max-md:mr-0">
+        <h1 class="font-medium text-lg mb-1 first-letter" style="color: #171717">
+           Bank Name <span class="text-red-600">*</span>
+        </h1>
+        <single-static-stable class="w-full" [error_message]="'Please choose the bank name'" [required]="true"
+           [placeholder]="'Select Bank Name'" [searchPlaceHolder]="'Search'" [options]="Banks"
+           [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+      </div>
+
+      <div class="field-size">
+        <div class="mb-1">
+           <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+              Account No <span class="text-red-600">*</span></mat-label>
+        </div>
+        <mat-form-field class="w-full" subscriptSizing="fixed">
+           <input type="text" matInput  placeholder="Account No" />
+        </mat-form-field>
+      </div>
+      
+      <div class=" mr-7 field-size max-md:mr-0">
+        <div class="mb-1">
+           <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+              Transaction ID <span class="text-red-600">*</span></mat-label>
+        </div>
+        <mat-form-field class="w-full" subscriptSizing="fixed">
+           <input type="text" matInput  placeholder="Transaction ID" />
+        </mat-form-field>
+      </div>
+      <div class="field-size">
+        <div class="mb-1">
+          <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+             Deposit Date <span class="text-red-600">*</span></mat-label>
+       </div>
+       <mat-form-field class="w-full">
+        <input matInput  [matDatepicker]="picker" placeholder="Deposit Date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      </div>
+
+     
+      <div class="mr-7 field-size max-md:mr-0">
+        <div class="mb-1">
+           <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+              Deposit Time <span class="text-red-600">*</span></mat-label>
+        </div>
+        <mat-form-field class="w-full timepicker" appearance="outline">
+          <input readonly="true" [format]="24" matInput  
+              [ngxTimepicker]="picker4" placeholder="Deposit Time"/>
+          <mat-icon matSuffix svgIcon="mat_outline:access_time"></mat-icon>
+          <ngx-material-timepicker #picker4>
+          </ngx-material-timepicker>
+       
+      </mat-form-field>
+      </div>
+
+     
+      <div class="field-size">
+        <div class="mb-1">
+           <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+              Amount(₹) <span class="text-red-600">*</span></mat-label>
+        </div>
+        <mat-form-field class="w-full" subscriptSizing="fixed">
+           <input type="number" class="text-right amount" matInput  placeholder="0.00" />
+        </mat-form-field>
+      </div>
+
+      <div class=" mr-7 field-size max-md:mr-0">
+        <div class="mb-1">
+           <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+              Comments <span class="text-red-600">*</span></mat-label>
+        </div>
+        <mat-form-field class="w-full" subscriptSizing="fixed">
+           <textarea type="number" matInput  placeholder="Comments"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="field-size">
+        <div class="mb-1">
+          <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+             Slip Upload <span class="text-red-600">*</span></mat-label>
+       </div>
+       <div>
+        <div class="w-full p-4 rounded-md border border-gray-300 cursor-pointer" (click)="file.click()">
+          <div class="flex items-center">
+          <img class="w-7" src="assets/images/File-upload.png" alt="">
+          <div class="ml-4">
+            <p class="text-lg font-medium text-gray-500">Deposit slip Upload</p>
+            <span class="text-sm font-normal text-gray-500">Use a pdf, docx, doc, rtf & txt</span>
+          </div>
+        </div>
+        </div>
+        <input class="hidden" id="fileUploader" type="file"
+        accept="image/*" #file>
+       </div>
+      </div>
+      
+    </div>
+    
+  
+    <div class="mt-10 flex">
+      <button class="w-1/5 max-sm:w-1/2 h-10 mr-6 rounded-md text-white font-bold text-xl
+         bg-themeclr hover:bg-themeclr_hover">Claim</button>
+         <button
+         class="w-1/5 h-10 rounded-md border-2 max-sm:w-1/2
+          border-themeclr text-themeclr font-bold text-xl
+           hover:bg-themeclr hover:text-white hover:border-themeclr">
+      Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

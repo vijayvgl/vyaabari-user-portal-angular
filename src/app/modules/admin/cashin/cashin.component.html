@@ -1,0 +1,107 @@
+<div class="sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+   <!-- Title -->
+   <div class="heading_common_style">Load Money<span class="ml-0.5">(CashIn)</span></div>
+   <form [formGroup]="cashInForm">
+      <div class="bg-white xs:py-7 manage_pin_wrap xs:px-8 rounded-lg  xl:px-4 xl:pb-6">
+         <div class="flex items-start flex-wrap">
+            <div class=" lg:w-2/4 manage_pin_width_set">
+               <div class="mx-3">
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr "> Bank <span class="text-red-600">*</span> </mat-label>
+                  </div>
+                  <single-static-stable class=" cashin_head" [error_message]="'Please choose the bank'" [required]="true"
+                  [placeholder]="'Select Your Bank'" [searchPlaceHolder]="'Search Bank'" [options]="bank"
+                  [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr ">Mode of Payment <span class="text-red-600">*</span> </mat-label>
+                  </div>
+                  <single-static-stable class=" cashin_head" [error_message]="'Please choose the payment mode'" [required]="true"
+                  [placeholder]="'Select Your Mode'" [searchPlaceHolder]="'Search Mode'" [options]="mode"
+                  [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               </div>
+            </div>
+            <div class="paswd-content w-2/4 max-sm:mt-8 max-sm:w-full">
+               <div class="p-7 flex items-center flex-wrap justify-between pin_bg_clr rounded-lg mr-3">
+                  <div class="mb-6 mr-5" *ngFor="let data of cash"  >
+                     <h1 class="text-base manage_pin_right_content font-normal" > {{data.title}} </h1>
+                     <h2 class="text-base manage_pin_right_content font-semibold"> {{data.bank_name}}</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="mt-4">
+            <span class="text-label-clr_blue mx-3 text-xl pin_font_resize font-medium"  >Bank Details</span>
+            <div class="flex items-baseline mt-5 cashin_field flex-wrap">
+               <div class="mb-2 mx-3 max-sm:mx-0 max-sm:w-full">
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr">Deposite Date <span class="text-red-600">*</span> </mat-label>
+                  </div>
+                  <mat-form-field class="manage_pin_form">
+                     <input matInput  [matDatepicker]="picker" placeholder="Enter the Date">
+                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                     <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+               </div>
+               <div class="mb-2 mx-3 max-sm:mx-0 max-sm:w-full">
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr">Sender Account No <span class="text-red-600">*</span> </mat-label>
+                  </div>
+                  <mat-form-field class=" pin_textarea manage_pin_form" subscriptSizing="fixed">
+                     <input type="text" matInput  placeholder="Enter the Account No" />
+                  </mat-form-field>
+               </div>
+               <div class="mb-2 mx-3 max-sm:mx-0 max-sm:w-full">
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr">Amount <span class="text-red-600">*</span> </mat-label>
+                  </div>
+                  <mat-form-field class=" pin_textarea manage_pin_form" subscriptSizing="fixed">
+                     <input type="text" class="text-right amount" matInput  placeholder="0.00" />
+                  </mat-form-field>
+               </div>
+               <div class="mb-2 mx-3 max-sm:mx-0 max-sm:w-full">
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr">UTR No <span class="text-red-600">*</span> </mat-label>
+                  </div>
+                  <mat-form-field class=" pin_textarea manage_pin_form" subscriptSizing="fixed">
+                     <input type="text" matInput  placeholder="Enter the UTR No" />
+                  </mat-form-field>
+               </div>
+               <div class="mb-2 mx-3 max-sm:mx-0 max-sm:w-full">
+                  <div class="mb-2">
+                     <mat-label class="font-medium text-lg mb-0 text-label-clr">Remarks </mat-label>
+                  </div>
+                  <mat-form-field class=" pin_textarea manage_pin_form" subscriptSizing="fixed">
+                     <input type="text" matInput  placeholder="Enter the Remarks" />
+                  </mat-form-field>
+               </div>
+            </div>
+            <div class="field-size mx-3 max-sm:mx-0 max-sm:w-full">
+               <div class="mb-1">
+                  <mat-label class="font-medium text-lg mb-0  text-label-clr">
+                     Upload Receipt 
+                  </mat-label>
+               </div>
+               <div>
+                  <div class="w_330 p-4 rounded-md border border-gray-300 cursor-pointer" (click)="file.click()">
+                     <div class="flex items-center">
+                        <img class="w-7" src="assets/images/File-upload.png" alt="">
+                        <div class="ml-4">
+                           <p class="text-lg font-medium text-gray-500">Upload</p>
+                           <span class="text-sm font-normal text-gray-500">Use a pdf, docx, doc, rtf & txt</span>
+                        </div>
+                     </div>
+                  </div>
+                  <input class="hidden" id="fileUploader" type="file"
+                     accept="image/*" #file>
+               </div>
+            </div>
+            <div class="mt-6 mx-3 max-sm:mx-0">
+               <button
+                  class="cashin_btn  btn_full h-10  rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+               Submit
+               </button>
+            </div>
+         </div>
+      </div>
+   </form>
+</div>

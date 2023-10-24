@@ -1,0 +1,72 @@
+<!-- Button -->
+<button [matMenuTriggerFor]="userActions" (click)="changeIcon()" (menuOpened)="menuOpen()" (menuClosed)="menuClose()"
+    class="bg-slate-50 rounded-lg flex mx-2 profile_header justify-center items-center flex-row-reverse w-20 py-2"
+    style="border: 1px solid #F1F1F1;">
+    <span class="relative h-6">
+        <img class="w-7 h-7 rounded-full" *ngIf="showAvatar && user?.profile_image" [src]="user?.profile_image">
+        <mat-icon *ngIf="!showAvatar || !user?.profile_image" [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+    </span>
+    <mat-icon *ngIf="menuIcon" svgIcon="mat_outline:menu"></mat-icon>
+    <mat-icon *ngIf="!menuIcon" class="cursor-pointer" svgIcon="mat_outline:close"></mat-icon>
+</button>
+
+<mat-menu [xPosition]="'before'" #userActions="matMenu">
+  
+    <button mat-menu-item [matMenuTriggerFor]="accounts" (click)="$event.stopPropagation();">  <app-svg-icons class="fill_path" usersvg=manage_account></app-svg-icons>Manage Account</button>
+
+<mat-menu #accounts="matMenu">
+    <button *ngFor="let accountmenu of accountItem" mat-menu-item (click)="navigate(accountmenu.path)">
+        <app-svg-icons class="fill_path" usersvg={{accountmenu?.svg}}></app-svg-icons>
+        <span>{{accountmenu.title}}</span>
+    </button>
+</mat-menu>
+    
+        <button *ngFor="let menu of menuItem" mat-menu-item (click)="navigate(menu.path)">
+            <app-svg-icons class="fill_path" usersvg={{menu?.svg}}></app-svg-icons>
+            <span>{{menu.title}}</span>
+        </button>
+ 
+        
+
+        <button mat-menu-item (click)="signOut()">
+            <app-svg-icons class="fill_path" usersvg=signout></app-svg-icons>
+            <span>Sign out</span>
+        </button>
+      
+    <!-- <button (click)="requestClick()" mat-menu-item>
+        <span>Request Credits</span>
+    </button> 
+     <button mat-menu-item (click)="Widthdraw()">
+        <span>Withdrawal Limit</span>
+    </button>
+    <button mat-menu-item (click)="openQRcode()">
+        <span>UPI QR</span>
+    </button>
+    <button mat-menu-item (click)="qrActivation()">
+        <span>QR Activation</span>
+    </button>
+    <button mat-menu-item (click)="posActivation()">
+        <span>POS Activation</span>
+    </button>
+    <button (click)="historyClick()" routerLinkActive="router-link-active" mat-menu-item>
+        <span>Credit Ledger History</span>
+    </button>
+    <button (click)="TransactionHistoryClick()" mat-menu-item>
+        <span>Transaction History</span>
+    </button>
+    <button mat-menu-item (click)="certificateClick()">
+        <span>Certificate</span>
+    </button>
+    <button (click)="changePin()" routerLinkActive="router-link-active" mat-menu-item>
+        <span>Manage Pin</span>
+    </button>
+    <button mat-menu-item (click)="changePassword()">
+        <span>Change Password</span>
+    </button>
+    <button (click)="faqClick()" mat-menu-item>
+        <span>FAQ</span>
+    </button>
+    <button mat-menu-item (click)="signOut()">
+        <span>Sign out</span>
+    </button> -->
+</mat-menu>

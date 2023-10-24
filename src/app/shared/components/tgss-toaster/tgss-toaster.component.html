@@ -1,0 +1,19 @@
+<tgss-alert (click)="closeDialog()" [type]="data.type=='primary' ?'primary' :data.type=='accent' ?'accent'
+    :data.type=='warn' ?'warn' :data.type=='basic' ? 'basic' :data.type=='info' ?'info' :data.type=='success' ?'success'
+    :data.type=='warning' ?'warning' :'error'" [appearance]="'fill'">
+    <span tgssAlertTitle>
+        {{data.type=='primary'?'Information'
+        :data.type=='accent'?'accent'
+        :data.type=='warn' ?'warn'
+        :data.type=='basic' ? 'basic'
+        :data.type=='info'?'Info'
+        :data.type=='success'?'Success'
+        :data.type=='warning' ?'Warning'
+        :'Error'}}</span>
+    {{data.message}}
+</tgss-alert>
+
+<!-- <tgss-alert [type]="'primary'" [appearance]="'outline'">
+    <span tgssAlertTitle>Primary alert</span>
+    Thank you for joining our newsletter
+</tgss-alert> -->

@@ -1,0 +1,23 @@
+
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+    <h2 class="font-bold text-xl">Enter OTP</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 bg-popup-bg bt-2">
+
+  <form>
+    <ng-otp-input class="input_otp" [config]="{length:6}"></ng-otp-input>
+
+    <div class="text-center mb-4 w-full">
+      <a *ngIf="!showCountdown" class="text-lg font-normal text-themeclr hover:text-themeclr_hover cursor-pointer" (click)="resend()">Resend OTP
+      </a>
+      <div *ngIf="showCountdown">Resend available in {{ countdown }} seconds</div>
+   </div>
+ </form>
+ <div class="mt-2">
+  <button *ngIf="data.type == '1' " (click)="benificiaryList()" class="w-full h-10 rounded-md text-white font-bold text-xl
+   bg-themeclr hover:bg-themeclr_hover">Submit</button>
+  <button *ngIf="data.type == '2' "  (click)=" resetPin()" class="w-full h-10 rounded-md text-white font-bold text-xl
+   bg-themeclr hover:bg-themeclr_hover">Submit</button>
+</div>
+</div>

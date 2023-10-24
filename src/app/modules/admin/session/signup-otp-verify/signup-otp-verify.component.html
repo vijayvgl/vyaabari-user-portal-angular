@@ -1,0 +1,49 @@
+<div
+   class="verify_otp session_head session_common flex font_set flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+   <div
+      class="md:flex  md:items-center   w-full sm:w-auto md:h-full md:w-7/12  py-8 px-4 sm:p-12 md:px-30 md:py-8 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none xs:bg-card">
+      <div class="w-full max-w-100 sm:w-120  mx-auto sm:mx-0">
+         <!-- Logo -->
+         <div class="session_change">
+            <img class="h-auto w-auto object-cover" src="assets/images/vyabari_logo.png" alt="image">
+         </div>
+         <div class="">
+            <h1 class="mt-6  text-4xl font-medium tracking-tight leading-tight">Verify OTP</h1>
+            <p  class="mt-2 mb-8 session_sub_heading  text-xl font-normal lg:whitespace-nowrap">OTP sent to
+               your 7654XXXXXX
+            </p>
+         </div>
+         <form class="mt-6">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg">Enter OTP <span class="text-red-500">*</span></mat-label>
+            </div>
+            <ng-otp-input class="input_otp" [formCtrl]="otpControl" [config]="config"></ng-otp-input>
+         </form>
+         <div class="text-right w-full">
+            <a (click)="resendOTP()" *ngIf="(timer.timer$|async)=='00.00'"
+            class="text-lg font-normal forgot_passowrd">Resend Code
+            </a>
+            <a class="ml-1 " *ngIf="(timer.timer$|async)!='00.00'">{{timer.timer$|async}}
+            </a>
+         </div>
+         <button type="button" (click)="verifyOTP()" class="tgss-mat-button-large button delay-75  hover:bg-themeclr_hover bg-themeclr min-h-10 h-12 w-full text-xl font-medium
+         rounded-md mt-6" mat-flat-button [color]="'primary'">
+         <span>
+         Verify OTP
+         </span>
+         </button>
+         <div class="bottom_section mt-6 text-center">
+            <span class="block text-lg border_apply mb-6 mt-6">Already have an account?<a routerLink="/"
+               class="font-bold" > Sign In </a> </span>
+         </div>
+      </div>
+   </div>
+   <div
+      class="relative md:flex flex-auto  flex-col   items-left  w-1/2 hidden h-full px-20 py-8 lg:px-16 overflow-hidden bg-slate-50 dark:border-l">
+      <h2 class="lg:text-4xl font-medium leading-8 sm:text-2xl session_label "><b class="session_color_add ">Grow your business</b> and</h2>
+      <h2 class="lg:text-4xl sm:text-2xl font-medium session_label ">increase your average ticket size</h2>
+      <div class="w_450 block m-auto absolute right-0 bottom-0">
+         <img class="object-cover" src="assets/images/session_img.png" alt="image">
+      </div>
+   </div>
+</div>

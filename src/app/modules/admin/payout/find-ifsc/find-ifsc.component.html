@@ -1,0 +1,58 @@
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+  <h2 class="font-bold text-xl">Find IFSC Code</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 max-h-128 max-sm:max-h-100 overflow-auto remitter_payout_style">
+  <div class="flex flex-wrap">
+     <div class=" mr-7 find_ifsc_width_set">
+        <h1 class="font-medium text-lg mb-1 ">
+           Bank Type <span class="text-red-600">*</span>
+        </h1>
+        <single-static-stable class="w-full" [error_message]="'Please choose the bank type'" [required]="true"
+        [placeholder]="'Select Bank Type'" [searchPlaceHolder]="'Search'" [options]="Type"
+        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+     </div>
+     <div class="find_ifsc_width_set">
+        <h1 class="font-medium text-lg mb-1 ">
+           Bank <span class="text-red-600">*</span>
+        </h1>
+        <single-static-stable class="w-full" [error_message]="'Please choose the bank'" [required]="true"
+        [placeholder]="'Select Bank'" [searchPlaceHolder]="'Search'" [options]="Bank"
+        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+     </div>
+     <div class="mr-7 find_ifsc_width_set" >
+        <h1 class="font-medium text-lg mb-1 ">
+           State <span class="text-red-600">*</span>
+        </h1>
+        <single-static-stable class="w-full" [error_message]="'Please choose the bank type'" [required]="true"
+        [placeholder]="'Select State'" [searchPlaceHolder]="'Search'" [options]="states"
+        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+     </div>
+     <div class="find_ifsc_width_set" >
+        <h1 class="font-medium text-lg mb-1 ">
+           City <span class="text-red-600">*</span>
+        </h1>
+        <single-static-stable class="w-full" [error_message]="'Please choose the city'" [required]="true"
+        [placeholder]="'Select City'" [searchPlaceHolder]="'Search'" [options]="City"
+        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+     </div>
+     <div class="mr-7 find_ifsc_width_set">
+        <h1 class="font-medium text-lg mb-1">
+           Branch <span class="text-red-600">*</span>
+        </h1>
+        <single-static-stable class="w-full" [error_message]="'Please choose the branch'" [required]="true"
+        [placeholder]="'Select Branch'" [searchPlaceHolder]="'Search'" [options]="Branch"
+        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+     </div>
+  </div>
+  <div class="mt-10 flex">
+     <button class="w-1/4 h-10 mr-6 rounded-md text-white font-bold text-xl
+        bg-themeclr hover:bg-themeclr_hover">Confirm</button>
+     <button (click)="closeDialog()"
+        class="w-1/4 h-10 rounded-md border-2
+        border-slate-300 text-themeclr font-bold text-xl
+        hover:bg-themeclr hover:text-white hover:border-themeclr">
+     Cancel
+     </button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6 bg-popup-bg">
+    <h2 class="font-bold text-xl">Filter</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 pt-4 bb-2">
+    <h2 class="font-semibold text-lg mb-3 ml-3">Payment Date</h2>
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="paymentDate">
+        <mat-radio-button class="example-radio-button block" *ngFor="let date of dates" [value]="date">
+            {{date}}
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field class="w-full mt-3" >
+        <input matInput [matDatepicker]="picker" placeholder="Enter Date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    <div class="mt-2 text-center">
+        <button class="w-full h-10 rounded-md text-white font-bold text-xl
+           bg-themeclr hover:bg-themeclr_hover">Filter</button>
+    </div>
+</div>

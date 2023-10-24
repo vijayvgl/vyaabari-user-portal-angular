@@ -1,0 +1,17 @@
+<!-- Button -->
+<button [matMenuTriggerFor]="userActions"  (click)="changeIcon()"  matTooltip="Reports"   (menuOpened)="menuOpen()"
+(menuClosed)="menuClose()"
+class="report_menu rounded-lg flex mr-2 my-3 profile_header justify-center items-center flex-row-reverse w-18 py-2"
+style="border: 1px solid #F1F1F1;">
+<span class="relative flex items-center justify-center h-6">
+   <app-svg-icons report="svg_1"></app-svg-icons>
+  
+   <mat-icon svgIcon="mat_outline:keyboard_arrow_down" class="ml-1"></mat-icon>
+</span>
+</button>
+<mat-menu [xPosition]="'before'" #userActions="matMenu">
+<button *ngFor="let report of reports"  (click)="navigate(report.path)"  mat-menu-item>
+   <app-svg-icons class="fill_path" reportsvg={{report?.svg}}></app-svg-icons>
+<span>{{report.title}}</span>
+</button>
+</mat-menu>

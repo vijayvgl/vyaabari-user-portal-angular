@@ -1,0 +1,21 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6 bg-popup-bg">
+    <h2 class="font-bold text-xl">Request UPI</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+  </div>
+  <div class="p-7 pt-0" style="border-top: 2px solid #C8C8C840;">
+  
+    <div class="mt-7">
+       <div class="mb-1">
+          <mat-label class="font-medium text-lg mb-0 first-letter text-text-themeclr">
+             UPI Id <span class="text-red-600">*</span></mat-label>
+       </div>
+       <mat-form-field class="w-full" subscriptSizing="fixed">
+          <input type="text" matInput placeholder="UPI Id" />
+       </mat-form-field>
+     </div>
+  
+    <div class="mt-2 text-center">
+      <button class="w-full h-10 rounded-md text-white font-bold text-xl
+           bg-themeclr hover:bg-themeclr_hover">Submit</button>
+    </div>
+  </div>

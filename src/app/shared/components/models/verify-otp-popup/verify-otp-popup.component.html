@@ -1,0 +1,53 @@
+<!-- 
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+  <h2 class="font-bold text-xl">Enter OTP</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 bg-popup-bg bt-2">
+
+<form>
+  <ng-otp-input class="input_otp" [config]="{length:6}"></ng-otp-input>
+
+  <div class="text-center mb-4 w-full">
+    <a class="text-lg font-normal text-themeclr hover:text-themeclr_hover cursor-pointer">Resend OTP
+    </a>
+ </div>
+</form>
+<div class="mt-2">
+<button class="w-full h-10 rounded-md text-white font-bold text-xl
+ bg-themeclr hover:bg-themeclr_hover">Submit</button>
+</div>
+</div> -->
+
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+  <h2 class="font-bold text-xl">Verification</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="px-5 pb-5" style="background-color: #F8F9FD; border-top: 2px solid #C8C8C840;">
+<div class="my-3">
+  
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button class="-ml-2.5" value="1" (click)="tpin()">T-Pin</mat-radio-button>
+    <mat-radio-button  class="ml-2" value="2" (click)="otppin()">OTP</mat-radio-button>
+  </mat-radio-group>
+</div>
+<form>
+  <div class="mb-2" *ngIf="tpinno">
+    <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">PIN Number <span class="text-red-600">*</span> </mat-label>
+ </div>
+  <ng-otp-input class="input_otp" [config]="{length:4}" *ngIf="tpinno"></ng-otp-input>
+  <ng-otp-input class="input_otp" [config]="{length:6}" *ngIf="otpno"></ng-otp-input>
+  <div  *ngIf="tpinno" class="mb-4 ">
+  <a class="text-themeclr hover:text-themeclr_hover cursor-pointer text-lg font-normal" (click)="forgotTpin()" >Forgot Pin?</a>
+</div>
+  <div class="text-center mb-4 w-full" *ngIf="otpno">
+    <a  *ngIf="!showCountdown" class="text-lg font-normal text-themeclr hover:text-themeclr_hover cursor-pointer" (click)="resend()">Resend OTP
+    </a>
+    <div *ngIf="showCountdown">Resend available in {{ countdown }} seconds</div>
+ </div>
+</form>
+    <div class="mt-2">
+      <button (click)="openaddBeneficiary()" class="w-full h-10 rounded-md text-white font-bold text-xl
+       bg-themeclr hover:bg-themeclr_hover">Submit</button>
+    </div>
+</div>

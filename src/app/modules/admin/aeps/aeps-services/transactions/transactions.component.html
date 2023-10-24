@@ -1,0 +1,235 @@
+<div>
+   <div class=" px-7 pt-5 flex items-center justify-between ">
+     <h4 class="font-bold text-xl  text-black opacity-80">Transaction Details </h4>
+    
+      <mat-icon  class="cursor-pointer flex-2  hover:text-black" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+   </div>
+   <div class="p-5">
+      <div class=" p-5 overflow-auto max-h-128 max-sm:max-h-120 bg-popup-bg ">
+         <!-- <div class="flex items-center justify-end">
+            
+            <img class="lg:w-24 w-14  " src="assets/images/aeps.png" alt="">
+         </div> -->
+         <div class="text-center">
+           <app-svg-icons menusvg="trans" ></app-svg-icons>
+        
+            <p  class="text-xl font-medium mt-2 text-sucess-bg " >Transaction Successful</p>
+         </div>
+         <div  class="w-full overflow-x-scroll">
+            <table class="lg:w-full mt-4 mx-auto transaction_table">
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Agent Name:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >Vinoth Kumar</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Agent Mobile No:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >9874563210</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Agent Shop Name:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >HIFI XEROX</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Sender Name:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >Rohit</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Sender Mobile No:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >9874563210</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Beneficiary Name:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >Rajkumar</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Beneficiary Mobile No:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >9874563210</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Account No:</p>
+                  </td>   
+                  <td class=" ">
+                     <p class="text-base font-medium text-black opacity-75" >85964712545623</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Bank Name:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium " >State bank of india</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >IFSC Code:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium " >TAM0038600</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal text-secondary" >Type:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium " >IMPS</p>
+                  </td>
+               </tr>
+   
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal    text-secondary ">Date:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium  text-black opacity-75">10-09-2023 T12:40:46</p>
+                  </td>
+               </tr>
+                   
+               <tr>
+                 <td class="text-start ">
+                    <p class="text-base font-normal    text-secondary ">Transaction Id:</p>
+                 </td>
+                 <td class=" ">
+                    <p class="text-base font-medium   text-black opacity-75">TDER528956</p>
+                 </td>
+              </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal    text-secondary ">RRD:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium  text-black opacity-75">8956451223</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal    text-secondary ">Description:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium  text-black opacity-75">₹ 18000.00 is debited from you wallet.
+                  </td>
+               </tr>
+       
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal    text-secondary ">Aadhaar No:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium  text-black opacity-75">4250-5698-5412-3695</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-start ">
+                     <p class="text-base font-normal    text-secondary ">Device Name:</p>
+                  </td>
+                  <td class=" ">
+                     <p class="text-base font-medium  text-black opacity-75">Mantra</p>
+                  </td>
+               </tr>
+              <tr class="heading">
+               <td class="text-start ">
+                  <p class="text-base font-bold text-black opacity-75 ">Bank RRN/Status</p>
+               </td>
+               <td class=" ">
+                  <p class="text-base font-bold  text-black opacity-75">Amount</p>
+               </td>
+              </tr>
+              <tr>
+               <td class="text-start ">
+                  <p class="text-base font-normal    text-secondary ">987456317/Success</p>
+               </td>
+               <td class=" ">
+                  <p class="text-base font-medium  text-black opacity-75">₹ 5,000.00</p>
+               </td>
+              </tr>
+              <tr>
+               <td class="text-start ">
+                  <p class="text-base font-normal    text-secondary ">987456317/Success</p>
+               </td>
+               <td class=" ">
+                  <p class="text-base font-medium  text-black opacity-75">₹ 5,000.00</p>
+               </td>
+              </tr>
+              <tr>
+               <td class="text-start ">
+                  <p class="text-base font-normal text-secondary">987456317/Success</p>
+               </td>
+               <td class=" ">
+                  <p class="text-base font-medium text-black opacity-75">₹ 3,000.00</p>
+               </td>
+              </tr>
+            </table>
+         </div>
+      </div>
+   </div>
+   <div class=" px-7 pb-4   transactions_footer">
+     <div class="flex items-center justify-end">
+       
+         <div class="flex items-center justify-end gap-3 tanascation_footer_btn">
+            <button mat-button [matMenuTriggerFor]="menu"  class="w-15 flex items-center justify-center h-15 "
+            matTooltip="Share"
+               >
+               <app-svg-icons menusvg="share" ></app-svg-icons>
+            </button>
+            <mat-menu #menu="matMenu">
+               <button mat-menu-item    >
+                  <p class="text-lg font-medium text-black">
+                     <span class="inline-block">
+                       <app-svg-icons menusvg="whatsapp" ></app-svg-icons>
+                     </span>
+                     Share on whatsapp
+                  </p>
+               </button>
+               <button mat-menu-item >
+                  <p class="text-lg font-medium text-black">
+                     <span class="inline-block">
+                       <app-svg-icons menusvg="mail" ></app-svg-icons>
+                     </span>
+                     Share on mail
+                  </p>
+               </button>
+            </mat-menu>
+            <button  class="w-15 flex items-center justify-center h-15 "
+            matTooltip="Print"
+               >
+               <app-svg-icons menusvg="print" ></app-svg-icons>
+            </button>
+            <button  class="w-15 flex items-center justify-center h-15 "
+            matTooltip="Download"
+               >
+               <app-svg-icons menusvg="download" ></app-svg-icons>
+            </button>
+         </div>
+     </div>
+   </div>
+</div>

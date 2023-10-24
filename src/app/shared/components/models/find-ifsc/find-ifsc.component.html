@@ -1,0 +1,88 @@
+
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+    <h2 class="font-bold text-xl">Find IFSC Code</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 h-full overflow-auto" style="background-color: #F8F9FD; border-top: 2px solid #C8C8C840;">
+
+      <div class="flex flex-wrap">
+        <div class="field-size mr-7 max-md:mr-0">
+          <h1 class="font-medium text-lg mb-1 first-letter text-label-clr">
+            Bank Type <span class="text-red-600">*</span>
+         </h1>
+         <single-static-stable style="width: 100% !important;" [error_message]="'Please choose the bank type'" [required]="true"
+            [placeholder]="'Select Bank Type'" [searchPlaceHolder]="'Search'" [options]="Type"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+        </div>
+        <div class="field-size" >
+          <h1 class="font-medium text-lg mb-1 first-letter text-label-clr">
+            Bank <span class="text-red-600">*</span>
+         </h1>
+         <single-static-stable style="width: 100% !important;" [error_message]="'Please choose the bank'" [required]="true"
+            [placeholder]="'Select Bank'" [searchPlaceHolder]="'Search'" [options]="Bank"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+        </div>
+
+        <div class="mr-7 field-size max-md:mr-0" >
+          <h1 class="font-medium text-lg mb-1 first-letter text-label-clr">
+            State <span class="text-red-600">*</span>
+         </h1>
+         <single-static-stable style="width: 100% !important;" [error_message]="'Please choose the bank type'" [required]="true"
+            [placeholder]="'Select State'" [searchPlaceHolder]="'Search'" [options]="states"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+        </div>
+
+        <div class="field-size" >
+          <h1 class="font-medium text-lg mb-1 first-letter text-label-clr">
+             City <span class="text-red-600">*</span>
+          </h1>
+          <single-static-stable style="width: 100% !important;" [error_message]="'Please choose the city'" [required]="true"
+             [placeholder]="'Select City'" [searchPlaceHolder]="'Search'" [options]="City"
+             [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+        </div>
+ 
+ 
+        <div class="mr-7 field-size max-md:mr-0" >
+          <h1 class="font-medium text-lg mb-1 first-letter text-label-clr">
+            Branch <span class="text-red-600">*</span>
+         </h1>
+         <single-static-stable style="width: 100% !important;" [error_message]="'Please choose the branch'" [required]="true"
+            [placeholder]="'Select Branch'" [searchPlaceHolder]="'Search'" [options]="Branch"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+        </div>
+
+      
+        
+        
+      </div>
+      <div class="field-size border-2 border-gray-400 border-dashed p-4 overflow-auto" style="border-color: #059e05 !important; background: #f4fff4;"> 
+        <table class="w-full">
+          <tr>
+            <td class="whitespace-nowrap py-2">
+              <p class="font-bold text-themeclr text-3xl text-center">IFSC Code : SBIN0000988</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="py-2" style="vertical-align: top;">
+              <p class="text-base font-medium text-xl">Address : Zion Bldgsmission Hospital,Compoundeast Veli Street,Madurai,</p>
+            </td>
+          </tr>
+
+        </table>
+
+     
+
+        
+
+      </div>
+         <div class="mt-10 flex">
+       <button class="w-1/4 h-10 max-sm:w-full mr-6 rounded-md text-white font-bold text-xl
+          bg-themeclr hover:bg-themeclr_hover max-sm:text-base"  (click)="closeDialog()">Confirm</button>
+          <button (click)="closeDialog()"
+          class="w-1/4 h-10 rounded-md border-2 max-sm:w-full max-sm:text-base
+           border-slate-300 text-themeclr font-bold text-xl
+            hover:bg-themeclr hover:text-white hover:border-themeclr">
+       Cancel
+       </button>
+     </div>
+</div>

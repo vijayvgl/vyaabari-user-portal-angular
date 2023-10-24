@@ -1,0 +1,100 @@
+<div class="report sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+   <!-- Title -->
+   <div class="mt-5  flex items-center justify-between">
+      <h1 class="page_header mt-0 ">Transaction report<b class="ml-0.5 report_count_clr">(04)</b></h1>
+       
+       <button  type="button" class="text-themeclr report_export_btn sm:px-5 sm:py-2 rounded-lg sm:text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover" >Export</button>
+    </div>
+  
+   <div  class="report_bg px-6 py-4 mt-5">
+      <div  class="flex items-baseline justify-between rounded-lg report_wrap">
+         <div class="search_box flex items-start flex-wrap">
+            <mat-form-field class="w_66 report_w_add h_16 mx-1.5 my-1">
+               <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+               </mat-date-range-input>
+               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <div class="relative report_w_add report_select mx-1.5 my-1">
+               <search-icon></search-icon>
+                              <mat-select placeholder="All" class="relative report_w_add">
+                  <mat-option *ngFor="let id of id" [value]="id.value">
+                  {{id.viewValue}}
+                  </mat-option>
+               </mat-select>
+            </div>
+       
+         </div>
+         <div class="search-box report_search_box  report_w_add mx-1.5 my-1">
+            <search-icon></search-icon>
+            <input type="text" id="myInput" placeholder="Search by Keyword">
+         </div>
+      </div>
+      <div class="inner-table report_table table_container px-2 py-0 w-full overflow-x-scroll" >
+         <table mat-table [dataSource]="dataSource" matSort class="">
+                  <!--  T.ID Column -->
+                  <ng-container matColumnDef="date">
+                     <th mat-header-cell *matHeaderCellDef mat-sort-header class=> Date </th>
+                     <td class="whitespace-nowrap" mat-cell *matCellDef="let element"> 
+                        <label class="block">
+                           28-04-2023  </label>
+                           <span class="text-slate-500" >
+                              11:40:39
+                           </span>
+                       </td>
+                  </ng-container>
+            <!--  T.ID Column -->
+            <ng-container matColumnDef="transaction_id">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=> Transaction ID</th>
+               <td mat-cell *matCellDef="let element"> {{element.transaction_id}} </td>
+            </ng-container>
+            <!--  Sender Name Column -->
+            <ng-container matColumnDef="mobile_number">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Mobile No </th>
+               <td mat-cell *matCellDef="let element"> {{element.mobile_number}} </td>
+            </ng-container>
+            <!--  Sender Mobile Number Column -->
+            <ng-container matColumnDef="name">
+               <th mat-header-cell *matHeaderCellDef class=""> Beneficiary Name </th>
+               <td mat-cell  *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <!--  Payee Name Column -->
+            <ng-container matColumnDef="acc_number">
+               <th mat-header-cell *matHeaderCellDef class=""> Beneficiary Account No </th>
+               <td mat-cell  *matCellDef="let element"> {{element.acc_number}} </td>
+            </ng-container>
+            <!--  Transaction Type Column -->
+            <ng-container matColumnDef="type">
+               <th mat-header-cell *matHeaderCellDef class=""> Transaction Type </th>
+               <td mat-cell  *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+            <!--  Transaction Mode Column -->
+            <ng-container matColumnDef="bank_name">
+               <th mat-header-cell *matHeaderCellDef class=""> Bank Name / Biller Name </th>
+               <td mat-cell *matCellDef="let element">{{element.bank_name}}</td>
+            </ng-container>
+            <!--  Transaction Status Column -->
+            <ng-container matColumnDef="status">
+               <th mat-header-cell *matHeaderCellDef class="">Transaction Status </th>
+               <td mat-cell  *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+            <!-- Opening Balance Column -->
+            <ng-container matColumnDef="credit">
+               <th mat-header-cell *matHeaderCellDef class=""> Credits(₹) </th>
+               <td mat-cell  class="text-right" *matCellDef="let element"> {{element.credit}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         </table>
+      </div>
+      <span class="scoll_add block">Drag to explore more column.</span>
+      <mat-paginator style-paginator showFirstLastButtons
+      [showTotalPages]="2"
+      [length]="4"
+      [pageSize]="1"
+      [pageSizeOptions]="[5, 10, 25, 100]">
+   </mat-paginator>
+   </div>
+</div>

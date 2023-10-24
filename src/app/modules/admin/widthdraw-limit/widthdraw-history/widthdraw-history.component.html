@@ -1,0 +1,132 @@
+<div class="w-full  bil-payments-tab sm:inset-0 h-full min-w-0 mb-12">
+  
+    <div class="mt-5 flex items-center justify-between">
+      <div class="flex items-center">
+         <span> </span>
+         <h2  class="page_header mt-0 ">Withdrawal Histroy</h2>
+      </div>
+      <div>
+
+      </div>
+     
+      <div class="mb-0  text-end">
+         <button class="text-themeclr px-5 py-2 rounded-lg text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover">Export</button>
+         <button  type="button" routerLink="/withdrawal-limit"   class="text-themeclr ml-4 report_export_btn sm:px-5 sm:py-2 rounded-lg sm:text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover" >Back</button>
+
+      </div>
+        
+        </div>
+   
+       
+
+       <div class="px-6 py-4 pb-4 search_input mt-5   border border-gray-100 rounded-md" style="background-color: 
+       #FBFCFE;">
+        <form class="bg-white w-full ">
+         <div class="xs:w-full pt-1 w-full lg:flex flex-wrap items-center sm_justify_center  lg:w-full">
+            <div class="mb-1 mx-3 flex-1">
+               <h1 class="font-medium text-lg mb-1.5 first-letter" style="color: #171717">
+                  Search by Date <span class="text-red-600">*</span>
+               </h1>
+               <mat-form-field class="example-form-field w-full">
+                  <input placeholder="Select Date" matInput  [matDatepicker]="picker">
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+               </mat-form-field>
+            </div>
+            
+            <div class="mb-1 mx-3 flex-1">
+               <h1 class="font-medium text-lg mb-1.5 first-letter" style="color: #171717">
+                  Search by Transaction Type <span class="text-red-600">*</span>
+               </h1>
+               <single-static-stable class="w-full widthdraw_select" [error_message]="'Please choose the role'" [required]="true"
+               [placeholder]="'Select Type'" [searchPlaceHolder]="'Search Type'" [options]="type"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+            </div>
+            
+            <div class="mb-0 mx-3 flex-1">
+               <button
+                  class="w-full h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+               Search
+               </button>
+            </div>
+         </div>
+        </form>
+        <div *ngIf="false"  style="background-color: #FBFCFE; border: 1px solid #EEEFFC;" class="p-14 w-full h-110  text-center">
+       <img class="w-56 block m-auto mb-8" src="assets/images/history.png" alt="image" />
+         <span style="color: #000A7D;" class="text-base  font-normal">No Record Found</span>
+      </div>
+        <div *ngIf="true">
+         <div class="lg:flex items-center justify-between  mt-4" >
+            <p class="text-lg font-bold" style="color: #2E3690;">Withdrawals  <span>(05)</span> </p>
+              <mat-form-field class="lg:w-1/3 w-full mt-3 h-16 rounded-2xl " subscriptSizing="fixed">
+                  
+                  <search-icon   ></search-icon>
+                  <input type="text" class="text-lg pl-7" matInput  placeholder="Search By Keyword" />
+               </mat-form-field>
+
+           </div>
+           <div class="widthdarw-table mt-3 w-full overflow-x-scroll">
+
+            <table mat-table [dataSource]="dataSource">
+
+               <!-- Position Column -->
+               <ng-container matColumnDef="date">
+                 <th mat-header-cell *matHeaderCellDef> Date </th>
+                 <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+               </ng-container>
+           
+               <!-- Name Column -->
+               <ng-container matColumnDef="Transaction_Id">
+                 <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+                 <td mat-cell *matCellDef="let element"> {{element.Transaction_Id}} </td>
+               </ng-container>
+           
+               <!-- Weight Column -->
+               <ng-container matColumnDef="Account_Holder_Name">
+                 <th mat-header-cell *matHeaderCellDef> Account Holder Name </th>
+                 <td mat-cell *matCellDef="let element"> {{element.Account_Holder_Name}} </td>
+               </ng-container>
+           
+               <!-- Symbol Column -->
+               <ng-container matColumnDef="Amount">
+                 <th mat-header-cell *matHeaderCellDef class="text-right " style="width: 11%;"> Amount (₹) </th>
+                 <td mat-cell *matCellDef="let element" class="text-right"> {{element.Amount}} </td>
+               </ng-container>
+               <ng-container matColumnDef="Mode">
+                 <th mat-header-cell *matHeaderCellDef> Mode </th>
+                 <td mat-cell *matCellDef="let element"> {{element.Mode}} </td>
+               </ng-container>
+               <ng-container matColumnDef="Bank">
+                 <th mat-header-cell *matHeaderCellDef> Bank </th>
+                 <td mat-cell *matCellDef="let element"> {{element.Bank}} </td>
+               </ng-container>
+               <ng-container matColumnDef="Status">
+                 <th mat-header-cell *matHeaderCellDef> Status </th>
+                 <td mat-cell *matCellDef="let element"> 
+                    <p   *ngIf="element.Status== 0"  class="pending px-3 inline-block rounded-xl"> Pending</p>
+                    <p  *ngIf="element.Status== 1" class="success px-3 inline-block rounded-xl">Success</p>
+                    <p  *ngIf="element.Status== 2" class="failed px-3 inline-block rounded-xl" >Failed</p>
+                 </td>
+               </ng-container>
+           
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+             </table>
+           
+           <mat-paginator style-paginator showFirstLastButtons 
+       [showTotalPages]="2"
+       [length]="4"
+       [pageSize]="1"
+       [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+            
+           </div>
+       
+          
+        </div>
+
+         
+
+       </div>
+  
+ </div>

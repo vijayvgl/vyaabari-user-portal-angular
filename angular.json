@@ -1,0 +1,141 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "tgss": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": ["zone.js"],
+                        "tsConfig": "tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "optimization": false,
+                        "allowedCommonJsDependencies": [
+                            "apexcharts",
+                            "highlight.js",
+                            "crypto-js/enc-utf8",
+                            "crypto-js/hmac-sha256",
+                            "crypto-js/enc-base64",
+                            "flat",
+                            "quill"
+                        ],
+                        "assets": [
+                            "src/manifest.json",
+                            "src/firebase-messaging-sw.js",
+                            "src/favicon-16x16.png",
+                            "src/favicon-32x32.png",
+                            "src/assets",
+                            {
+                                "glob": "_redirects",
+                                "input": "src",
+                                "output": "/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "src/assets",
+                                "output": "/assets"
+                            }
+                        ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["src/@tgss/styles"]
+                        },
+                        "styles": [
+                            "src/@tgss/styles/tailwind.scss",
+                            "src/@tgss/styles/themes.scss",
+                            "src/styles/vendors.scss",
+                            "src/@tgss/styles/main.scss",
+                            "src/styles/styles.scss",
+                            "src/styles/tailwind.scss",
+                            "src/vendor/suggestion/sugg.css"
+                        ],
+                        "scripts": ["src/vendor/suggestion/sugg.js"]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "100mb",
+                                    "maximumError": "100mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "100mb",
+                                    "maximumError": "100mb"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": true,
+                            "optimization": true,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "tgss:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "tgss:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "tgss:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "polyfills": ["zone.js", "zone.js/testing"],
+                        "tsConfig": "tsconfig.spec.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "src/favicon-16x16.png",
+                            "src/favicon-32x32.png",
+                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "src/assets",
+                                "output": "/assets"
+                            }
+                        ],
+                        "styles": [
+                            "src/styles/styles.scss",
+                            "src/vendor/suggestion/sugg.css"
+                        ],
+                        "scripts": ["src/vendor/suggestion/sugg.js"]
+                    }
+                }
+            }
+        }
+    },
+    "cli": {
+        "analytics": "717d77fc-da62-432e-89a7-7becad657b72"
+    }
+}

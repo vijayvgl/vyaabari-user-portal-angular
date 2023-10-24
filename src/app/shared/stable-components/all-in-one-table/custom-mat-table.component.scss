@@ -1,0 +1,128 @@
+.table_container {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+.table_container table th {
+  padding-right: 20px;
+}
+// .list-table {
+//     margin-top: 20px;
+// }
+.list-table table {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  border-radius: 12px;
+  padding: 13px 4px;
+  width: 100%;
+  white-space: nowrap;
+  box-shadow: none !important;
+  border-radius: 0;
+  border-collapse: collapse;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-center {
+  background-color: white;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+.pb-24 {
+  padding-bottom: 24px;
+}
+
+// Status
+
+.active {
+  background-color: #6200ee;
+}
+.inactive {
+  background-color: #b00020;
+}
+.success {
+  background-color: #008e00;
+}
+.failed {
+  background-color: #ff0000;
+}
+.pending {
+  background-color: #f24b04;
+}
+.completed {
+  background-color: #38b000;
+}
+.whitelisted {
+  background-color: #7b2cbf;
+}
+.login-blocked {
+  background-color: #857e7b;
+}
+.transaction-block {
+  background-color: #830073;
+}
+.verify {
+  background-color: #4282aa;
+}
+.verified {
+  background-color: #0d0083;
+}
+.ongoing {
+  background-color: #3e29a5;
+}
+.expired {
+  background-color: #dd0426;
+}
+.primary {
+  background-color: #2563eb;
+}
+.deleted {
+  background-color: #5f0f40;
+}
+.queue {
+  background-color: #fb8b24;
+}
+.incompleted {
+  background-color: #a44a3f;
+}
+.cancelled {
+  background-color: #bc3908;
+}
+
+.text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+.px-3 {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem !important;
+}
+.inline-block {
+  display: inline-block !important;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
+}
+
+.rounded-full {
+  border-radius: 9999px !important;
+}
+.w-2 {
+  width: 0.5rem !important;
+}
+.h-2 {
+  height: 0.5rem !important;
+}
+.inline-block {
+  display: inline-block !important;
+}

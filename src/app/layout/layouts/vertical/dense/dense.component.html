@@ -1,0 +1,99 @@
+
+<div class="container">
+<!-- Loading bar -->
+<tgss-loading-bar></tgss-loading-bar>
+
+<!-- Navigation -->
+<tgss-vertical-navigation class="bg-white print:hidden" [appearance]="navigationAppearance"
+    [mode]="isScreenSmall ? 'over' : 'side'" [name]="'mainNavigation'" [navigation]="navigation"
+    [opened]="!isScreenSmall">
+    <!-- Navigation header hook -->
+    <ng-container tgssVerticalNavigationContentHeader>
+        <!-- Logo -->
+        <div class="flex items-center justify-around h-20">
+            <button class="md:inline-flex max-md:hidden profile_header md:visible" mat-icon-button
+                (click)="toggleNavigationAppearance()">
+                <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+            </button>
+            <div *ngIf="showLogo" class="flex items-center justify-between w-3/5 mr-5">
+                <img class="w-4/5" src="assets/images/logo/vyabari-logo.png" alt="Logo image">
+            </div>
+        </div>
+    </ng-container>
+</tgss-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0 m-3">
+
+    <!-- Header -->
+    <div
+        class="relative flex flex-wrap justify-between flex-0 items-center w-full rounded-lg px-3 md:px-3 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+        <div class="flex items-center pr-2 space-x-2 my-3">
+            <!-- Navigation toggle button -->
+            <button class="max-md:visible md:hidden" mat-icon-button (click)="toggleNavigation('mainNavigation')">
+                <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+            </button>
+            <!-- Navigation appearance toggle button -->
+
+            <div class="flex flex-wrap items-center bg-slate-50 px-4 py-2 rounded-lg">
+                <div class="pr-10 max-sm:pr-5 border-r border-slate-200">
+                    <p class="text-base font-medium max-sm:text-sm" style="color: #000A7D;">Total Business</p>
+                    <h3 class="font-extrabold text-lg max-sm:text-base whitespace-nowrap">₹ 45,000.00</h3>
+                </div>
+                <div class="pr-10 pl-6 max-sm:px-3">
+                    <p class="text-base font-medium max-sm:text-sm" style="color: #000A7D;">Total Balance</p>
+                    <h3 class="font-extrabold text-lg max-sm:text-base whitespace-nowrap">₹ 45,000.00</h3>
+                </div>
+
+                <button (click)="openAddCedits()"
+                    class="text-white px-5 py-2 rounded-lg text-lg max-sm:mt-2 font-bold bg-themeclr hover:bg-themeclr_hover">Add
+                    Credits</button>
+
+                <button
+                    class="bg-white hover:bg-slate-100 ml-2 rounded-lg p-2 flex border max-sm:mt-2 border-slate-500"><mat-icon
+                        svgIcon="mat_outline:refresh"></mat-icon></button>
+
+
+            </div>
+
+        </div>
+        <!-- Components -->
+        <div class="flex flex-wrap items-center pl-2 space-x-0.5 sm:space-x-2 my-3">
+          
+          
+            <top-up></top-up>
+            <reports></reports>
+            <button (click)="supportInfo()" matTooltip="Support" 
+                class="bg-slate-50 rounded-lg flex-row-reverse px-3 py-2 mr-2 profile_header border border-slate-200">
+               
+               
+                <app-svg-icons menusvg="dense" ></app-svg-icons>
+            </button>
+            <!-- <notifications></notifications> -->
+            <!-- <button class="lg:hidden" mat-icon-button>
+                <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
+            </button> -->
+            <user></user>
+
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col flex-auto">
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+        <router-outlet *ngIf="true"></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <!-- <div
+        class="relative flex flex-0 items-center justify-start w-full h-14 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">
+        <span class="font-medium text-secondary">Tgss &copy; {{currentYear}}</span>
+    </div> -->
+
+</div>
+
+<!-- Quick chat -->
+<!-- <quick-chat #quickChat="quickChat"></quick-chat> -->
+
+</div>

@@ -1,0 +1,63 @@
+<div class="max-h-192 max-lg:max-h-120 overflow-auto">
+<div class="flex items-start justify-between px-7 pt-7 popup-bg">
+  <h2 class="font-bold text-2xl mb-4">Register For AEPS Two Factor Authentication Using Aadhaar</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="note popup-bg" >
+  <span class="text-text-themeclr"><b>Note:</b> Once our Aadhaar number is registered, It is not possible to modify or
+    replace it with a
+    Aadhaar number while utilizing AEPS Services.</span>
+</div>
+<div class="p-7 popup-bg">
+  <div class="bg-white p-6 rounded-xl">
+    <div class="flex flex-wrap">
+      <div class="w-2/5 max-sm:w-full">
+        <div class="mb-2">
+          <mat-label class="font-medium text-base text-label-clr whitespace-nowrap">Merchant Mobile No
+            <span class="text-red-500">*</span>
+          </mat-label>
+        </div>
+        <mat-form-field class=" w-full " subscriptSizing="fixed">
+          <input type="number" matInput  placeholder="Merchant Mobile No">
+        </mat-form-field>
+      </div>
+      <div class="w-2/5  max-sm:w-full  max-sm:ml-0 ml-6">
+        <div class="mb-2">
+          <mat-label class="font-medium text-base text-label-clr whitespace-nowrap">Merchant Aadhaar No
+            <span class="text-red-500">*</span>
+          </mat-label>
+        </div>
+        <mat-form-field class=" w-full " subscriptSizing="fixed">
+          <input type="number" matInput  placeholder="Merchant Aadhaar No">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="important">
+      <span class="text-text-themeclr"><b>Important:</b> To proceed please enable the location services from your
+        browser settings.</span>
+      <p class="mt-2">To proceed please enable the location services from your browser settings. Disclaimer : I authorise vyabari payment
+        services & bank to use Biometric/ OTP for authenticating my identity through the Aadhaar
+        based Authentication system for obtaining my e-KYC through Aadhaar based e-KVC services of
+        UIDAI under the provisions of the Aadhaar Targeted Delivery of Financial and other Subsidies
+        Benefits and Services Act 2016 and the allied rules and regulations.] understand that the
+        Biometric/ OTP provided for authentication will only be used to authenticate my identity
+        using the Aadhaar Authentication system for this transaction and no other purpose.
+        understand that vyabari payment services & bank will protect the security and confidentiality
+        of my data (Other than Biometric/ OTP) and may use this data in the future for its purposes. </p>
+    </div>
+    <div>
+      <mat-checkbox class="example-margin "><span class="text-text-themeclr font-medium font-style">I agree to the disclaimer</span></mat-checkbox>
+  </div>
+    <div class="mt-2 flex flex-wrap">
+      <button class="w-1/3 max-sm:w-2/5 h-10 mr-6 rounded-md text-white font-bold text-xl
+         bg-themeclr hover:bg-themeclr_hover max-sm:text-base">Next</button>
+         <button
+         class="w-1/3 max-sm:w-2/5 h-10 rounded-md border-2
+          border-slate-300 text-themeclr font-bold text-xl max-sm:text-base
+           hover:bg-themeclr hover:text-white hover:border-themeclr">
+      Cancel
+      </button>
+    </div>
+  </div>
+</div>
+</div>

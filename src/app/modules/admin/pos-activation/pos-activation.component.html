@@ -1,0 +1,33 @@
+<div class="sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+   <!-- Title -->
+   <div class="page_header">POS Activation</div>
+ 
+   <form class="bg-white p-9 mt-5 flex items-start rounded-lg h-100">
+      <div class="xs:w-full lg:w-2/4">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 text-label-clr">Enter Device Serial Number <span class="text-red-600">*</span></mat-label>
+         </div>
+         <mat-form-field class="w-4/6" subscriptSizing="fixed">
+            <input type="number" matInput  placeholder="Serial Number" />
+         </mat-form-field>
+        
+         <div class="mt-2">
+            <button
+               class="sm:w-4/6 xs:w-full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Verify Device
+            </button>
+         </div>
+         <div class="mt-4">
+            <button
+               class="sm:w-4/6 xs:w-full h-10 rounded-md border-2
+                border-slate-300 text-text-themeclr font-bold text-xl
+                 hover:bg-themeclr hover:text-white hover:border-themeclr">
+            Download Activation Manual
+            </button>
+         </div>
+      </div>
+      <div class="w-2/4 cms_image">
+         <img class="xl:w-1/2 sm:w-full xxl:w-2/4 m-auto" src="assets/images/pos.png" alt="image" />
+      </div>
+   </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="">
+    <div class="">
+        <mat-label style="    font-size: 1rem;
+        font-weight: 500;" *ngIf="labelPosition=='fixed'">{{checkNull(label) ? label :'Date Picker'}}</mat-label>
+    </div>
+    <mat-form-field [appearance]="appearance">
+        <mat-label *ngIf="labelPosition=='float'">{{checkNull(label) ? label :'Date Picker'}}</mat-label>
+        <input  (blur)="onBlur(inputValue?.value)" #inputValue datesymbols maxlength="10"
+            (dateChange)="OnDateChange($event)" [placeholder]="placeholder" [formControl]="form_control"
+            [readonly]="!typeable" (click)="!typeable ? picker.open() :''" [min]="checkDate(minimum)"
+            [max]="checkDate(maximum)" matInput  [matDatepicker]="picker">
+        <div class="d-flex" matSuffix>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <div class="" *ngIf="(form_control?.touched)&&form_control?.invalid">
+
+
+                <span [matTooltip]="'Please select the '+label.toLowerCase()+'!'"
+                    *ngIf="!checkNull(inputValue?.value)&&(form_control?.errors['required']||form_control?.errors['fromDateRequired'])">
+                    <mat-icon matSuffix class="mr-3" [color]="'warn'">info</mat-icon>
+                </span>
+
+                <span [matTooltip]="'Please provide a valid '+label.toLowerCase()+'!'"
+                    *ngIf="(checkNull(inputValue?.value)&&!checkNull(form_control?.value))">
+                    <mat-icon matSuffix class="mr-3" [color]="'warn'">info</mat-icon>
+                </span>
+
+                <span [matTooltip]="first ? label+' should be before '+label2+'!':label2+' should be after '+label+'!'"
+                    *ngIf="!form_control?.errors['required']&&form_control?.errors['inValidDate']">
+                    <mat-icon matSuffix class="mr-3" [color]="'warn'">info</mat-icon>
+                </span>
+
+
+            </div>
+        </div>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</div>

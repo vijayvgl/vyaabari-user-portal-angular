@@ -1,0 +1,16 @@
+<div class="sm:inset-0 h-full w-full mb-12  bil-payments-tab">
+   <!-- Title -->
+   <div class=" lg:flex  ">
+      <div class="flex items-baseline">
+         <h2 class="page_header" >Bill Payments</h2>
+      </div>
+   </div>
+   <div class="bg-white  w-full mt-5">
+      <div class="flex flex-wrap px-4 pt-4">
+         <div class="w20 text-center my-7 cursor-pointer bill_payment_hover_class"  [queryParams]="{ service: payment.title}"   [routerLink]="['/bill-payments/bill-payments-form']" *ngFor="let payment of payments" >
+         <app-svg-icons class="bill-payments-svg"  paymentsvg={{payment?.svg}}></app-svg-icons>
+         <span class="relative top-2 font-medium text-lg">{{payment.title}}</span>
+      </div>
+   </div>
+</div>
+</div>

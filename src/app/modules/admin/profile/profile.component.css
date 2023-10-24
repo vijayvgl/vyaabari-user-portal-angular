@@ -1,0 +1,53 @@
+/* img{
+    width: 107px;
+    height: 107px;
+} */
+.profile-sec{
+    background: rgba(251, 251, 251, 1);
+    margin: 32px 0px 6px;
+    padding: 16px;
+    border-radius: 10px;
+}
+.profile-details{
+    background: white;
+    margin: 0px 22px;
+    border-radius: 10px;
+    padding: 15px;
+}
+table{
+    line-height: 36px;
+}
+td{
+    font-size: 16px;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+    vertical-align: top;
+}
+table tr:last-child td{
+    border: none;
+}
+table tr td:nth-child(1){
+    width: 100px;
+    color:rgba(54, 54, 54, 0.75);
+}
+table tr td:nth-child(2){
+    color: rgba(19, 19, 19, 0.95);
+    font-weight: 700;
+}
+.edit-icon{
+    position: relative;
+    right: 25px;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+    top: 5px;
+    cursor: pointer;
+}
+.profile-img{
+    width: 107px;
+    height: 107px;
+    margin: 0 auto;
+}
+.profile-img img{
+    border-radius: 50%;
+    object-fit: cover;
+}

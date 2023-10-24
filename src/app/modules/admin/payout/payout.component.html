@@ -1,0 +1,42 @@
+<div class=" sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+  <!-- Title -->
+  <div class=" lg:flex items-center justify-between">
+     <div class="flex items-center">
+        <h2 class="page_header" >Payout</h2>
+     </div>
+  </div>
+  <div class="mt-5 bg-white p-5 lg:p-6 flex items-start ">
+     <div class="w-2/4 max-sm:w-full">
+        <form [formGroup]="createForm">
+           <div class="mb-2">
+              <mat-label class="font-medium text-lg mb-1 first-letter text-label-clr">Sender Mobile No
+                 <span class="text-red-500">*</span>
+              </mat-label>
+           </div>
+           <mat-form-field class="w-4/6 max-lg:w-full" subscriptSizing="fixed">
+              <input numbersonly formControlName="mobileNumber" matInput  placeholder="Sender Mobile No">
+              <div class=""
+                 *ngIf="form?.mobileNumber?.invalid&&(form?.mobileNumber?.touched)">
+                 <tooltip-stable *ngIf="form?.mobileNumber?.errors['required']&&!form?.mobileNumber?.errors['pattern']"
+                 [message]="'Please provide the mobile number!'"></tooltip-stable>
+                 <tooltip-stable *ngIf="!form?.mobileNumber?.errors['required']&&form?.mobileNumber?.errors['pattern']"
+                 [message]="'Please provide a valid mobile number!'"></tooltip-stable>
+              </div>
+           </mat-form-field>
+           <div class="mt-2">
+              <button  type="button" (click)="submitClick()"
+                 class="w-4/6 max-lg:w-full h-10 rounded-md text-white font-bold text-xl bg-themeclr hover:bg-themeclr_hover">Submit</button>
+           </div>
+           <div class="mt-5 flex w-2/4 max-lg:w-full payout_notify">
+              <mat-icon class="text-sm" svgIcon="mat_outline:info"></mat-icon>
+              <p class="font-normal text-sm pl-2">Please turn on notifications from settings for
+                 your transaction updates
+              </p>
+           </div>
+        </form>
+     </div>
+     <div class="w-2/4 max-sm:hidden">
+        <img class="w-2/5 m-auto" src="assets/images/money-trans.png" alt="">
+     </div>
+  </div>
+</div>

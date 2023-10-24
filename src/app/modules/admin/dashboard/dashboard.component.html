@@ -1,0 +1,251 @@
+<div class=" w-full ">
+
+  <!-- caroual section  -->
+  <div class="mt-7 relative">
+    <img src="assets/images/dashbrd-bnr.png" alt="">
+    
+    <!-- <owl-carousel-o class="dashboard_slider" [options]="customOptions">
+      <ng-template carouselSlide>
+        <img src="../../../../assets/images/dashbrd-bnr.png" alt="images">
+      </ng-template>
+      <ng-template carouselSlide>
+        <img src="../../../../assets/images/dashbrd-bnr.png" alt="images">
+      </ng-template>
+      <ng-template carouselSlide>
+        <img src="../../../../assets/images/dashbrd-bnr.png" alt="images">
+      </ng-template>
+    </owl-carousel-o> -->
+
+  </div>
+  <!-- overview section  -->
+  <div>
+    <div class="flex items-center mt-7 justify-between">
+      <h2 class="text-xl font-semibold mb-0"  >Overview</h2>
+      <div class="flex items-center">
+        <mat-label class="dashboard_label">Sort by :</mat-label>
+        <mat-select class=" slect_box" [formControl]="websiteControl">
+          <mat-option *ngFor="let overview of overviews" [value]="overview.value">
+            {{overview.viewValue}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="bg-white h-52 w-full mt-4 flex items-center rounded-xl">
+      <div class="ml-10 py-5 border-r border-gray-200 width-30">
+        <p class="text-text-themeclr text-2xl font-medium mb-2">Transaction</p>
+        <h2 class="text-3xl font-extrabold mb-4">₹ 2,78,900</h2>
+        <div class="flex items-center">
+          <div class="increase-chip">
+            <p class="mr-2">45%</p> 
+            <app-svg-icons menusvg="dash_1" ></app-svg-icons>
+          </div>
+          <mat-icon class="cursor-pointer" svgIcon="mat_outline:info"></mat-icon>
+        </div>
+      </div>
+      <div class="ml-10 py-5 border-r border-gray-200 width-30">
+        <p class="text-text-themeclr text-2xl font-medium mb-2">Earning</p>
+        <h2 class="text-3xl font-extrabold mb-4">₹ 2,50,000</h2>
+        <div class="flex items-center">
+          <div class="decrease-chip">
+            <p class="mr-2">25%</p> 
+            <app-svg-icons menusvg="dash_2" ></app-svg-icons>
+          
+          </div>
+          <mat-icon class="cursor-pointer" svgIcon="mat_outline:info"></mat-icon>
+        </div>
+      </div>
+      <div class="ml-10 py-5 width-30">
+        <p class="text-text-themeclr text-2xl font-medium mb-2">Cashin</p>
+        <h2 class="text-3xl font-extrabold mb-4">₹ 5,00,000</h2>
+        <div class="flex items-center">
+          <div class="increase-chip">
+            <p class="mr-2">65%</p> 
+            <app-svg-icons menusvg="dash_3" ></app-svg-icons>
+          
+          </div>
+          <mat-icon class="cursor-pointer" svgIcon="mat_outline:info"></mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Transaction Section -->
+<div>
+  <div class="mt-7">
+    <h2 class="text-xl font-semibold mb-0">Transactions</h2>
+  </div>
+  <div class="bg-white w-full mt-4 p-4 pt-1 rounded-xl relative">
+    <div class="flex items-center absolute right-5 top-4">
+      <div class="flex items-center mr-3">
+        <p class="font-medium text-lg">12-08-2023 <span class="text-text-themeclr">to</span> 25-08-2023</p>
+         <b class="text-themeclr font-extrabold px-1">(356)</b>
+      </div>
+      <div>
+      <mat-label class="dashboard_label">Sort by :</mat-label>
+      <mat-select class=" slect_box" [formControl]="websiteControl">
+        <mat-option *ngFor="let overview of overviews" [value]="overview.value">
+          {{overview.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+  
+    </div>
+    <mat-tab-group class="transaction-tab">
+      <mat-tab label="By Total Count (356)"> 
+        <div id="chart" class="flex">
+          <apx-chart class="w-full"
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [yaxis]="chartOptions.yaxis"
+            [xaxis]="chartOptions.xaxis"
+            [legend]="chartOptions.legend"
+            [colors]="chartOptions.colors"
+            [grid]="chartOptions.grid"
+          ></apx-chart>
+        </div>
+      </mat-tab>
+      <mat-tab label="By Amount (₹ 45,00,000)"> 
+        <div id="chart" class="flex">
+          <apx-chart class="w-full"
+            [series]="chartOptions3.series"
+            [chart]="chartOptions3.chart"
+            [dataLabels]="chartOptions3.dataLabels"
+            [plotOptions]="chartOptions3.plotOptions"
+            [yaxis]="chartOptions3.yaxis"
+            [xaxis]="chartOptions3.xaxis"
+            [legend]="chartOptions3.legend"
+            [colors]="chartOptions3.colors"
+            [grid]="chartOptions3.grid"
+          ></apx-chart>
+        </div>  
+      </mat-tab>
+    </mat-tab-group>
+
+   
+  </div>
+</div>
+
+<!-- Earnings Section -->
+<div>
+  <div class="mt-7">
+    <h2 class="text-xl font-semibold mb-0">Earnings</h2>
+  </div>
+  <div class="bg-white w-full mt-4 p-4 pt-1 rounded-xl relative">
+    <div class="flex items-center absolute right-5 top-4">
+      <div class="flex items-center mr-3">
+        <p class="font-medium text-lg">12-08-2023</p>
+         <b class="text-themeclr font-extrabold px-1">(2000)</b>
+      </div>
+      <div>
+      <mat-label class="dashboard_label">Sort by :</mat-label>
+      <mat-select class=" slect_box" [formControl]="websiteControl">
+        <mat-option *ngFor="let overview of overviews"  [value]="overview.value">
+          {{overview.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+    </div>
+    <mat-tab-group class="earning-tab">
+      <mat-tab label="Overall"> 
+        <div id="chart" class="flex">
+          <apx-chart class="w-full" [series]= "chartOptions1.series" [chart]="chartOptions1.chart" [xaxis]="chartOptions1.xaxis"
+          [stroke]="chartOptions1.stroke" [tooltip]="chartOptions1.tooltip"
+          [dataLabels]="chartOptions1.dataLabels" [colors]="chartOptions1.colors" [yaxis]="chartOptions1.yaxis"
+          [grid]="chartOptions1.grid" [legend]="chartOptions1.legend"></apx-chart>
+       </div>
+      </mat-tab>
+      <mat-tab label="Today"> 
+      <div id="chart" class="flex">
+          <apx-chart class="w-full" [series]="chartOptions4.series" [chart]="chartOptions4.chart" [xaxis]="chartOptions4.xaxis"
+          [stroke]="chartOptions4.stroke" [tooltip]="chartOptions4.tooltip"
+          [dataLabels]="chartOptions4.dataLabels" [colors]="chartOptions4.colors" [yaxis]="chartOptions4.yaxis"
+          [grid]="chartOptions4.grid" [legend]="chartOptions4.legend"></apx-chart>
+       </div>  
+      </mat-tab>
+      <mat-tab label="Last Day"> 
+      <div id="chart" class="flex">
+          <apx-chart class="w-full" [series]="chartOptions5.series" [chart]="chartOptions5.chart" [xaxis]="chartOptions5.xaxis"
+          [stroke]="chartOptions5.stroke" [tooltip]="chartOptions5.tooltip"
+          [dataLabels]="chartOptions5.dataLabels" [colors]="chartOptions5.colors" [yaxis]="chartOptions5.yaxis"
+          [grid]="chartOptions5.grid" [legend]="chartOptions5.legend"></apx-chart>
+       </div>  
+      </mat-tab>
+      <mat-tab label="Last Week"> 
+      <div id="chart" class="flex">
+          <apx-chart class="w-full" [series]="chartOptions6.series" [chart]="chartOptions6.chart" [xaxis]="chartOptions6.xaxis"
+          [stroke]="chartOptions6.stroke" [tooltip]="chartOptions6.tooltip"
+          [dataLabels]="chartOptions6.dataLabels" [colors]="chartOptions6.colors" [yaxis]="chartOptions6.yaxis"
+          [grid]="chartOptions6.grid" [legend]="chartOptions6.legend"></apx-chart>
+       </div>  
+      </mat-tab>
+      <mat-tab label="Last Month"> 
+      <div id="chart" class="flex">
+          <apx-chart class="w-full" [series]="chartOptions7.series" [chart]="chartOptions7.chart" [xaxis]="chartOptions7.xaxis"
+          [stroke]="chartOptions7.stroke" [tooltip]="chartOptions7.tooltip"
+          [dataLabels]="chartOptions7.dataLabels" [colors]="chartOptions7.colors" [yaxis]="chartOptions7.yaxis"
+          [grid]="chartOptions7.grid" [legend]="chartOptions7.legend"></apx-chart>
+       </div>  
+      </mat-tab>
+    </mat-tab-group>
+
+   
+  </div>
+</div>
+
+<!-- Cashin Section -->
+<div>
+  <div class="mt-7">
+    <h2 class="text-xl font-semibold mb-0">Cashin</h2>
+  </div>
+  <div class="bg-white w-full mt-4 p-4 pt-1 rounded-xl relative">
+    <div class="flex items-center absolute right-5 top-4">
+      <div class="flex items-center mr-3">
+        <p class="font-medium text-lg">12-08-2023 <span class="text-text-themeclr">to</span> 25-08-2023</p>
+        <b class="text-themeclr font-extrabold px-1">(56,000)</b>
+      </div>
+      <div>
+      <mat-label class="dashboard_label">Sort by :</mat-label>
+      <mat-select class=" slect_box" [formControl]="websiteControl">
+        <mat-option *ngFor="let overview of overviews" [value]="overview.value">
+          {{overview.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+    </div>
+
+    <div class="flex">
+      <div class="mt-5 width-20">
+      <div class="flex items-center justify-between p-3 popup-bg mb-3 rounded-lg cursor-pointer">
+        <p style="color: #EE6A2D;">Overview</p>
+        <mat-icon style="color: #EE6A2D;" svgIcon="mat_outline:keyboard_arrow_right"></mat-icon>
+      </div>
+      <div class="flex items-center justify-between p-3 popup-bg mb-3 rounded-lg cursor-pointer">
+        <p>Today</p>
+        <mat-icon svgIcon="mat_outline:keyboard_arrow_right"></mat-icon>
+      </div>
+      <div class="flex items-center justify-between p-3 popup-bg mb-3 rounded-lg cursor-pointer">
+        <p>Last Day</p>
+        <mat-icon svgIcon="mat_outline:keyboard_arrow_right"></mat-icon>
+      </div>
+      <div class="flex items-center justify-between p-3 popup-bg mb-3 rounded-lg cursor-pointer">
+        <p>Last Week</p>
+        <mat-icon svgIcon="mat_outline:keyboard_arrow_right"></mat-icon>
+      </div>
+      <div class="flex items-center justify-between p-3 popup-bg mb-3 rounded-lg cursor-pointer">
+        <p>Last Month</p>
+        <mat-icon svgIcon="mat_outline:keyboard_arrow_right"></mat-icon>
+      </div>
+    </div>
+      <div class="popup-bg cashin-chart">
+        <div id="chart" class="color_green">
+          <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart"
+          [plotOptions]="chartOptions2.plotOptions" [labels]="chartOptions2.labels"
+          [fill]="chartOptions2.fill"  [tooltip]="chartOptions2.tooltip"></apx-chart>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,20 @@
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+  <h2 class="font-bold text-xl">Please Update Your T-PIN</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 remitter_payout_style">
+  <form>
+     <div class="mb-2">
+        <mat-label class="font-medium text-lg mb-0 ">New PIN <span class="text-red-600">*</span> </mat-label>
+     </div>
+     <ng-otp-input class="input_otp" [config]="{length:6}"></ng-otp-input>
+     <div class="mb-2 mt-4">
+        <mat-label class="font-medium text-lg mb-0">Confirm PIN <span class="text-red-600">*</span> </mat-label>
+     </div>
+     <ng-otp-input class="input_otp" [config]="{length:6}"></ng-otp-input>
+  </form>
+  <div class="mt-2">
+     <button routerLink="/payout/payout-beneficiary-manage" (click)="closeDialog()" class="w-full h-10 rounded-md text-white font-bold text-xl
+        bg-themeclr hover:bg-themeclr_hover">Submit</button>
+  </div>
+</div>

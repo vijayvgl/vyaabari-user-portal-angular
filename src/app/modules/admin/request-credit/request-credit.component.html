@@ -1,0 +1,115 @@
+<div class=" sm:inset-0 w-full mb-12">
+   <!-- Title -->
+   <div class=" lg:flex items-center justify-between mt-5">
+      <div class="flex items-center">
+         <h2 class="page_header mt-0" >Request Credit</h2>
+      </div>
+      <div class="search-box report_w_add report_search_box  mx-1.5 my-1">
+         <search-icon></search-icon>
+         <input type="text" id="myInput" placeholder="Search by Transaction Id">
+      </div>
+      </div>
+
+
+   <mat-tab-group class="mt-5" (selectedTabChange)="onTabChanged($event)">
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <app-svg-icons menusvg="request_credit" ></app-svg-icons>
+          
+            Approve Request
+         </ng-template>
+         <div class="mt-2 flex">
+            <div class="w-2/4 max-sm:w-full">
+               <form>
+               <h1 class="font-medium text-lg mb-1 text-label-clr">
+                  Select date <span class="text-red-600">*</span>
+               </h1>
+               <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+                  <mat-date-range-input [rangePicker]="picker">
+                     <input matStartDate placeholder="From Date">
+                     <input matEndDate placeholder="To Date">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+               </mat-form-field>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 text-label-clr">Select Status <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="w-4/6 requset_single_select" [error_message]="'Please choose the status'" [required]="true"
+               [placeholder]="'Select Status'" [searchPlaceHolder]="'Search Status'" [options]="status"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 text-label-clr">Select Bank <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="w-full" [error_message]="'Please choose the bank'" [required]="true"
+               [placeholder]="'Select Bank'" [searchPlaceHolder]="'Search'" [options]="Banks"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0 text-label-clr">
+                  Upload Document</mat-label>
+               </div>
+               <div class="mb-7">
+                <div class="w-4/6 p-4 rounded-md border border-gray-300 cursor-pointer" (click)="file.click()">
+                  <div class="flex items-center">
+                  <img class="w-7" src="assets/images/File-upload.png" alt="">
+                  <div class="ml-4">
+                    <p class="text-lg font-medium text-gray-500">Upload Document</p>
+                    <span class="text-sm font-normal text-gray-500">Use a pdf, docx, doc, rtf & txt</span>
+                  </div>
+                </div>
+                </div>
+                <input class="hidden" id="fileUploader" type="file"
+                accept="image/*" #file>
+               </div>
+
+               <div class="mt-2">
+                  <button
+                     class="w-4/6 max-md:w-5/6 max-sm:w-full h-10 rounded-md text-white font-bold text-xl bg-themeclr hover:bg-themeclr_hover"
+                     >Submit</button>
+               </div>
+            </form>
+            </div>
+            <div class="text-center bg-popup-bg br-1 p-14 w-2/4 h-110 max-sm:hidden">
+               <img class="lg:w-2/5 sm:w-2/3 mb-6 blcok m-auto" src="assets/images/history.png" alt="image">
+               <span class="text-base text-themeclr font-normal">No Result Found</span>
+            </div>
+         </div>
+      </mat-tab>
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <app-svg-icons menusvg="request_credit_2" ></app-svg-icons>
+          
+            Request Credits
+         </ng-template>
+         <div class="mt-2 flex">
+            <div class="w-2/4 max-sm:w-full">
+               <h1 class="font-medium text-lg mb-1">
+                  Select date <span class="text-red-600">*</span>
+               </h1>
+               <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+                  <input placeholder="Select date" matInput  [matDatepicker]="picker1">
+                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+               </mat-form-field>
+               <div class="mb-2">
+                  <mat-label class="font-medium text-lg mb-0">Select Status <span class="text-red-600">*</span> </mat-label>
+               </div>
+               <single-static-stable class="w-4/6 requset_single_select" [error_message]="'Please choose the status'" [required]="true"
+               [placeholder]="'Select Status'" [searchPlaceHolder]="'Search Status'" [options]="status"
+               [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+               
+               <div class="mt-2">
+                  <button
+                     class="w-4/6 max-md:w-5/6 max-sm:w-full h-10 rounded-md text-white font-bold text-xl bg-themeclr hover:bg-themeclr_hover"
+                     >Submit</button>
+               </div>
+            </div>
+            <div class="text-center bg-popup-bg br-1 p-14 w-2/4 h-110 max-sm:hidden">
+               <img class="lg:w-2/5 sm:w-2/3  mb-6 blcok m-auto" src="assets/images/history.png" alt="image">
+               <span class="text-base text-themeclr font-normal">No Result Found</span>
+            </div>
+         </div>
+      </mat-tab>
+   </mat-tab-group>
+</div>

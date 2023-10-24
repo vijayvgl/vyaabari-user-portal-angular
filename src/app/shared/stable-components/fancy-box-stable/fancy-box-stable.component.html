@@ -1,0 +1,10 @@
+<p style="display: none;">
+    <ng-container *ngFor="let data of images;let i =index;">
+        <div class="">
+            <a id='fancy123' data-fancybox="gallery" [href]="data">
+                <img [src]="data" width="200" height="150" />
+            </a>
+        </div>
+    </ng-container>
+</p>
+

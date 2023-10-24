@@ -1,0 +1,112 @@
+<div class="flex items-center justify-between px-7 pt-7 pb-6" style="background-color: #F8F9FD;">
+    <h2 class="font-bold text-2xl" style="color: #363636;">Shop Address</h2>
+     <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+  </div>
+  <div class="p-7 pt-0" style="border-top: 2px solid #C8C8C840;">
+  
+    <div class="shop-address">
+      <form *ngIf="!viewAddress">
+        <div class="flex flex-wrap mt-5 ">
+          <div class="field-size m-right-7">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                  Name <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="text" id="matClrChange" matInput  placeholder="Name" />
+            </mat-form-field> 
+          </div>
+          <div class="field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                Email Id <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="email" matInput  placeholder="Email Id" />
+            </mat-form-field>
+          </div>
+          <div class="field-size m-right-7">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                  Mobile No <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="number" matInput  placeholder="Mobile No" />
+            </mat-form-field> 
+          </div>
+          <div class="field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                Alter Mobile No <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="number" matInput  placeholder="Alter Mobile No" />
+            </mat-form-field>
+          </div>
+          <div class="field-size m-right-7">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                  Street Address <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="text" matInput  placeholder="Street Address" />
+            </mat-form-field> 
+          </div>
+          <div class="field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                Landmark<span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+               <input type="text" matInput  placeholder="Landmark" />
+            </mat-form-field>
+          </div>
+          <div class="field-size m-right-7">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                  State <span class="text-red-600">*</span></mat-label>
+            </div>
+            <single-static-stable class="" [error_message]="'Please choose the state'" [required]="true"
+            [placeholder]="'Select State'" [searchPlaceHolder]="'Search'" [options]="states"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+          </div>
+          <div class="field-size">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                  City <span class="text-red-600">*</span></mat-label>
+            </div>
+            <single-static-stable class="" [error_message]="'Please choose the city'" [required]="true"
+            [placeholder]="'Select City'" [searchPlaceHolder]="'Search'" [options]="city"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+          </div>
+          <div class="field-size m-right-7">
+            <div class="mb-1">
+               <mat-label class="font-medium text-lg mb-0  text-text-themeclr">
+                  Pincode <span class="text-red-600">*</span></mat-label>
+            </div>
+            <mat-form-field class="w-full" subscriptSizing="fixed">
+                <input type="text" matInput  placeholder="Pincode" />
+            </mat-form-field>
+          </div>
+        </div>
+           <div class="flex">
+         <button class="w-1/4 h-10 mr-6 rounded-md text-white font-bold text-xl
+            bg-themeclr hover:bg-themeclr_hover" (click)="view()">Update</button>
+           
+       </div>
+      </form>
+      <div class="view-address" *ngIf="viewAddress">
+        <h2 class="lg:text-xl text-lg font-bold mt-5 mb-2">Rohit</h2>
+        <h3 class="font-medium text-lg text-text-themeclr mb-2">9874563210</h3>
+        <h3 class="font-medium text-lg text-text-themeclr mb-2">rohit@gmail.com</h3>
+        <h3 class="font-medium text-lg text-text-themeclr mb-2">299, Rakot street, Rajapalayam Near Vetri theatre, Viruthunagar,</h3>
+        <h3 class="font-medium text-lg text-text-themeclr mb-2">Tamilnadu - 625012</h3>
+        <div class="flex justify-end">
+          <button class="w-1/4 h-10 mr-6 rounded-md text-white font-bold text-xl
+             bg-themeclr hover:bg-themeclr_hover" (click)="update()">Change</button>
+            
+        </div>
+      </div> 
+    </div>
+   
+  </div>

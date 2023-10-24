@@ -1,0 +1,52 @@
+<div >
+    <div class=" px-7 pt-5 flex items-center justify-between text-end">
+      <h4 class="font-bold text-xl" style="color:  #131313; opacity: 85%;">Transaction Link </h4>
+       <!-- <h2 class="font-bold text-xl">Mantra RD Service</h2> -->
+       <mat-icon  class="cursor-pointer flex-2 text-end" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+    </div>
+    <div class="p-5">
+        <div class="py-6 px-5 bg-primary-50 overflow-x-scroll">
+            <h1 class="text-black opacity-70 underline text-base font-medium"> <a href=" https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Bharat_BillPay_logo.svg/1200px-Bharat_BillPay_logo.svg.png"> https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Bharat_BillPay_logo.svg/1200px-Bharat_BillPay_logo.svg.png</a></h1>
+
+        </div>
+        
+    
+    </div>
+    <div class=" px-7 pb-4  text-end ">
+       <div class="flex items-center justify-end gap-3 ">
+        <button  class=" flex items-center justify-center trans_detauils" 
+        matTooltip="Copy"
+           >
+           <mat-icon class="text-black " svgIcon="mat_outline:content_copy"></mat-icon>
+        </button>
+          <button mat-button [matMenuTriggerFor]="menu"  class="flex items-center justify-center  trans_detauils" 
+          matTooltip="Share"
+             >
+             <app-svg-icons menusvg="share" ></app-svg-icons>
+            
+          </button>
+          <mat-menu #menu="matMenu">
+             <button mat-menu-item    >
+                <p class="text-lg font-medium text-black">
+                  <span class="inline-block">
+                     <app-svg-icons menusvg="whatsapp" ></app-svg-icons>
+                   </span>
+                   Share on whatsapp
+                </p>
+             </button>
+             <button mat-menu-item >
+                <p class="text-lg font-medium text-black">
+                   <span class="inline-block">
+                     <app-svg-icons menusvg="mail" ></app-svg-icons>
+                   </span>
+                   Share on mail
+                </p>
+             </button>
+          </mat-menu>
+         
+         
+       </div>
+    </div>
+    
+ </div>
+

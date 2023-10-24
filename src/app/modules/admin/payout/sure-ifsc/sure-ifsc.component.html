@@ -1,0 +1,16 @@
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+  <h2 class="font-bold text-xl">Do you know IFSC code?</h2>
+  <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 ifsc_bg">
+  <div class="mt-2 text-center">
+     <button class="w-20 h-10 rounded-md text-white font-bold text-xl
+        bg-themeclr hover:bg-themeclr_hover">Yes</button>
+     <button (click)="findIfsc()"
+        class="w-20 h-10 rounded-md border-2 ml-3
+        border-slate-300 text-text-themeclr font-bold text-xl
+        hover:bg-themeclr hover:text-white hover:border-themeclr">
+     No
+     </button>
+  </div>
+</div>

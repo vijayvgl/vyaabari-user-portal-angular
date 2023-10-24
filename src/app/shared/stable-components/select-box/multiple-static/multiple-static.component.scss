@@ -1,0 +1,118 @@
+.search-inp {
+    height: 43px;
+    transition: height ease-in-out 400ms;
+  
+  }
+  
+  
+  
+  input::placeholder {
+    font-weight: 400;
+    opacity: .8;
+    padding-left: 10px;
+    font-size: 14px !important;
+  }
+  
+  
+  .filter-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    padding-left: 5px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 10px;
+    /* border-radius: 10px; */
+    border-bottom: 2px solid rgb(92, 92, 92);
+  
+  }
+  
+  
+  
+  
+  .mat-filter {
+    border-bottom: 1px solid grey;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 16px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .mat-filter-input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: unset;
+    border: 0;
+    color: rgb(11, 11, 11);
+    outline: none;
+    width: 100%;
+    /* margin-left: 10px; */
+    position: relative;
+    padding-left: 12px;
+    top: 0px;
+    left: 0px !important;
+    
+  }
+  
+  .clear_icon{
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  
+  /* 
+      .mat-filter-input::placeholder{
+        padding-left: 20px;
+      } */
+  
+  /************** Custom Select ********/
+  .mycustom-select .mat-form-field-infix {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .d-flex-im {
+    display: flex !important;
+  }
+  
+  .my-custom-chip mat-icon {
+    cursor: pointer;
+    padding-left: 3px;
+  }
+  
+  
+  #custom-search-input {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffff;
+  }
+  
+  .multiselect-filter {
+    position: sticky;
+    top: -7px;
+    z-index: 100;
+    background: #ffff;
+  }
+  .select-placeholder-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+      width: 327px;
+      margin-top: 12px;
+  }
+  
+  .select-placeholder-container > span {
+    flex: 1;
+  }
+  
+  .hide-dummy-option {
+    display: none !important;
+  }

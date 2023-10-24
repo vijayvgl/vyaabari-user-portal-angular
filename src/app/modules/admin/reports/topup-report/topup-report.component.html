@@ -1,0 +1,106 @@
+<div class="sm:inset-0  w-full  min-w-0 mb-12">
+
+   <div class="  flex items-baseline justify-between">
+      <div class="page_header">Retailer Topup Report<b class="ml-0.5 report_count_clr">(04)</b></div>
+      <button  type="button" class="text-themeclr report_export_btn sm:px-5 sm:py-2 rounded-lg sm:text-lg max-sm:mt-2 font-bold bg-transparent border-2 border-themeclr hover:text-white hover:bg-themeclr_hover" >Export</button>
+   </div>
+
+   <form class="bg-white   px-5 py-6 mt-5">
+      <div class="xs:w-full leder_select pt-1 flex flex-wrap items-center sm_justify_center  lg:w-full">
+         <div class="mb-1 mx-3">
+            <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+               Date <span class="text-red-600">*</span>
+            </h1>
+            <mat-form-field class="example-form-field w-4/6 max-md:w-5/6 max-sm:w-full">
+               <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+               </mat-date-range-input>
+               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+         </div>
+         <div class="mb-1 mx-3">
+            <h1 class="font-medium text-lg mb-1.5 text-black opacity-90">
+               Transaction Id <span class="text-red-600">*</span>
+            </h1>
+            <single-static-stable class="w-2/3 report_single_select" [error_message]="'Please choose the type'" [required]="true"
+            [placeholder]="'Select Id'" [searchPlaceHolder]="'Search Id'" [options]="id"
+            [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+         </div>
+         <div class="mx-3 mb-0">
+            <button (click)="toggle()"
+               class="history_btn h-12 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+            Filter
+            </button>
+         </div>
+      </div>
+      <div [ngClass]="toggleStyle ? 'hide':''" class="inner-table mt-4 report_table table_container px-2 py-0 w-full overflow-x-scroll" >
+         <table mat-table [dataSource]="dataSource" matSort class="">
+            <!--  Link Created Date Column -->
+            <ng-container matColumnDef="create_date">
+               <th mat-header-cell *matHeaderCellDef class=""> Link Created Date </th>
+               <td mat-cell class="whitespace-nowrap"  *matCellDef="let element">{{element.create_date}}</td>
+            </ng-container>
+            <!--  Link Updated Date Column -->
+            <ng-container matColumnDef="update_date">
+               <th mat-header-cell *matHeaderCellDef class="">Link Updated Date </th>
+               <td mat-cell  *matCellDef="let element"> {{element.update_date}} </td>
+            </ng-container>
+            <!--  T.ID Column -->
+            <ng-container matColumnDef="transaction_id">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=> Txn ID</th>
+               <td mat-cell *matCellDef="let element" class="whitespace-nowrap" > {{element.transaction_id}} </td>
+            </ng-container>
+            <!--  Retailer Mobile Number Column -->
+            <ng-container matColumnDef="number">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header class=""> Retailer Mobile No </th>
+               <td mat-cell *matCellDef="let element" class="whitespace-nowrap"> {{element.number}} </td>
+            </ng-container>
+            <!--  Retailer Name Column -->
+            <ng-container matColumnDef="name">
+               <th mat-header-cell *matHeaderCellDef class=""> Retailer Name </th>
+               <td mat-cell  *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <!--  PG Receipt Link Column -->
+            <ng-container matColumnDef="receipt_link">
+               <th mat-header-cell *matHeaderCellDef class=""> PG Receipt Link </th>
+               <td mat-cell  *matCellDef="let element"> <a  (click)=" openDialog()" class="report_link_tag report_link_tag cursor-pointer" >{{element.receipt_link}}</a> </td>
+            </ng-container>
+            <!--  PG Created Link Column -->
+            <ng-container matColumnDef="create_link">
+               <th mat-header-cell *matHeaderCellDef class=""> PG Created Link </th>
+               <td mat-cell class="whitespace-nowrap" *matCellDef="let element"> <a  (click)=" openDialog()" class="report_link_tag report_link_tag cursor-pointer" >{{element.create_link}}</a> </td>
+            </ng-container>
+            <!-- Amount Column -->
+            <ng-container matColumnDef="amount">
+               <th mat-header-cell *matHeaderCellDef class=""> Amount<span class="ml-0.5">(₹)</span> </th>
+               <td mat-cell  class="text-right" *matCellDef="let element"> {{element.amount}} </td>
+            </ng-container>
+            <!-- Service Charge  Column -->
+            <ng-container matColumnDef="charge">
+               <th mat-header-cell *matHeaderCellDef class=""> Service Charge<span class="ml-0.5">(₹)</span> </th>
+               <td mat-cell class="text-right" *matCellDef="let element"> {{element.charge}} </td>
+            </ng-container>
+            <!-- Utr Number Column -->
+            <ng-container matColumnDef="utr_number">
+               <th mat-header-cell *matHeaderCellDef class=""> Utr No  </th>
+               <td mat-cell *matCellDef="let element"> {{element.utr_number}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         </table>
+      </div>
+      <span [ngClass]="toggleStyle ? 'hide':''" class="scoll_add block_history">Drag to explore more column.</span>
+      <mat-paginator [ngClass]="toggleStyle ? 'hide':''" style-paginator showFirstLastButtons
+      [showTotalPages]="2"
+      [length]="4"
+      [pageSize]="1"
+      [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      <div [ngClass]="toggleStyle ? 'show':''"  class="p-14 mt-4 report_no_data_found  w-full h-110  text-center">
+         <img class="w-56 block m-auto mb-8" src="assets/images/history.png" alt="image" />
+         <span   class="text-base no_records_found  font-normal">No Record Found</span>
+      </div>
+   </form>
+</div>

@@ -1,0 +1,33 @@
+
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+    <h2 class="font-bold text-xl">Do You Know IFSC Code?</h2>
+    <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7" style="background-color: #F8F9FD; border-top: 2px solid #C8C8C840;">
+
+    <div>
+        <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+               IFSC Code <span class="text-red-600">*</span></mat-label>
+               <mat-form-field class="w-full" subscriptSizing="fixed">
+                <input type="number" matInput  placeholder="IFSC Code" />
+             </mat-form-field>
+         </div>
+
+
+
+        <div class="mt-2 text-center">
+            <button class="w-20 h-10 rounded-md text-white font-bold text-xl
+             bg-themeclr hover:bg-themeclr_hover" (click)="closeDialog()">Confirm</button>
+             <button 
+             class="w-20 h-10 rounded-md border-2 ml-3
+              border-slate-300 text-text-themeclr font-bold text-xl
+               hover:bg-themeclr hover:text-white hover:border-themeclr"  (click)="closeDialog()">
+          Cancel
+          </button>
+          </div>
+    </div>
+ 
+      
+     
+</div>

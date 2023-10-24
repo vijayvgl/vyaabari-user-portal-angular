@@ -1,0 +1,66 @@
+<div class="flex items-center justify-between mb-4 px-7 pt-5">
+   <h2 class="font-bold text-xl">Remitter Details</h2>
+   <mat-icon class="cursor-pointer" (click)="closeDialog()" svgIcon="mat_outline:close"></mat-icon>
+</div>
+<div class="p-7 max-height-auto remitter_payout_style">
+   <div class="flex flex-wrap">
+      <div class="field-size m-right-7">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0">
+               Name <span class="text-red-600">*</span>
+            </mat-label>
+         </div>
+         <mat-form-field class="w-full" subscriptSizing="fixed">
+            <input type="text" matInput  placeholder="Name" />
+         </mat-form-field>
+      </div>
+      <div class="field-size">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 ">
+               Mobile No <span class="text-red-600">*</span>
+            </mat-label>
+         </div>
+         <mat-form-field class="w-full" subscriptSizing="fixed">
+            <input type="number" matInput  placeholder="Mobile No" />
+         </mat-form-field>
+      </div>
+      <div class="m-right-7 field-size">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 ">
+               Pincode <span class="text-red-600">*</span>
+            </mat-label>
+         </div>
+         <mat-form-field class="w-full" subscriptSizing="fixed">
+            <input type="number" matInput  placeholder="Pincode" />
+         </mat-form-field>
+      </div>
+      <div class="field-size">
+         <h1 class="font-medium text-lg mb-1 ">
+            State <span class="text-red-600">*</span>
+         </h1>
+         <single-static-stable class="w-full" [error_message]="'Please choose the bank type'" [required]="true"
+         [placeholder]="'Select State'" [searchPlaceHolder]="'Search'" [options]="states"
+         [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+      </div>
+      <div class="m-right-7 field-size">
+         <div class="mb-1">
+            <mat-label class="font-medium text-lg mb-0 ">
+               Address <span class="text-red-600">*</span>
+            </mat-label>
+         </div>
+         <mat-form-field class="w-full" subscriptSizing="fixed">
+            <textarea type="number" matInput  placeholder="Address"></textarea>
+         </mat-form-field>
+      </div>
+   </div>
+   <div class="mt-10 flex">
+      <button (click)="verifyOTP()" class="w-1/4 h-10 mr-6 rounded-md text-white font-bold text-xl
+         bg-themeclr hover:bg-themeclr_hover">Submit</button>
+      <button
+         class="w-1/4 h-10 rounded-md border-2
+         border-slate-300 text-themeclr font-bold text-xl
+         hover:bg-themeclr hover:text-white hover:border-themeclr">
+      Cancel
+      </button>
+   </div>
+</div>

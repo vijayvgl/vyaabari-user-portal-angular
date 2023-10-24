@@ -1,0 +1,401 @@
+<div class=" sm:inset-0 flex flex-col flex-auto min-w-0 mb-12">
+
+  <div class="mt-5 ml-1 lg:flex items-center justify-between">
+    <div class="flex items-center">
+       <h2 class="heading_common_style py-0 " >New Registration</h2>
+    </div>
+    </div>
+  <div class="pt-0 mt-5">
+    <mat-stepper id="stepper_class" labelPosition="bottom" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Personal Details</ng-template>
+            <div class="flex">
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Customer Name
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                    <input type="text" matInput  placeholder="Customer Name">
+                  </mat-form-field>
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">Mobile No
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                      <input type="number" matInput  placeholder="Mobile No">
+                    </mat-form-field>
+                  </div>
+                  <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">Email ID
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                      <input type="email" matInput  placeholder="Email ID">
+                    </mat-form-field>
+                  </div>
+                  <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">Date of Birth
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" >
+                        <input matInput  [matDatepicker]="picker" placeholder="Date of Birth">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field> 
+                  </div>
+        
+            </div>
+            <div class="flex">
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Gender
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <div class="w-full widthdraw_select">
+                    <single-static-stable [required]="false" 
+                    [placeholder]="'Select Gender'" [searchPlaceHolder]="'Search'" [options]="gender"
+                    [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                  </div>
+                  
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">State
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <div class="w-full widthdraw_select">
+                        <single-static-stable [required]="false"
+                        [placeholder]="'Select State'" [searchPlaceHolder]="'Search'" [options]="state"
+                        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                    </div>
+                  
+                  </div>
+                  <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">City
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <div class="w-full widthdraw_select">
+                        <single-static-stable [required]="false"
+                        [placeholder]="'Select City'" [searchPlaceHolder]="'Search'" [options]="city"
+                        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                    </div>
+                    
+                  </div>
+                  <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">Pincode
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                      <input type="text" matInput  placeholder="Pincode">
+                    </mat-form-field>
+                  </div>
+             
+                
+        
+            </div>
+            <div class="d-flex">
+              <div class="w-1/2 max-sm:w-full pr-4">
+                <div class="mb-2">
+                  <mat-label class="font-medium text-base text-label-clr">Address
+                    <span class="text-red-500">*</span>
+                  </mat-label>
+                </div>
+                <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                  <textarea matInput  placeholder="Type your address"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <mat-divider class="mt-5"></mat-divider>
+            <h1 class="text-xl mt-5">Account Details</h1>
+            <div class="flex mt-4">
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Account No
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                    <input type="text" matInput  placeholder="Account No">
+                  </mat-form-field>
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">IFSC Code
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                      <input type="number" matInput  placeholder="Mobile No">
+                    </mat-form-field>
+                  </div>
+                  <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">Bank Name
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <div class="w-full widthdraw_select">
+                        <single-static-stable [required]="false"
+                        [placeholder]="'Select Bank'" [searchPlaceHolder]="'Search'" [options]="bank"
+                        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                    </div>
+                    
+                  </div>
+                  <div class="w-1/4 max-sm:w-full pr-4">
+                    <div class="mb-2">
+                      <mat-label class="font-medium text-base text-label-clr">Branch Name
+                        <span class="text-red-500">*</span>
+                      </mat-label>
+                    </div>
+                    <div class="w-full widthdraw_select">
+                        <single-static-stable [required]="false"
+                        [placeholder]="'Select Branch'" [searchPlaceHolder]="'Search'" [options]="branch"
+                        [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                    </div>
+                    
+                  </div>
+                  </div>     
+                  <mat-divider class="mt-5"></mat-divider>
+                  <h1 class="text-xl mt-5">Gold Details</h1>
+                  <div class="flex mt-4">
+                      <div class="w-1/4 max-sm:w-full pr-4">
+                        <div class="mb-2">
+                          <mat-label class="font-medium text-base text-label-clr">No.of Quantity
+                            <span class="text-red-500">*</span>
+                          </mat-label>
+                        </div>
+                        <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                          <input type="number" class="text-right amount" matInput  placeholder="No of Quantity">
+                          <span matSuffix>g</span>
+                        </mat-form-field>
+                      </div>
+                      <div class="w-1/4 max-sm:w-full pr-4">
+                          <div class="mb-2">
+                            <mat-label class="font-medium text-base text-label-clr">Amount(₹)
+                              <span class="text-red-500">*</span>
+                            </mat-label>
+                          </div>
+                          <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                            <input type="number" class="text-right amount" matInput  placeholder="0.00">
+                          </mat-form-field>
+                        </div>
+                       
+                        </div> 
+           
+            <div class="my-5 flex">
+                <button matStepperNext class="w-28 max-sm:w-1/2 text-white px-5 py-2 rounded-lg text-lg
+                 max-sm:mt-2 font-bold bg-themeclr hover:bg-themeclr_hover">Next</button>
+                
+              </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Nominee/Guardian Details</ng-template>
+            <div class="flex">
+              <div class="w-1/4 max-sm:w-full pr-4">
+                <div class="mb-2">
+                  <mat-label class="font-medium text-base text-label-clr">Nominee/Guardian Name
+                    <span class="text-red-500">*</span>
+                  </mat-label>
+                </div>
+                <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                  <input type="text" matInput  placeholder="Customer Name">
+                </mat-form-field>
+              </div>
+              <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Mobile No
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                    <input type="number" matInput  placeholder="Mobile No">
+                  </mat-form-field>
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Email ID
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                    <input type="email" matInput  placeholder="Email ID">
+                  </mat-form-field>
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Date of Birth
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" >
+                    <input matInput  [matDatepicker]="picker" placeholder="Date of Birth">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+      
+          </div>
+          <div class="flex">
+              <div class="w-1/4 max-sm:w-full pr-4">
+                <div class="mb-2">
+                  <mat-label class="font-medium text-base text-label-clr">Gender
+                    <span class="text-red-500">*</span>
+                  </mat-label>
+                </div>
+                <div class="w-full widthdraw_select">
+                  <single-static-stable [required]="false" 
+                  [placeholder]="'Select Gender'" [searchPlaceHolder]="'Search'" [options]="gender"
+                  [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                </div>
+                
+              </div>
+              <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">State
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <div class="w-full widthdraw_select">
+                      <single-static-stable [required]="false"
+                      [placeholder]="'Select State'" [searchPlaceHolder]="'Search'" [options]="state"
+                      [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                  </div>
+                
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">City
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <div class="w-full widthdraw_select">
+                      <single-static-stable [required]="false"
+                      [placeholder]="'Select City'" [searchPlaceHolder]="'Search'" [options]="city"
+                      [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                  </div>
+                  
+                </div>
+                <div class="w-1/4 max-sm:w-full pr-4">
+                  <div class="mb-2">
+                    <mat-label class="font-medium text-base text-label-clr">Pincode
+                      <span class="text-red-500">*</span>
+                    </mat-label>
+                  </div>
+                  <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                    <input type="text" matInput  placeholder="Pincode">
+                  </mat-form-field>
+                </div>
+           
+              
+      
+          </div>
+          <div class="d-flex">
+            <div class="w-1/2 max-sm:w-full pr-4">
+              <div class="mb-2">
+                <mat-label class="font-medium text-base text-label-clr">Address
+                  <span class="text-red-500">*</span>
+                </mat-label>
+              </div>
+              <mat-form-field class="w-full max-md:w-5/6 max-sm:w-full" subscriptSizing="fixed">
+                <textarea matInput  placeholder="Type your address"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+      
+            <div class="my-5 flex">
+                <button matStepperNext class="w-28 max-sm:w-1/2 text-white px-5 py-1 rounded-lg text-lg
+                max-sm:mt-2 font-bold bg-themeclr hover:bg-themeclr_hover">Next</button>
+                   <button matStepperPrevious
+                   class="w-28 max-sm:w-1/2 px-5 py-1 rounded-md border-2 ml-3
+                    border-slate-300 text-themeclr font-bold text-xl
+                     hover:bg-themeclr hover:text-white hover:border-themeclr">
+                Back
+                </button>
+              </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>KYC Details</ng-template>
+
+          <div>
+            <div class="w-1/3 max-sm:w-full pr-4">
+                <div class="mb-2">
+                  <mat-label class="font-medium text-base text-label-clr">Select Identity
+                    <span class="text-red-500">*</span>
+                  </mat-label>
+                </div>
+                <div class="w-full widthdraw_select">
+                    <single-static-stable [required]="false"
+                    [placeholder]="'Select Identity'" [searchPlaceHolder]="'Search'" [options]="Docs"
+                    [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+                </div>
+              </div>
+              <div class="">
+                <div class="mb-1">
+                    <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+                        Upload Document <span class="text-red-600">*</span></mat-label>
+                 </div>
+                <div class="width-32 max-sm:w-full p-4 rounded-md border border-gray-300 cursor-pointer" (click)="file.click()">
+                  <div class="flex items-center">
+                  <img class="w-7" src="assets/images/File-upload.png" alt="">
+                  <div class="ml-4">
+                    <p class="text-lg font-medium text-gray-500">Aadhaar Upload</p>
+                    <span class="text-sm font-normal text-gray-500">Use a pdf, docx, doc, jpg & png</span>
+                  </div>
+                </div>
+                </div>
+                <input class="hidden" id="fileUploader" type="file"
+                accept="image/*" #file>
+               </div>
+               <div class="mt-5">
+                <div class="mb-1">
+                    <mat-label class="font-medium text-lg mb-0 first-letter" style="color: #171717">
+                        Upload Document <span class="text-red-600">*</span></mat-label>
+                 </div>
+                <div class="width-32 max-sm:w-full p-4 rounded-md border border-gray-300 cursor-pointer" (click)="file.click()">
+                  <div class="flex items-center">
+                  <img class="w-7" src="assets/images/File-upload.png" alt="">
+                  <div class="ml-4">
+                    <p class="text-lg font-medium text-gray-500">PAN Upload</p>
+                    <span class="text-sm font-normal text-gray-500">Use a pdf, docx, doc, jpg & png</span>
+                  </div>
+                </div>
+                </div>
+                <input class="hidden" id="fileUploader" type="file"
+                accept="image/*" #file>
+               </div>
+          </div>
+
+          <div class="my-5 pt-4 flex">
+            <button matStepperNext class="w-28 max-sm:w-1/2 text-white px-5 py-1 rounded-lg text-lg
+            max-sm:mt-2 font-bold bg-themeclr hover:bg-themeclr_hover">Submit</button>
+               <button matStepperPrevious
+               class="w-28 max-sm:w-1/2 px-5 py-1 rounded-md border-2 ml-3
+               border-slate-300 text-themeclr font-bold text-xl
+                hover:bg-themeclr hover:text-white hover:border-themeclr">
+            Back
+            </button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden">
+    <!-- Title -->
+    <!-- <div class="heading_common_style">Cash Management Services</div> -->
+    <form class="bg-white cms_form p-9  mt-7 flex items-start">
+       <div class="xs:w-full lg:w-2/4">
+          <h1 class="font-medium text-lg mb-1 first-letter" style="color: #171717">
+            Type of loan <span class="text-red-600">*</span>
+          </h1>
+          <single-static-stable class="w-2/3" [error_message]="'Please choose the type'" [required]="true"
+          [placeholder]="'Select type'" [searchPlaceHolder]="'Search'" [options]="merchants"
+          [options_display]="'value'" [options_value]="'viewValue'"></single-static-stable>
+          <!-- <multiple-api-stable [error_message]="'Please select the User'" [options_display]="'name'"
+             [options_value]="'id'"  [placeholder]="'User'" [searchPlaceHolder]="'Search User'"
+             [need_all_options]="true" [api_endpoint]="'https://jsonplaceholder.typicode.com/users'"
+             [api_queryparams]="{ _limit: 200 }" [api_params]="''" [response_key]="''"></multiple-api-stable> -->
+          
+          <div class="mt-2">
+               <button
+                  class="sm:w-4/6 xs:w-full h-10 rounded-md text-white font-bold text-xl hover:bg-themeclr_hover bg-themeclr">
+               Submit
+               </button>
+          </div>
+       </div>
+       <div class="w-2/4 mx-auto cms_image">
+          <img class="lg:w-2/5 sm:w-1/2 xs:w-1/2 xs:mt-7 m-auto" src="assets/images/loan-lead.png" alt="image" />
+       </div>
+    </form>
+ </div>

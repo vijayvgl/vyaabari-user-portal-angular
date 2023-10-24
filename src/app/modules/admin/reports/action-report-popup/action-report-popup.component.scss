@@ -1,0 +1,21 @@
+.table_details tr:nth-child(odd) {
+    background-color: white !important;
+}
+.bg_clr {
+    background-color: #F8F9FD;
+}
+.head_clr {
+    color: rgba(54, 54, 54, 0.75);
+}
+.content_clr {
+    color: rgba(19, 19, 19, 0.95);
+}
+.last_division {
+    border: 1.7px solid #F1F1F1;
+    background-color: #FBFBFB;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+        background-color: #f5f6ff;
+    }
+}

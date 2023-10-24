@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+}
+tr.example-detail-row {
+    height: 0px !important;
+}
+.example-element-detail {
+    overflow: hidden;
+}
+.transaction-details td{
+    padding: 6px 0px;
+}
+.pr-80{
+  padding-right: 60px;
+}
+.transaction-details{
+  background: #ffc0cb17;
+    margin: 10px;
+    padding: 14px;
+    border-radius: 20px;
+    height: 235px;
+    overflow: scroll;
+}
+/* .inner-table tbody tr:nth-child(odd){
+    background: #efe6e7;
+} */
+.inner-table tbody td:nth-child(1),tr th:nth-child(1){
+    padding-left:10px;
+}
